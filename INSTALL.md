@@ -9,7 +9,7 @@ Première utilisation
 Récupérez une copie du modèle :
 
 ```sh
-git clone git@github.com:O-clock-Quantum/React-modele.git
+git clone git@github.com:O-clock-Rocket/React-modele.git
 
 cd React-modele
 
