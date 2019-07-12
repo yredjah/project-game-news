@@ -170,6 +170,13 @@ yarn add @babel/polyfill
 yarn add react react-dom prop-types
 ```
 
+Update Deps
+---------------------
+```sh
+# les dépendances doivent avoir été installées auparavant avec `yarn` ou `npm install` 
+node updateDeps.js
+```
+
 Outils pratiques
 ----------------
 
