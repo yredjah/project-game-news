@@ -26,7 +26,7 @@ async function updateDeps() {
     content.dependencies[dep] = `^${depsList[dep].version}`;
   }
 
-  fs.writeFileSync('package.json', `${JSON.stringify(content, null, '  ')} \n`);
+  fs.writeFileSync('package.json', `${JSON.stringify(content, null, '  ')}\n`);
   console.log('Done');
 }
 
