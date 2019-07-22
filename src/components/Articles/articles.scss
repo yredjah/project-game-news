@@ -6,7 +6,18 @@
 }
 
 #cards {
-  box-shadow: 15px 10px 5px lightgrey;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
+#cards:hover {
+  box-shadow: 15px 10px 5px lightgrey;
+  z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.15);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.15);
+    transition: all 200ms ease-in;
+    transform: scale(1.15);
+}
