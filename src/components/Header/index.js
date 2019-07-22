@@ -25,17 +25,13 @@ class Header extends Component {
         <div className="container-head">
           <h1><img className="logo" src="src/Assets/img/logo.jpg"></img>Actu Gaming</h1>
           <div className="container-head-right">
-            <div className="ui icon input">
-              <Input type="text" placeholder="Search..." />
-              <i aria-hidden="true" className="search icon"></i>
-            </div>
             <Icon.Group size="big">
               <Icon size="big" name="circle outline" />
               <Icon name="user" />
             </Icon.Group>
           </div>
         </div>
-        <Segment inverted>
+        <Segment inverted className="nav">
           <Menu inverted secondary>
             <Menu.Item
               name="PC"
@@ -68,6 +64,9 @@ class Header extends Component {
               onClick={this.handleItemClick}
             />
           </Menu>
+          <div className="searchBar">
+            <Input type="text" icon="search" placeholder="Search..." />
+          </div>
         </Segment>
       </div>
     );
