@@ -23,7 +23,7 @@ class Header extends Component {
     return (
       <div className="header">
         <div className="container-head">
-          <h1><img className="logo" src="src/Assets/img/logo.jpg"></img>Actu Gaming</h1>
+          <h1><img className="logo" src="src/Assets/img/logo.jpg"></img>Game news</h1>
           <div className="container-head-right">
             <Icon.Group size="big">
               <Icon size="big" name="circle outline" />
