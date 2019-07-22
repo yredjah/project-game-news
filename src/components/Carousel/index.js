@@ -1,6 +1,6 @@
 // == Import : npm
 import React from 'react';
-import Coverflow  from 'react-coverflow';
+import Coverflow from 'react-coverflow';
 
 // == Import : local
 
