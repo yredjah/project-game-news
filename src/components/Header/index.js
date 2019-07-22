@@ -23,7 +23,7 @@ class Header extends Component {
     return (
       <div className="header">
         <div className="container-head">
-          <h1><img className="logo" src="https://banner2.kisspng.com/20180703/rvg/kisspng-xbox-360-controller-wii-remote-joystick-game-contr-5b3bef3a3a29e9.9118803515306545222382.jpg"></img>Actu Gaming</h1>
+          <h1><img className="logo" src="src/Assets/img/logo.jpg"></img>Actu Gaming</h1>
           <div className="container-head-right">
             <div className="ui icon input">
               <Input type="text" placeholder="Search..." />
