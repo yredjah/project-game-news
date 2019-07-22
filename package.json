@@ -62,6 +62,7 @@
     "react-facebook-share-link": "^1.0.4",
     "react-images-upload": "^1.2.7",
     "react-motion": "^0.5.2",
+    "react-player": "^1.11.1",
     "react-redux": "^7.1.0",
     "react-router": "^5.0.1",
     "react-twitter-share-link": "^1.2.1",
