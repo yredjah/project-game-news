@@ -8,7 +8,6 @@ import './carousel.scss';
 // == Composant
 const Carousel = () => (
   <div id="Carousel">
-  Carousel
     <Coverflow
       width="960"
       height="500"
