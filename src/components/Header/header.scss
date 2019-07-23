@@ -1,6 +1,7 @@
 .container-head {
   display: flex;
   justify-content: space-between;
+  margin: 10px;
 }
 h1{
   font-size: 64px;
@@ -19,3 +20,9 @@ h1{
 .searchBar {
   height: 1em;
 }
+
+.container-head-right {
+  margin-top: 20px;
+  justify-content: space-between;
+}
+

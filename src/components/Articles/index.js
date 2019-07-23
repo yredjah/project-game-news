@@ -157,6 +157,32 @@ export default function Articles() {
           </Button>
         </CardActions>
       </Card>
+
+      <Card id="cards" className={classes.card}>
+        <CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image="src/Assets/img/death.jpg"
+            title="Contemplative Reptile"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              Death Stranding
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste corporis praesentium ex accusantium maiores vero inventore earum voluptas quo iure.
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button size="small" color="primary">
+            Share
+          </Button>
+          <Button size="small" color="primary">
+            Learn More
+          </Button>
+        </CardActions>
+      </Card>
     </div>
   );
 }
