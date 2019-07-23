@@ -1,10 +1,11 @@
 .container-head {
   display: flex;
   justify-content: space-between;
-  margin: 10px;
 }
-h1{
+
+.name{
   font-size: 64px;
+  margin: 10px;
 }
 
 .logo {
@@ -22,7 +23,7 @@ h1{
 }
 
 .container-head-right {
-  margin-top: 20px;
+  margin: 30px 10px;
   justify-content: space-between;
 }
 

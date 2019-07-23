@@ -34,7 +34,7 @@ class Header extends Component {
     return (
       <div className="header">
         <div className="container-head">
-          <h1><img className="logo" src="src/Assets/img/logo.jpg"></img>Game news</h1>
+          <h1 className="name"><img className="logo" src="src/Assets/img/logo.jpg"></img>Game news</h1>
           <div className="container-head-right">
             <div className="log">
               <Button className="lg" primary>Sign up</Button>

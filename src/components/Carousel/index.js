@@ -12,8 +12,8 @@ class Carousel extends Component {
   render() {
 
     const opts = {
-      height: '300',
-      width: '600',
+      height: '200',
+      width: '150',
       playerVars: {
         modestbranding: 1,
         autohide: 1,
@@ -21,38 +21,49 @@ class Carousel extends Component {
       }
     };
 
-    return (
-      <div id="Carousel">
-        <Coverflow
-          width="960"
-          height="500"
-          displayQuantityOfSide={2}
-          navigation={true}
-          enableScroll
-          clickable
-          active={0}
-        >
+  return (
+    
+    <div id="Carousel">
 
-          <YouTube
-            videoId="TcZyiYOzsSw"
-            opts={opts}
-          />
+      <Coverflow
+        className="media"
+        displayQuantityOfSide={2}
+        navigation={true}
+        enableScroll
+        clickable
+        active={0}
+        media={{
+        '@media (max-width: 900px)': {
+          width: '100%',
+          height: '150px'
+        },
+        '@media (min-width: 900px)': {
+          width: '100%',
+          height: '320px'
+        }
+      }}
+      >
 
-          <YouTube
-            videoId="qIcTM8WXFjk"
-            opts={opts}
-          />
+        <YouTube
+          videoId="TcZyiYOzsSw"
+          opts={opts}
+        />
 
-          <YouTube
-            videoId="ENjwexZnLPI"
-            opts={opts}
-          />
+        <YouTube
+          videoId="qIcTM8WXFjk"
+          opts={opts}
+        />
 
-        </Coverflow>
+        <YouTube
+          videoId="ENjwexZnLPI"
+          opts={opts}
+        />
 
-      </div>
+      </Coverflow>
 
-    );
+    </div>
+
+  );
   }
 }
 
