@@ -46,9 +46,6 @@ export default function Articles() {
         </CardActionArea>
         <CardActions>
           <Button size="small" color="primary">
-            Share
-          </Button>
-          <Button size="small" color="primary">
             Learn More
           </Button>
         </CardActions>
@@ -71,9 +68,6 @@ export default function Articles() {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
-            Share
-          </Button>
           <Button size="small" color="primary">
             Learn More
           </Button>
@@ -98,9 +92,6 @@ export default function Articles() {
         </CardActionArea>
         <CardActions>
           <Button size="small" color="primary">
-            Share
-          </Button>
-          <Button size="small" color="primary">
             Learn More
           </Button>
         </CardActions>
@@ -123,9 +114,6 @@ export default function Articles() {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
-            Share
-          </Button>
           <Button size="small" color="primary">
             Learn More
           </Button>
@@ -150,9 +138,6 @@ export default function Articles() {
         </CardActionArea>
         <CardActions>
           <Button size="small" color="primary">
-            Share
-          </Button>
-          <Button size="small" color="primary">
             Learn More
           </Button>
         </CardActions>
@@ -167,7 +152,7 @@ export default function Articles() {
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              Death Stranding
+              Watch Dogs 3
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste corporis praesentium ex accusantium maiores vero inventore earum voluptas quo iure.
@@ -175,9 +160,6 @@ export default function Articles() {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
-            Share
-          </Button>
           <Button size="small" color="primary">
             Learn More
           </Button>
