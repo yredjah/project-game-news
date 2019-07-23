@@ -1,5 +1,6 @@
 // == Import : npm
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Menu,
   Segment,
@@ -28,23 +29,27 @@ class Header extends Component {
       { key: 3, text: 'ACTION', value: 3 },
       { key: 4, text: 'SPORT', value: 4 },
       { key: 5, text: 'FPS', value: 5 },
-      { key: 6, text: 'AVENTURE', value: 6 },
+      { key: 6, text: 'ADVENTURE', value: 6 },
     ]
 
     return (
       <div className="header">
         <div className="container-head">
-          <h1 className="name"><img className="logo" src="src/Assets/img/logo.jpg"></img>Game news</h1>
+          <Link to="/" exact><h1 id="title"><img className="logo" src="src/Assets/img/logo.png" alt=""></img>Game news</h1></Link>
           <div className="container-head-right">
             <div className="log">
-              <Button className="lg" primary>Sign up</Button>
-              <Button
-                className="lg"
+              <Link
+                to="/Sign_Up"
+                exact
+              >
+                <Button className="lg" primary>Sign Up</Button>
+              </Link>
+              <Link
                 to="/login"
                 exact
               >
-                Log-in
-              </Button>
+                <Button className="lg">Login</Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -81,9 +86,9 @@ class Header extends Component {
               onClick={this.handleItemClick}
             />
             <Menu.Item
-              active={activeItem === 'JEUX'}
+              active={activeItem === 'GAMES'}
             >
-              <Dropdown className="game-menu" text="JEUX" options={options} simple item />
+              <Dropdown className="game-menu" text="GAMES" options={options} simple item />
             </Menu.Item>
           </Menu>
           <div className="searchBar">
