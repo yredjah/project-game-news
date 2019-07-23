@@ -1,0 +1,63 @@
+#Article{
+  margin: 1em;
+  padding: 1em;
+  border: 2px solid lightgrey;
+  border-radius: 1em;
+
+  .video{
+    max-width: 50em;
+    box-shadow: 15px 8px 10px lightgrey;
+  }
+
+  .title{
+    font-size: 2em;
+    text-decoration: underline;
+    font-weight: bold;
+    margin-bottom: 2em;
+    text-shadow: 2px 2px 3px grey;
+  }
+
+  .text{
+    margin:1em;
+    line-height: 1.5em;
+    font-size:1.2em;
+  }
+}
+
+.communication{
+  margin: 2em;
+
+  .share-link{
+    text-align: left;
+    margin-bottom: 1em;
+  }
+
+  .form{
+    text-align: left;
+
+    &-text{
+      margin: 0.5em 0;
+    }
+  }
+
+  .commentaries{
+    text-align: left;
+    margin-top:1em;
+    border:1px solid black;
+    border-radius: 0.5em;
+    padding:0.5em;
+    position: relative;
+
+    .date{
+      position: absolute;
+      top: 0.5em;
+      right: 0.5em;
+      font-size: 0.8em;
+      color: grey;
+    }
+
+    p{
+      font-size: 0.9em;
+    }
+  }
+}
