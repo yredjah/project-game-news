@@ -81,9 +81,9 @@ class Header extends Component {
               onClick={this.handleItemClick}
             />
             <Menu.Item
-              active={activeItem === 'GENRE'}
+              active={activeItem === 'JEUX'}
             >
-              <Dropdown className="game-menu" text="GENRE" options={options} simple item />
+              <Dropdown className="game-menu" text="JEUX" options={options} simple item />
             </Menu.Item>
           </Menu>
           <div className="searchBar">
