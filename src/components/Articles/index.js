@@ -55,12 +55,12 @@ export default function Articles() {
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image="src/Assets/img/battle.jpeg"
+            image="src/Assets/img/jedi.jpg"
             title="Contemplative Reptile"
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              Battlefield V
+              Satr Wars : Jedi Fallen Order
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste corporis praesentium ex accusantium maiores vero inventore earum voluptas quo iure.

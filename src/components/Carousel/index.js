@@ -15,9 +15,9 @@ class Carousel extends Component {
       height: '300',
       width: '600',
       playerVars: {
-        controls: 0,
-        modestBranding: 1,
-        showInfo: 0,
+        modestbranding: 1,
+        autohide: 1,
+        showinfo: 0
       }
     };
 
@@ -39,12 +39,12 @@ class Carousel extends Component {
           />
 
           <YouTube
-            videoId="8X2kIfS6fb8"
+            videoId="qIcTM8WXFjk"
             opts={opts}
           />
 
           <YouTube
-            videoId=" Gu8X7vM3Avw"
+            videoId="ENjwexZnLPI"
             opts={opts}
           />
 
