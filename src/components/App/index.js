@@ -6,6 +6,7 @@ import Header from 'src/components/Header';
 import Carousel from 'src/components/Carousel';
 import Articles from 'src/components/Articles';
 import Article from 'src/components/Article';
+import UserHome from 'src/components/UserHome';
 import Footer from 'src/components/Footer';
 import './app.scss';
 
@@ -21,3 +22,5 @@ const App = () => (
 
 // == Export
 export default App;
+
+

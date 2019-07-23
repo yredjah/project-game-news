@@ -39,7 +39,7 @@ class Carousel extends Component {
         },
         '@media (min-width: 900px)': {
           width: '100%',
-          height: '320px'
+          height: '350px'
         }
       }}
       >
