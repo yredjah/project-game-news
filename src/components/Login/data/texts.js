@@ -1,19 +1,5 @@
 
 export default {
-    fr: {
-      login: {
-        title: 'Connexion',
-        desc: 'Renseignez votre adresse e-mail et votre mot de passe pour accéder à votre compte',
-        link: 'Mot de passe oublé ?',
-        submit: 'Se connecter',
-      },
-      password: {
-        title: 'Mot de passe oublié',
-        desc: 'Renseignez votre adresse e-mail et nous vous enverrons un nouveau mot de passe ',
-        link: 'Annuler',
-        submit: 'Regénérer le mot de passe',
-      },
-    },
     en: {
       login: {
         title: 'Sign in',

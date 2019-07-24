@@ -1,13 +1,5 @@
 
 export default {
-    fr: {
-      login: {
-        title: 'Inscription',
-        desc: 'Veuillez remplir les champs ci-dessous pour vous enregitrer',
-        link: 'Déja inscris ?',
-        submit: 'S\'enregistrer',
-      },
-    },
     en: {
       login: {
         title: 'Sign in',
