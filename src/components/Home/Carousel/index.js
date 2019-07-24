@@ -26,33 +26,38 @@ class Carousel extends Component {
         <ReactCarousel showThumbs={false}>
           <div>
             <YouTube
-              videoId="TcZyiYOzsSw"
+              videoId="0GLbwkfhYZk"
               opts={opts}
             />
+            <p className="legend">Star Wars : Jedi Fallen Order</p>
           </div>
           <div>
             <YouTube
               videoId="qIcTM8WXFjk"
               opts={opts}
             />
+            <p className="legend">Cyberpunk 2077</p>
+          </div>
+          <div>
+            <YouTube
+              videoId="TcZyiYOzsSw"
+              opts={opts}
+            />
+            <p className="legend">World Of Warcraft : Classic</p>
           </div>
           <div>
             <YouTube
               videoId="ENjwexZnLPI"
               opts={opts}
             />
-          </div>
-          <div>
-            <YouTube
-              videoId="0GLbwkfhYZk"
-              opts={opts}
-            />
+            <p className="legend">Death Stranding</p>
           </div>
           <div>
             <YouTube
               videoId="Zi8k4KGyW6o"
               opts={opts}
             />
+            <p className="legend">Watch Dogs 3 : Legion</p>
           </div>
         </ReactCarousel>
       </div>
@@ -63,4 +68,3 @@ class Carousel extends Component {
 
 // == Export
 export default Carousel;
-

@@ -8,10 +8,12 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
 
 // == Import : local
 
 import './articles.scss';
+import articles from 'src/data';
 
 // == Composant
 const useStyles = makeStyles({
@@ -28,143 +30,36 @@ export default function Articles() {
 
   return (
     <div id="articles">
-      <Card id="cards" className={classes.card}>
-        <CardActionArea>
-          <CardMedia
-            className={classes.media}
-            image="src/Assets/img/wow.jpg"
-            title="Contemplative Reptile"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              Wow classic
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste corporis praesentium ex accusantium maiores vero inventore earum voluptas quo iure.
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
-        </CardActions>
-      </Card>
-
-      <Card id="cards" className={classes.card}>
-        <CardActionArea>
-          <CardMedia
-            className={classes.media}
-            image="src/Assets/img/jedi.jpg"
-            title="Contemplative Reptile"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              Satr Wars : Jedi Fallen Order
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste corporis praesentium ex accusantium maiores vero inventore earum voluptas quo iure.
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
-        </CardActions>
-      </Card>
-
-      <Card id="cards" className={classes.card}>
-        <CardActionArea>
-          <CardMedia
-            className={classes.media}
-            image="src/Assets/img/cyber.jpg"
-            title="Contemplative Reptile"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              Cyberpunk 2077
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste corporis praesentium ex accusantium maiores vero inventore earum voluptas quo iure.
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
-        </CardActions>
-      </Card>
-
-      <Card id="cards" className={classes.card}>
-        <CardActionArea>
-          <CardMedia
-            className={classes.media}
-            image="src/Assets/img/last.jpg"
-            title="Contemplative Reptile"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              The Last of Us Part II
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste corporis praesentium ex accusantium maiores vero inventore earum voluptas quo iure.
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
-        </CardActions>
-      </Card>
-
-      <Card id="cards" className={classes.card}>
-        <CardActionArea>
-          <CardMedia
-            className={classes.media}
-            image="src/Assets/img/watch.jpg"
-            title="Contemplative Reptile"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              Watch Dogs 3
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste corporis praesentium ex accusantium maiores vero inventore earum voluptas quo iure.
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
-        </CardActions>
-      </Card>
-
-      <Card id="cards" className={classes.card}>
-        <CardActionArea>
-          <CardMedia
-            className={classes.media}
-            image="src/Assets/img/death.jpg"
-            title="Contemplative Reptile"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              Watch Dogs 3
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste corporis praesentium ex accusantium maiores vero inventore earum voluptas quo iure.
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
-        </CardActions>
-      </Card>
+      {
+        articles.map((article) => {
+          return (
+            <Link to={`/article/${article.id}`} exact>
+              <Card key={article.id} id="cards" className={classes.card}>
+                <CardActionArea>
+                  <CardMedia
+                    className={classes.media}
+                    image={article.image}
+                    title={article.title}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      {article.title}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                      {article.resume}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button size="small" color="primary">
+                    Learn More
+                  </Button>
+                </CardActions>
+              </Card>
+            </Link>
+          );
+        })
+      }
     </div>
   );
 }

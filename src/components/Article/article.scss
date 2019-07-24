@@ -4,6 +4,7 @@
   border: 2px solid lightgrey;
   border-radius: 1em;
   background-color: white;
+  box-shadow: 15px 8px 10px lightgrey;
 
   .video{
     max-width: 50em;
@@ -44,10 +45,12 @@
   .commentaries{
     text-align: left;
     margin-top:1em;
-    border:1px solid black;
+    border:1px solid lightgrey;
     border-radius: 0.5em;
     padding:0.5em;
     position: relative;
+    background-color: white;
+    box-shadow: 15px 8px 10px lightgrey;
 
     .date{
       position: absolute;
