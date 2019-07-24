@@ -1,0 +1,27 @@
+#contact {
+  margin: 20px auto;
+  padding: 1em;
+  width: 50%;
+  border: 2px solid lightgrey;
+  border-radius: 1em;
+  background-color: white;
+  box-shadow: 15px 8px 10px lightgrey;
+}
+
+.contactForm {
+  border-color: black !important;
+}
+
+.contactName {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-evenly;
+}
+
+label {
+  text-align: left !important;
+}
+
+#form-subcomponent-shorthand-input-last-name, #form-subcomponent-shorthand-input-first-name {
+  border-color: black !important;
+}
