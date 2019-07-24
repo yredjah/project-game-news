@@ -18,7 +18,9 @@ const Footer = () => (
       <Link to="/mention_legale" exact>
         <a href="">mention légale</a>
       </Link>
+      <Link to="/" exact>
       <a href="">accueil</a>
+      </Link>
     </div>
     <p>&copy; 2019 Game news</p>
     <div className="icons">
