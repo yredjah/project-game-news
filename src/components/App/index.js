@@ -9,6 +9,7 @@ import Footer from 'src/components/Footer';
 import LoginPage from 'src/components/Login';
 import SignUp from 'src/components/SignUp';
 import Article from 'src/components/Article';
+import Legal from 'src/components/Legal';
 import './app.scss';
 
 // == Composant
@@ -22,8 +23,11 @@ const App = () => (
       <Route path="/Sign_Up" exact component={SignUp} />
       <Route path="/" exact component={Home} />
       <Route path="/article/:id" exact component={Article} />
+      <Route path="/mention_legale" exact component={Legal} />
     </main>
-    <Footer />
+    <footer>
+      <Footer />
+    </footer>
   </div>
 );
 

@@ -2,6 +2,7 @@
 import 'semantic-ui-css/semantic.min.css';
 import { Icon } from 'semantic-ui-react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // == Import : local
 
@@ -12,7 +13,9 @@ const Footer = () => (
   <div id="footer">
     <div className="link">
       <a href="">contact</a>
-      <a href="">mention légale</a>
+      <Link to="/mention_legale" exact>
+        <a href="">mention légale</a>
+      </Link>
       <a href="">accueil</a>
     </div>
     <p>&copy; 2019 Game news</p>
