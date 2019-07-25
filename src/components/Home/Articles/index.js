@@ -71,8 +71,8 @@ export default function Articles() {
         {
           articles.map((article) => {
             return (
-              <Link to={`/article/${article.id}`} exact>
-                <Card key={article.id} id="cards" className={classes.card}>
+              <Link key={article.id} to={`/article/${article.id}`} exact>
+                <Card id="cards" className={classes.card}>
                   <CardActionArea>
                     <CardMedia
                       className={classes.media}
