@@ -10,7 +10,7 @@ class LoginPage extends React.Component {
   state = {
     email: '',
     password: '',
-    lang: 'fr',
+    lang: 'en',
     lastName: '',
     firstName: '',
   }

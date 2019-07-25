@@ -13,7 +13,7 @@ class LoginPage extends React.Component {
     view: 'login',
     email: '',
     password: '',
-    lang: 'fr',
+    lang: 'en',
     username: '',
     message: '',
   }
