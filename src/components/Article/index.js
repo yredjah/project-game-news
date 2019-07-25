@@ -26,14 +26,26 @@ const Article = (props) => {
     element.id===props.match.params.id
   ));
 
-  return (
-    <div>
-      <div id="Article">
+  const checkVideoExistance = () => {
+    if (typeof article.videoId === 'undefined') {
+      return (<img className="video" src={article.image} alt="" />);
+    }
+    // eslint-disable-next-line no-else-return
+    else {
+      return (
         <YouTube
           className="video"
           videoId={article.videoId}
           opts={opts}
         />
+      );
+    }
+  };
+
+  return (
+    <div>
+      <div id="Article">
+        {checkVideoExistance()}
         <h2 className="title">{article.title}</h2>
         <p className="text">{article.text}</p>
       </div>

@@ -49,15 +49,15 @@ export default function Articles() {
           {news.map(newss => (
             <div className="container" key={newss.id}>
               <div className="container-1">
-                <Link to={`/${newss.title}`} exact>
+                <Link to={`/article/${newss.id}`} exact>
                   <img className="container-1-img" src={newss.image} alt="" />
                 </Link>
               </div>
               <div className="container-2">
-                <Link to={`/${newss.title}`} exact>
+                <Link to={`/article/${newss.id}`} exact>
                   <h3> {newss.title}</h3>
                 </Link>
-                <p>{newss.resume}<Link className="arrow" to={`/${newss.title}`} exact /></p>
+                <p>{newss.resume}<Link className="arrow" to={`/article/${newss.id}`} exact /></p>
               </div>
             </div>
           ))
