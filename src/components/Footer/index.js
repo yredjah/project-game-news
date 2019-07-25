@@ -13,13 +13,13 @@ const Footer = () => (
   <div id="footer">
     <div className="link">
       <Link to="/contact" exact>
-        <a href="">contact</a>
+        Contact
       </Link>
       <Link to="/mention_legale" exact>
-        <a href="">mention légale</a>
+        Mention légale
       </Link>
       <Link to="/" exact>
-        <a href="">accueil</a>
+        Accueil
       </Link>
     </div>
     <p>&copy; 2019 Game news</p>
