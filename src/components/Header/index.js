@@ -30,7 +30,7 @@ class Header extends Component {
       { key: 4, text: 'SPORT', value: 4 },
       { key: 5, text: 'FPS', value: 5 },
       { key: 6, text: 'ADVENTURE', value: 6 },
-    ]
+    ];
 
     return (
       <div className="header">
