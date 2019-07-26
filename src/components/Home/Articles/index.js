@@ -36,12 +36,14 @@ export default function Articles() {
       <div id="divPincipal">
         <div className="news">
           <div id="news-title">
-            <p>{bignews.title}</p>
+            <Link to={`/article/${bignews.id}`} exact><p>{bignews.title}</p></Link>
           </div>
           <div>
-            <div className="news-header">
-              <img className="news-header-image" src={bignews.image} alt="" />
-            </div>
+            <Link to={`/article/${bignews.id}`} exact>
+              <div className="news-header">
+                <img className="news-header-image" src={bignews.image} alt="" />
+              </div>
+            </Link>
           </div>
         </div>
         <div className="divSecondaire2">
