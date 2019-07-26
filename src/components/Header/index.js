@@ -69,6 +69,8 @@ const Header = ({ activeItem, setItem, games, categories }) => {
 Header.propTypes = {
   activeItem: PropTypes.string.isRequired,
   setItem: PropTypes.func.isRequired,
+  games: PropTypes.array.isRequired,
+  categories: PropTypes.array.isRequired,
 };
 
 // == Export
