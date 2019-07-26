@@ -4,11 +4,13 @@ import YouTube from 'react-youtube';
 import { Icon, Form, TextArea, Button, Label } from 'semantic-ui-react';
 import ShareLink from 'react-twitter-share-link';
 import FacebookShareLink from 'react-facebook-share-link';
+import PropTypes from 'prop-types';
 
 // == Import : local
 import './article.scss';
-import articles from 'src/data';
-// import news from 'src/data';
+
+// import { findArticle } from '../../store/reducer';
+// import articles from 'src/data';
 
 const opts = {
   height: '300',
@@ -21,10 +23,11 @@ const opts = {
 };
 
 // == Composant
-const Article = (props) => {
+const Article = ({ match, articles }) => {
+
   const article = articles.find(element => (
     // console.log(props.match.params);
-    element.id===props.match.params.id
+    element.id===match.params.id
   ));
 
   const checkVideoExistance = () => {
@@ -97,6 +100,12 @@ const Article = (props) => {
     </div>
   );
 };
+
+Article.propTypes = {
+  match: PropTypes.object.isRequired,
+  articles: PropTypes.array.isRequired,
+};
+
 
 // == Export
 export default Article;
