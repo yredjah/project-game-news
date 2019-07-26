@@ -87,6 +87,7 @@ const initialState = {
     {
       id: '12',
       videoId: 'R381qGPN2Ik',
+      image: 'src/Assets/img/netflix.jpg',
       title: 'The Witcher: la série Netflix tant attendue se dévoile dans une bande-annonce.',
       resume: 'The Witcher',
       text: 'Portée par Henry Cavill dans le rôle de Geralt de Riv, l\'adaptation de la série littéraire éponyme sera diffusée fin 2019 sur la plateforme de streaming. Comme tous les ans, le Comic-Con de San Diego apporte son lot de trailers de films et séries attendus de pied ferme. Parmi les plus grosses annonces de la 50e édition de cette grand-messe de la pop culture, qui s\'est tenue du 18 au 22 juillet, on trouve la bande-annonce de The Witcher, qui figure parmi les séries les plus attendues de cette fin d\'année. Créée par le géant du streaming Netflix, ce feuilleton est adapté de l\'intrigue de la série littéraire à succès Le Sorcelleur, de l\'auteur polonais Andrzej Sapkowski. Il ne se basera donc pas sur celle des célèbres jeux vidéos développés par le studio CD Projekt depuis 2007, bien que des éléments communs aux deux supports devraient être présents dans la série.. The Witcher se déroule dans un univers fantastico-médiéval dans lequel vivent humains, elfes, sorciers, et autres monstres et créatures en tous genres. L\'acteur britannique Henry Cavill (Man of Steel, Mission Impossible: Fallout) y incarne le héros Geralt de Riv, un chasseur de monstres, ou "sorcelleur", doté de pouvoirs magiques.',
