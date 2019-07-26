@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 
 // == Import : local
 import './article.scss';
+
 // import { findArticle } from '../../store/reducer';
 // import articles from 'src/data';
 
@@ -104,6 +105,7 @@ Article.propTypes = {
   match: PropTypes.object.isRequired,
   articles: PropTypes.array.isRequired,
 };
+
 
 // == Export
 export default Article;
