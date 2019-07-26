@@ -34,8 +34,8 @@ class LoginPage extends React.Component {
   submitLogin = () => {
     console.log('App : submitLogin');
     const { email, password } = this.state;
-
-    axios.post('http://localhost:3000/login', {
+    // http://localhost:3000/login
+    axios.post('', {
       email,
       password,
     })

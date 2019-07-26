@@ -1,4 +1,5 @@
 export default {
+  id: 12,
   bigTitle: 'Gaming News of the week',
   articlesTitle: 'Games',
   smallTitle: 'Upcoming Games',
