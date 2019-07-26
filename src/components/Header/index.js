@@ -47,8 +47,9 @@ const Header = ({ activeItem, setItem, games, categories }) => {
         <Menu inverted secondary>
           {categories.map(category => (
             <Menu.Item
-              name={category}
-              active={activeItem === category}
+              key={category.id}
+              name={category.name}
+              active={activeItem === category.name}
               onClick={handleItemClick}
             />
           ))}

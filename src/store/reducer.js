@@ -86,12 +86,30 @@ const initialState = {
     },
   ],
   categories: [
-    'PC',
-    'XBOX',
-    'PLAYSTATION',
-    'NINTENDO',
-    'IOS',
-    'ANDROID',
+    {
+      id: '1',
+      name: 'PC',
+    },
+    {
+      id: '2',
+      name: 'XBOX',
+    },
+    {
+      id: '3',
+      name: 'PLAYSTATION',
+    },
+    {
+      id: '4',
+      name: 'NINTENDO',
+    },
+    {
+      id: '5',
+      name: 'IOS',
+    },
+    {
+      id: '6',
+      name: 'ANDROID',
+    },
   ],
   games: [
     { key: 1, text: 'MMO', value: 1 },
