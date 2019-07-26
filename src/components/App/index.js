@@ -3,12 +3,12 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 // == Import : local
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import Home from 'src/components/Home';
 import Footer from 'src/components/Footer';
 import LoginPage from 'src/components/Login';
 import SignUp from 'src/components/SignUp';
-import Article from 'src/components/Article';
+import Article from 'src/containers/Article';
 import Legal from 'src/components/Legal';
 import Contact from 'src/components/Contact';
 import './app.scss';

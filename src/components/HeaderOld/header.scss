@@ -1,0 +1,32 @@
+.container-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+#title {
+  font-size: 64px;
+  margin: 10px;
+  color: black;
+}
+
+.logo {
+  width: 1em;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  height: 5em;
+}
+
+.searchBar {
+  height: 1em;
+}
+
+.container-head-right {
+  margin-top: 45px;
+  margin-right: 10px;
+  justify-content: space-between;
+}
+
+
