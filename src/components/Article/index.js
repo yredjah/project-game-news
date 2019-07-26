@@ -8,6 +8,7 @@ import FacebookShareLink from 'react-facebook-share-link';
 // == Import : local
 import './article.scss';
 import articles from 'src/data';
+// import news from 'src/data';
 
 const opts = {
   height: '300',
@@ -95,7 +96,7 @@ const Article = (props) => {
       </div>
     </div>
   );
-}
+};
 
 // == Export
 export default Article;
