@@ -45,7 +45,7 @@ class Carousel extends Component {
       <div id="Carousel">
         <ReactCarousel showThumbs={false}>
           {this.videoLinks.map(video => (
-            <div>
+            <div key={video.link}>
               <YouTube
                 videoId={video.link}
                 opts={opts}
