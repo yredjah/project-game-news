@@ -52,6 +52,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+      idCommentaries: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Commentaries',
+          key: 'id',
+        },
+      },
     });
   },
   down: (queryInterface, Sequelize) => {

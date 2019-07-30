@@ -4,8 +4,16 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   }, {});
   Platforme.associate = function(models) {
-    models.Platforme.HasMany(models.User);
-    models.Platforme.HasMany(models.Game);
+    models.Platforme.HasMany(models.User, {
+      foreignKey: {
+        allowNull: true
+      }
+    });
+    models.Platforme.HasMany(models.Game, {
+      foreignKey: {
+        allowNull: true
+      }
+    });
   };
   return Platforme;
 };

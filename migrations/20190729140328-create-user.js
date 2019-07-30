@@ -52,6 +52,38 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+      idPlatformes: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Platformes',
+          key: 'id',
+        },
+      },
+      idGenres: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Genres',
+          key: 'id',
+        },
+      },
+      idArticles: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Articles',
+          key: 'id',
+        },
+      },
+      idCommentaries: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Commentaries',
+          key: 'id',
+        },
+      },
     });
   },
   down: (queryInterface, Sequelize) => {

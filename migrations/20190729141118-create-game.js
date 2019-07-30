@@ -16,6 +16,22 @@ module.exports = {
           key: 'id',
         },
       },
+      idPlatformes: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Platformes',
+          key: 'id',
+        },
+      },
+      idGenres: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Genres',
+          key: 'id',
+        },
+      },
       name: {
         type: Sequelize.STRING,
       },

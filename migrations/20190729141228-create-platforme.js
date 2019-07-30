@@ -19,6 +19,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+      idGames: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Games',
+          key: 'id',
+        },
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
