@@ -8,3 +8,5 @@ config/
 Thumbs.db
 
 yarn-error.log
+
+config/
