@@ -1,8 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const User_like_Plateform = sequelize.define('User_like_Plateform', {
-    idUser: DataTypes.INTEGER,
-    idPlateform: DataTypes.INTEGER
+    userId: DataTypes.INTEGER,
+    plateformId: DataTypes.INTEGER
   }, {});
   User_like_Plateform.associate = function(models) {
     // associations can be defined here

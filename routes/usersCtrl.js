@@ -1,41 +1,42 @@
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const jwtUtils = require('../utils/jwt.utils.js');
 const models = require('../models');
 
 //routes
 module.exports = {
     register: function(req, res) {
         // params
-        const email = req.body.email;
+        const mail = req.body.mail;
         const username = req.body.username;
         const password = req.body.password;
-        const bio = req.body.bio;
-        if(email === null || username ===null || password === null) {
+        const firstname = req.body.firstname;
+        const lastname = req.body.lastname;
+        if(mail === null || username ===null || password === null || firstname === null || lastname === null) {
             return res.status(400).json({'error': 'missing parameters'});
         }
 
         models.User.findOne({
-            attributes: ['email'],
-            where: {email: email}
+            attributes: ['mail'],
+            where: {mail: mail}
         })
-        .then(function(userFond) {
+        .then(function(userFound) {
             if (!userFound) {
 
                 bcrypt.hash(password, 5, function(err, bcryptedPassword) {
                     const newUser = models.User.create({
-                        email: email,
+                        mail: mail,
                         username: username,
                         password: bcryptedPassword,
-                        bio:bio,
-                        isAdmin: 0
+                        firstname: firstname,
+                        lastname: lastname,
                     })
                     .then(function(newUser){
                         return res.status(201).json({
-                            'userId': newUser.id
+                            'id': newUser.id
                         })
                     })
                     .catch(function(err) {
-                        return res.status(500).json({ 'error': 'cannot add user'});
+                        return res.status(500).json({ 'error': 'cannot add user', err});
                     });
                 });
             } else {
@@ -49,6 +50,32 @@ module.exports = {
 
     },
     login: function(req, res) {
-        
+        const mail = req.body.mail;
+        const password = req.body.password;
+
+        if (mail === null || password ===null){
+            return res.status(400).json({ 'error': 'missing parameters'});
+        }
+
+        models.User.findOne({
+            where: { mail: mail}
+        })
+        .then(function(userFound) {
+            if (userFound) {
+                bcrypt.compare(password, userFound.password, function(errBycrypt, resBycrypt){
+                    if(resBycrypt) {
+                        return res.status(200).json({
+                            'id': userFound.id,
+                            'token': jwtUtils.generateTokenForUser(userFound)
+                        });
+                    }
+                })
+            } else {
+                return res.status(403).json({'error': 'invalid password'});
+            }  
+        })
+        .catch(function(err) {
+            return res.status(500).json({'error': 'unable to verify user', err});
+        });
     }
 }

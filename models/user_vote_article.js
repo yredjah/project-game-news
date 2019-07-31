@@ -1,8 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const User_vote_Article = sequelize.define('User_vote_Article', {
-    idUser: DataTypes.INTEGER,
-    idArticle: DataTypes.INTEGER
+    userId: DataTypes.INTEGER,
+    articleId: DataTypes.INTEGER
   }, {});
   User_vote_Article.associate = function(models) {
     // associations can be defined here

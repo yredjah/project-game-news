@@ -1,16 +1,22 @@
-// import 
-var express = require('express');
+// imports
+const express = require('express');
+const bodyParser = require('body-parser');
+const apiRouter = require('./apiRouter').router;
 
-// instantiate server 
-var server = express(); 
+const server = express();
 
-// configure routes 
-server.get('/', function(req, res){
-  res.setHeader('Content-Type', 'text/html');
-  res.status(200).send('<h1>Bonjour voici le server</h1>')
+//body parser config
+server.use(bodyParser.urlencoded({ extended: true}));
+server.use(bodyParser.json());
+
+// routes
+server.get('/', function(req, res) {
+    res.setHeader('Content-Type', 'text/html');
+    res.status(200).send('<h1>Hello</h1>');
 });
 
-// Launch server
-server.listen(3000, function(){
-  console.log('Server en écoute :)');
+server.use('/api/', apiRouter);
+
+server.listen(3000, function() {
+    console.log('server start');
 });
