@@ -35,9 +35,9 @@
     "stylelint": "*",
     "stylelint-config-recommended": "*",
     "uglifyjs-webpack-plugin": "*",
-    "webpack": "*",
-    "webpack-cli": "*",
-    "webpack-dev-server": "*"
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
   },
   "scripts": {
     "test": "mocha --require tests/.setup.js tests/**/*.test.js",
@@ -61,6 +61,7 @@
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "mysql": "^2.17.1",
+    "mysql2": "^1.6.5",
     "nodemailer": "^6.3.0",
     "passport": "^0.4.0",
     "passport-facebook": "^3.0.0",
