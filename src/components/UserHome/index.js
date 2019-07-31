@@ -11,12 +11,6 @@ class UserHome extends Component {
   render() {
     const { activeItem } = this.state
 
-    const genderOptions = [
-      { key: 'm', text: 'Hommr', value: 'homme' },
-      { key: 'f', text: 'Femme', value: 'femme' },
-      { key: 'o', text: 'Autre', value: 'autre' },
-    ]
-
     return (
     <div id="user-home">
       <div id="user-menu">
@@ -32,20 +26,16 @@ class UserHome extends Component {
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            name='favoris'
-            active={activeItem === 'favoris'}
+            name='favorits'
+            active={activeItem === 'favorits'}
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            name='préférences'
-            active={activeItem === 'préférences'}
+            name='preferencies'
+            active={activeItem === 'preferencies'}
             onClick={this.handleItemClick}
           />
         </Menu>
-      </div>
-
-      <div id="user-info">
-   
       </div>
     </div>
     )
