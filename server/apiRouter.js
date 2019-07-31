@@ -1,5 +1,5 @@
 const express = require('express');
-const usersCtrl =require('./routes/usersCtrl');
+const usersCtrl =require('../routes/usersCtrl');
 
 exports.router = (function() {
     var apiRouter = express.Router();
