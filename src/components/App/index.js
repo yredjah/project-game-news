@@ -11,7 +11,7 @@ import SignUp from 'src/containers/SignUp';
 import Login from 'src/containers/Login';
 import ForgottenPassword from 'src/containers/ForgottenPassword';
 import Legal from 'src/components/Legal';
-import Contact from 'src/components/Contact';
+import Contact from 'src/containers/Contact';
 import './app.scss';
 
 // == Composant
