@@ -130,10 +130,12 @@ const initialState = {
   registerPassword: '',
   loginEmail: '',
   loginPassword: '',
+
   email: '',
   messagesList: [],
-  newMessage: '',
 
+  newMessage: '',
+  contactMessage: '',
 };
 
 // == Types
@@ -144,6 +146,8 @@ const SET_USERS_LOGIN = 'SET_USERS_LOGIN';
 const SET_ACTIVE_ITEM = 'SET_ACTIVE_ITEM';
 const ON_INPUT_CHANGE = 'ON_INPUT_CHANGE';
 const ADD_MESSAGE = 'ADD_MESSAGE';
+const ON_TEXTAREA_CHANGE = 'ON_TEXTAREA_CHANGE';
+const ON_SUBMIT_CONTACT = 'ON_SUBMIT_CONTACT';
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -197,7 +201,13 @@ const reducer = (state = initialState, action = {}) => {
         registerEmail: '',
         registerPassword: '',
       };
-      
+    case ON_TEXTAREA_CHANGE:
+      console.log('Je veux changer textAreaValue');
+      return {
+        ...state,
+        [action.name]: action.value,
+      };
+
     default:
       return state;
   }
@@ -234,6 +244,16 @@ export const onsubmitRegister = () => ({
 export const cleanRegisterFileds = () => ({
   type: CLEAN_REGISTER_FIELDS,
 });
+
+export const onTextAreaChange = value => ({
+  type: ON_TEXTAREA_CHANGE,
+  value,
+});
+
+export const onsubmitContact = () => ({
+  type: ON_SUBMIT_CONTACT,
+});
+
 
 // == Export
 export default reducer;
