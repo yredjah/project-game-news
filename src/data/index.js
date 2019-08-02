@@ -77,6 +77,7 @@ export default [
   },
   {
     id: '12',
+    image: 'src/Assets/img/netflix.jpg',
     videoId: 'R381qGPN2Ik',
     image: 'src/Assets/img/netflix.jpg',
     title: 'The Witcher: la série Netflix tant attendue se dévoile dans une bande-annonce.',
