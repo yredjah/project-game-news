@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { ON_SUBMIT_LOGIN, setUsersLogin } from 'src/store/reducer';
+import {
+  ON_SUBMIT_LOGIN,
+  setUsersLogin,
+  ON_SUBMIT_REGISTER,
+  cleanRegisterFileds,
+} from 'src/store/reducer';
 
 
 const logMiddleware = store => next => (action) => {
@@ -15,12 +20,34 @@ const logMiddleware = store => next => (action) => {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-        mail: store.getState().email,
-        password: store.getState().password,
+        mail: store.getState().loginEmail,
+        password: store.getState().loginPassword,
       })
         .then((response) => {
           console.log(response.data);
           store.dispatch(setUsersLogin(response.data.token, response.data.id));
+        })
+        // en cas d'echec : catch
+        .catch((error) => {
+          console.error(error.message);
+          console.error(error.response);
+        });
+      break;
+    case ON_SUBMIT_REGISTER:
+      // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.post('http://localhost:3000/api/users/register', {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        username: store.getState().registerUserName,
+        firstname: store.getState().registerFirstName,
+        lastname: store.getState().registerLastName,
+        mail: store.getState().registerEmail,
+        password: store.getState().registerPassword,
+      })
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(cleanRegisterFileds());
         })
         // en cas d'echec : catch
         .catch((error) => {

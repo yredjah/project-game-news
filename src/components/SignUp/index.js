@@ -11,11 +11,11 @@ import 'src/components/Login/login.scss';
 
 // == composant
 const SignUp = ({
-  lastName,
-  firstName,
-  userName,
-  email,
-  password,
+  registerLastName,
+  registerFirstName,
+  registerUserName,
+  registerEmail,
+  registerPassword,
   onSubmitForm,
 }) => {
   const handleSubmit = (evt) => {
@@ -30,34 +30,34 @@ const SignUp = ({
         <p className="app-desc">{dataText.login.desc}</p>
         <form className="form" onSubmit={handleSubmit}>
           <Field
-            name="lastName"
+            name="registerLastName"
             placeholder="Your Name *"
             type="lastName"
-            value={lastName}
+            value={registerLastName}
           />
           <Field
-            name="firstName"
+            name="registerFirstName"
             placeholder="Your Firstname *"
             type="firstName"
-            value={firstName}
+            value={registerFirstName}
           />
           <Field
-            name="userName"
+            name="registerUserName"
             placeholder="Your Username *"
             type="userName"
-            value={userName}
+            value={registerUserName}
           />
           <Field
-            name="email"
+            name="registerEmail"
             placeholder="Your Email *"
             type="email"
-            value={email}
+            value={registerEmail}
           />
           <Field
-            name="password"
+            name="registerPassword"
             placeholder="Your Password *"
             type="password"
-            value={password}
+            value={registerPassword}
           />
           <button
             className="form-submit form-submit--login"
@@ -81,11 +81,11 @@ const SignUp = ({
 
 SignUp.propTypes = {
   onSubmitForm: PropTypes.func.isRequired,
-  lastName: PropTypes.string.isRequired,
-  firstName: PropTypes.string.isRequired,
-  userName: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
+  registerLastName: PropTypes.string.isRequired,
+  registerFirstName: PropTypes.string.isRequired,
+  registerUserName: PropTypes.string.isRequired,
+  registerEmail: PropTypes.string.isRequired,
+  registerPassword: PropTypes.string.isRequired,
 };
 
 // == export

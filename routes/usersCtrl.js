@@ -11,7 +11,7 @@ module.exports = {
         const password = req.body.password;
         const firstname = req.body.firstname;
         const lastname = req.body.lastname;
-        if(mail === null || username ===null || password === null || firstname === null || lastname === null) {
+        if(mail === '' || username ==='' || password === '' || firstname === '' || lastname === '') {
             return res.status(400).json({'error': 'missing parameters'});
         }
 

@@ -23,11 +23,18 @@ const opts = {
 };
 
 // == Composant
-const Article = ({ match, articles }) => {
+const Article = ({
+  match,
+  articles,
+  messagesList,
+  newMessage,
+  InputChange,
+  addMessage,
 
+}) => {
   const article = articles.find(element => (
     // console.log(props.match.params);
-    element.id===match.params.id
+    element.id === match.params.id
   ));
 
   const checkVideoExistance = () => {
@@ -44,6 +51,15 @@ const Article = ({ match, articles }) => {
         />
       );
     }
+  };
+  const handleChange = (evt) => {
+    const { name: fieldName, value: fieldValue } = evt.target;
+    InputChange(fieldName, fieldValue);
+  };
+  const submitHandler = (event) => {
+    event.preventDefault();
+    console.log('submit handler');
+    addMessage();
   };
 
   return (
@@ -86,15 +102,28 @@ const Article = ({ match, articles }) => {
         </div>
         <div className="form">
         Espace commentaire:
-          <Form className="form-text">
-            <TextArea placeholder="Ecrit tout commentaire ici..." />
+          <Form onSubmit={submitHandler} className="form-text">
+            <TextArea
+              onChange={handleChange}
+              type="newMessage"
+              value={newMessage}
+              name="newMessage"
+              placeholder="Ecrit tout commentaire ici..."
+            />
+            <Button>Envoyer</Button>
           </Form>
-          <Button>Envoyer</Button>
         </div>
         <div className="commentaries">
-          <h4>xXblackShadowDu30Xx</h4>
-          <p className="date">10H34, 11/11/1111</p>
-          <p>trololololololololo</p>
+
+          <ul>
+            {messagesList.map(message => (
+              <li id="commentaries-list" key={message.id}>
+                <h4>{message.username}</h4>
+                <p className="date">{message.time}</p>
+                <span>{message.label}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
@@ -104,6 +133,14 @@ const Article = ({ match, articles }) => {
 Article.propTypes = {
   match: PropTypes.object.isRequired,
   articles: PropTypes.array.isRequired,
+  addMessage: PropTypes.func.isRequired,
+  InputChange: PropTypes.func.isRequired,
+  newMessage: PropTypes.string.isRequired,
+  messagesList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
 };
 
 

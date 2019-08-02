@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 // == Import : local
 import Article from 'src/components/Article';
+import { addMessageAction, onInputChange } from 'src/store/reducer';
 
 // Action Creators
 // import { findArticle } from 'src/store/reducer';
@@ -16,6 +17,9 @@ import Article from 'src/components/Article';
  */
 const mapStateToProps = (state, ownProps) => ({
   articles: state.articles,
+  messagesList: state.messagesList,
+  newMessage: state.newMessage,
+
 });
 
 /* === Actions ===
@@ -26,9 +30,13 @@ const mapStateToProps = (state, ownProps) => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  // findArticle: (id) => {
-  //   dispatch(findArticle(id));
-  // },
+  InputChange: (name, value) => {
+    dispatch(onInputChange(name, value));
+  },
+  addMessage: () => {
+    console.log('add message');
+    dispatch(addMessageAction());
+  },
 });
 
 // Container
