@@ -8,14 +8,14 @@ module.exports = (sequelize, DataTypes) => {
     lastname: DataTypes.STRING,
     birthdate: DataTypes.DATE,
     avatar: DataTypes.STRING,
-    roleId: DataTypes.INTEGER
+    roleId: DataTypes.INTEGER,
   }, {});
   User.associate = function(models) {
     // associations can be defined here
     models.User.belongsTo(models.Role, {
       foreignKey: {
-        allowNull: false
-      }
+        allowNull: false,
+      },
     });
     models.User.hasMany(models.Commentary);
     models.User.hasMany(models.User_vote_Article);

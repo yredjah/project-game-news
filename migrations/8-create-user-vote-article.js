@@ -6,32 +6,32 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       userId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'Users', 
-          key: 'id'
-        }
+          model: 'Users',
+          key: 'id',
+        },
       },
       articleId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Articles',
-          key: 'id'
-        }
+          key: 'id',
+        },
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: (queryInterface, Sequelize) => {

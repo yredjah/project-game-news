@@ -2,6 +2,9 @@ const bcrypt = require('bcrypt');
 const jwtUtils = require('../utils/jwt.utils.js');
 const models = require('../models');
 
+const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const PASSWORD_REGEX = /^(?=.*\d).{4,8}$/;
+
 //routes
 module.exports = {
     register: function(req, res) {
@@ -13,6 +16,17 @@ module.exports = {
         const lastname = req.body.lastname;
         if(mail === null || username ===null || password === null || firstname === null || lastname === null) {
             return res.status(400).json({'error': 'missing parameters'});
+        }
+
+        if (username.length >= 13 || username.length <= 4){
+            return res.status(400).json({'error': 'username length should be between 4 and 13 charactere'});
+        }
+
+        if (!EMAIL_REGEX.test(mail)){
+            return res.status(400).json({'error': 'email not valide'});
+        }
+        if (!PASSWORD_REGEX.test(password)){
+            return res.status(400).json({'error': 'password not valide - should be between 4 and 8 character and should have 1 numeric digit'});
         }
 
         models.User.findOne({
