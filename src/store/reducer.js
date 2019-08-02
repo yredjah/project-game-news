@@ -121,10 +121,18 @@ const initialState = {
     { key: 6, text: 'ADVENTURE', value: 6 },
   ],
   activeItem: 'home',
+  lastName: '',
+  firstName: '',
+  userName: '',
+  email: '',
+  password: '',
 };
 
 // == Types
+export const ON_SUBMIT_LOGIN = 'ON_SUBMIT_LOGIN';
+const SET_USERS_LOGIN = 'SET_USERS_LOGIN';
 const SET_ACTIVE_ITEM = 'SET_ACTIVE_ITEM';
+const ON_INPUT_CHANGE = 'ON_INPUT_CHANGE';
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -134,6 +142,20 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         activeItem: action.name,
       };
+    case ON_INPUT_CHANGE: {
+      console.log('Je veux changer inputValue');
+      return {
+        ...state,
+        [action.name]: action.value,
+      };
+    }
+    case SET_USERS_LOGIN: {
+      return {
+        ...state,
+        id: action.id,
+        token: action.token,
+      };
+    }
 
     default:
       return state;
@@ -146,9 +168,21 @@ export const setActiveItem = name => ({
   name,
 });
 
+export const onInputChange = (name, value) => ({
+  type: ON_INPUT_CHANGE,
+  name,
+  value,
+});
 
-// == Selectors
+export const onsubmitLogin = () => ({
+  type: ON_SUBMIT_LOGIN,
+});
 
+export const setUsersLogin = (token , id ) => ({
+  type: SET_USERS_LOGIN,
+  id,
+  token,
+});
 
 // == Export
 export default reducer;

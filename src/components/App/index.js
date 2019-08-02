@@ -6,9 +6,10 @@ import { Route } from 'react-router-dom';
 import Header from 'src/containers/Header';
 import Home from 'src/components/Home';
 import Footer from 'src/components/Footer';
-import LoginPage from 'src/components/Login';
-import SignUp from 'src/components/SignUp';
 import Article from 'src/containers/Article';
+import SignUp from 'src/containers/SignUp';
+import Login from 'src/containers/Login';
+import ForgottenPassword from 'src/containers/ForgottenPassword';
 import Legal from 'src/components/Legal';
 import Contact from 'src/components/Contact';
 import './app.scss';
@@ -20,8 +21,9 @@ const App = () => (
       <Header />
     </nav>
     <main>
-      <Route path="/login" exact component={LoginPage} />
       <Route path="/Sign_Up" exact component={SignUp} />
+      <Route path="/login" exact component={Login} />
+      <Route path="/password" exact component={ForgottenPassword} />
       <Route path="/" exact component={Home} />
       <Route path="/article/:id" exact component={Article} />
       <Route path="/mention_legale" exact component={Legal} />

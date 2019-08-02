@@ -10,14 +10,14 @@ import './field.scss';
 const Field = ({
   placeholder,
   name,
-  onInputChange,
+  InputChange,
   value,
   type,
 }) => {
   const handleChange = (evt) => {
-    console.log('Changement dans le champ');
     const { name: fieldName, value: fieldValue } = evt.target;
-    onInputChange(fieldName, fieldValue);
+    InputChange(fieldName, fieldValue);
+    console.log(fieldName, fieldValue);
   };
 
   const cssClassnames = classNames('field', {
@@ -53,7 +53,7 @@ const Field = ({
 Field.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  onInputChange: PropTypes.func.isRequired,
+  InputChange: PropTypes.func.isRequired,
   type: PropTypes.string,
   value: PropTypes.string,
 };

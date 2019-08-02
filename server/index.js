@@ -6,8 +6,13 @@ const apiRouter = require('./apiRouter').router;
 const server = express();
 
 //body parser config
-server.use(bodyParser.urlencoded({ extended: true}));
+server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
+server.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  });
 
 // routes
 server.get('/', function(req, res) {

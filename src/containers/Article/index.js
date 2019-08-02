@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Article from 'src/components/Article';
 
 // Action Creators
-import { findArticle } from 'src/store/reducer';
+// import { findArticle } from 'src/store/reducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation

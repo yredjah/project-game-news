@@ -1,107 +1,67 @@
+// == import : npm
 import React from 'react';
-import axios from 'axios';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-import sentences from './data/texts';
-
-import Login from './Login';
-import ForgottenPassword from './ForgottenPassword';
-
+// == import : local
+import dataText from 'src/data/texts';
+import Field from 'src/containers/Login/LoginForm';
 import './login.scss';
 
-class LoginPage extends React.Component {
-  state = {
-    view: 'login',
-    email: '',
-    password: '',
-    lang: 'en',
-    username: '',
-    message: '',
-  }
+// == composant
+const Login = ({
+  email,
+  password,
+  // onInputChange,
+  onSubmitForm,
+}) => {
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onSubmitForm();
+  };
 
-
-  changeView = targetView => () => {
-    this.setState({
-      view: targetView,
-    });
-  }
-
-  inputChange = (name, value) => {
-    this.setState({
-      [name]: value,
-    });
-  }
-
-  submitLogin = () => {
-    console.log('App : submitLogin');
-    const { email, password } = this.state;
-    // http://localhost:3000/login
-    axios.post('', {
-      email,
-      password,
-    })
-      .then((response) => {
-        console.log(response.data);
-        this.setState({
-          message: '',
-          username: response.data,
-          view: 'logged',
-        });
-      })
-      // en cas d'echec : catch
-      .catch((error) => {
-        console.error(error.message);
-        console.error(error.response);
-        this.setState({
-          message: 'Données Incorrecte...',
-        });
-      });
-  }
-
-  render() {
-    const {
-      view,
-      email,
-      password,
-      lang,
-      username,
-      message,
-    } = this.state;
-
-    return (
-      <div className="app">
-        {message !== '' && (
-          <div id="alert-message">
-            {message}
-          </div>
-        )}
-        {view === 'logged' && (
-          <div id="logged">
-            <h1 className="app-title">Bienvenue Dans Ton Profile</h1>
-            <p className="app-desc">{username}</p>
-          </div>
-        )}
-        {view === 'login' && (
-          <Login
-            onSubmitForm={this.submitLogin}
-            dataText={sentences[lang].login}
-            onChangeView={this.changeView('password')}
-            email={email}
-            onInputChange={this.inputChange}
-            password={password}
+  return (
+    <div className="app">
+      <div id="login">
+        <h1 className="app-title">{dataText.login.title}</h1>
+        <p className="app-desc">{dataText.login.desc}</p>
+        <form className="form" onSubmit={handleSubmit}>
+          <Field
+            name="email"
+            placeholder="Your Email *"
+            type="email"
+            value={email}
+            // onInputChange={onInputChange}
           />
-        )}
-        {view === 'password' && (
-          <ForgottenPassword
-            dataText={sentences[lang].password}
-            onChangeView={this.changeView('login')}
-            onInputChange={this.inputChange}
-            email={email}
+          <Field
+            name="password"
+            placeholder="Your Password *"
+            type="password"
+            value={password}
+            // onInputChange={onInputChange}
           />
-        )}
+          <button
+            className="form-submit form-submit--login"
+            type="submit"
+          >
+            {dataText.login.submit}
+          </button>
+        </form>
+        <Link to="/password" exacte>
+          <a className="app-link">
+            {dataText.login.link}
+          </a>
+        </Link>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
+Login.propTypes = {
+  onSubmitForm: PropTypes.func.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+};
 
-export default LoginPage;
+// == export
+export default Login;
