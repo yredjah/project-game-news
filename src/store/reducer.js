@@ -1,3 +1,4 @@
+
 // == Initial State
 const initialState = {
   articles: [
@@ -121,19 +122,30 @@ const initialState = {
     { key: 6, text: 'ADVENTURE', value: 6 },
   ],
   activeItem: 'home',
-  lastName: '',
-  firstName: '',
-  userName: '',
+
+  registerLastName: '',
+  registerFirstName: '',
+  registerUserName: '',
+  registerEmail: '',
+  registerPassword: '',
+  loginEmail: '',
+  loginPassword: '',
+
   email: '',
-  password: '',
+  messagesList: [],
+
+  newMessage: '',
   contactMessage: '',
 };
 
 // == Types
 export const ON_SUBMIT_LOGIN = 'ON_SUBMIT_LOGIN';
+export const ON_SUBMIT_REGISTER = 'ON_SUBMIT_REGISTER';
+const CLEAN_REGISTER_FIELDS = ' CLEAN_REGISTER_FILEDS';
 const SET_USERS_LOGIN = 'SET_USERS_LOGIN';
 const SET_ACTIVE_ITEM = 'SET_ACTIVE_ITEM';
 const ON_INPUT_CHANGE = 'ON_INPUT_CHANGE';
+const ADD_MESSAGE = 'ADD_MESSAGE';
 const ON_TEXTAREA_CHANGE = 'ON_TEXTAREA_CHANGE';
 const ON_SUBMIT_CONTACT = 'ON_SUBMIT_CONTACT';
 
@@ -145,27 +157,56 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         activeItem: action.name,
       };
-    case ON_INPUT_CHANGE: {
-      console.log('Je veux changer inputValue');
+    case ON_INPUT_CHANGE:
       return {
         ...state,
         [action.name]: action.value,
       };
+    case ADD_MESSAGE:
+    {
+      console.log('reducer');
+      const { newMessage } = state;
+      const { messagesList: oldMessages } = state;
+      const allIds = oldMessages.map(task => task.id);
+      const id = allIds.length > 0 ? Math.max(...allIds) + 1 : 1;
+      const newMsg = {
+        id,
+        label: newMessage,
+        username: 'userName',
+        time: '12/09/2019  15h34',
+      };
+      const messagesListCopy = [
+        ...oldMessages,
+        newMsg,
+      ];
+      console.log('reducer 2');
+      return {
+        ...state,
+        messagesList: messagesListCopy,
+        newMessage: '',
+      };
     }
-    case SET_USERS_LOGIN: {
+    case SET_USERS_LOGIN:
       return {
         ...state,
         id: action.id,
         token: action.token,
       };
-    }
-    case ON_TEXTAREA_CHANGE: {
+    case CLEAN_REGISTER_FIELDS:
+      return {
+        ...state,
+        registerLastName: '',
+        registerFirstName: '',
+        registerUserName: '',
+        registerEmail: '',
+        registerPassword: '',
+      };
+    case ON_TEXTAREA_CHANGE:
       console.log('Je veux changer textAreaValue');
       return {
         ...state,
         [action.name]: action.value,
       };
-    }
 
     default:
       return state;
@@ -183,15 +224,25 @@ export const onInputChange = (name, value) => ({
   name,
   value,
 });
+export const addMessageAction = () => ({
+  type: ADD_MESSAGE,
+});
 
 export const onsubmitLogin = () => ({
   type: ON_SUBMIT_LOGIN,
 });
 
-export const setUsersLogin = (token , id ) => ({
+export const setUsersLogin = (token, id) => ({
   type: SET_USERS_LOGIN,
   id,
   token,
+});
+export const onsubmitRegister = () => ({
+  type: ON_SUBMIT_REGISTER,
+});
+
+export const cleanRegisterFileds = () => ({
+  type: CLEAN_REGISTER_FIELDS,
 });
 
 export const onTextAreaChange = value => ({

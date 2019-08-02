@@ -10,8 +10,8 @@ import './login.scss';
 
 // == composant
 const Login = ({
-  email,
-  password,
+  loginEmail,
+  loginPassword,
   // onInputChange,
   onSubmitForm,
 }) => {
@@ -27,17 +27,17 @@ const Login = ({
         <p className="app-desc">{dataText.login.desc}</p>
         <form className="form" onSubmit={handleSubmit}>
           <Field
-            name="email"
+            name="loginEmail"
             placeholder="Your Email *"
             type="email"
-            value={email}
+            value={loginEmail}
             // onInputChange={onInputChange}
           />
           <Field
-            name="password"
+            name="loginPassword"
             placeholder="Your Password *"
             type="password"
-            value={password}
+            value={loginPassword}
             // onInputChange={onInputChange}
           />
           <button
@@ -59,8 +59,8 @@ const Login = ({
 
 Login.propTypes = {
   onSubmitForm: PropTypes.func.isRequired,
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
+  loginEmail: PropTypes.string.isRequired,
+  loginPassword: PropTypes.string.isRequired,
 };
 
 // == export

@@ -3,17 +3,22 @@ import { connect } from 'react-redux';
 
 // imports locaux
 import SignUp from 'src/components/SignUp';
+import { onsubmitRegister } from 'src/store/reducer';
 
 const mapStateToProps = state => ({
-  email: state.email,
-  password: state.password,
-  userName: state.userName,
-  lastName: state.lastName,
-  firstName: state.firstName,
+  registerEmail: state.registerEmail,
+  registerPassword: state.registerPassword,
+  registerUserName: state.registerUserName,
+  registerLastName: state.registerLastName,
+  registerFirstName: state.registerFirstName,
 
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => ({
+  onSubmitForm: () => {
+    dispatch(onsubmitRegister());
+  },
+});
 
 const SignUpContainer = connect(
   mapStateToProps,
