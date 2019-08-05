@@ -26,7 +26,7 @@ module.exports = {
       },
       date: {
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP(3)'),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
         type: Sequelize.DATE,
       },
       like: {

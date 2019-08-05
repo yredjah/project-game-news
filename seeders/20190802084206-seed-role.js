@@ -15,14 +15,20 @@ module.exports = {
     return queryInterface.bulkInsert('Roles', [{
       id: '1',
       name: 'user',
+      createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
+      updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
     },
     {
       id: '2',
       name: 'admin',
+      createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
+      updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
     },
     {
       id: '3',
       name: 'modo',
+      createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
+      updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
     }], {});
   },
 
