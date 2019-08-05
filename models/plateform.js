@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Plateform = sequelize.define('Plateform', {
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
   }, {});
   Plateform.associate = function(models) {
     // associations can be defined here
