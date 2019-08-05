@@ -1,5 +1,6 @@
 const express = require('express');
-const usersCtrl =require('../routes/usersCtrl');
+const usersCtrl = require('../routes/usersCtrl');
+const mailerCtrl = require('../routes/mailerCtrl');
 
 const server = express();
 server.use(function(req, res, next) {
@@ -13,6 +14,7 @@ exports.router = (function() {
 
     apiRouter.route('/users/register/').post(usersCtrl.register);
     apiRouter.route('/users/login/').post(usersCtrl.login);
+    apiRouter.route('/mailer/').get(mailerCtrl.mailer);
 
     return apiRouter;
 ;})();
