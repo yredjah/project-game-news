@@ -1,13 +1,6 @@
 // == Import : npm
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import { Card, Icon, Image, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 // == Import : local
@@ -18,17 +11,9 @@ import news from 'src/data/news';
 import bignews from 'src/data/bignews';
 
 // == Composant
-const useStyles = makeStyles({
-  card: {
-    maxWidth: 500,
-  },
-  media: {
-    height: 250,
-  },
-});
+
 
 export default function Articles() {
-  const classes = useStyles();
 
   return (
     <>
@@ -74,29 +59,21 @@ export default function Articles() {
           articles.map((article) => {
             return (
               <Link key={article.id} to={`/article/${article.id}`} exact>
-                <Card id="cards" className={classes.card}>
-                  <CardActionArea>
-                    <CardMedia
-                      className={classes.media}
-                      image={article.image}
-                      title={article.title}
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        {article.title}
-                      </Typography>
-                      <Typography variant="body2" color="textSecondary" component="p">
-                        {article.resume}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      Learn More
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Link>
+                <Card id="cards">
+                  <Image 
+                    src={article.image}
+                  />
+                <Card.Content>
+                  <Card.Header>{article.title}</Card.Header>
+                    <Card.Description className="card-resume">
+                      {article.resume}
+                    </Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                  <Button>Learn more</Button>
+                </Card.Content>
+              </Card>
+            </Link>
             );
           })
         }
