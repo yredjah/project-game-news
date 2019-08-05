@@ -8,6 +8,8 @@
 #cards {
   margin-bottom: 50px;
   box-shadow: 15px 10px 5px lightgrey;
+  height: 520px;
+  width: 450px;
 }
 
 #cards:hover {
@@ -146,4 +148,9 @@
 }
 .container-2 h3{
   text-align: left;
+}
+
+.card-resume {
+  height: 60px;
+  overflow: hidden;
 }

@@ -11,7 +11,8 @@ import SignUp from 'src/containers/SignUp';
 import Login from 'src/containers/Login';
 import ForgottenPassword from 'src/containers/ForgottenPassword';
 import Legal from 'src/components/Legal';
-import Contact from 'src/components/Contact';
+import User from 'src/components/User';
+import Contact from 'src/containers/Contact';
 import './app.scss';
 
 // == Composant
@@ -28,6 +29,7 @@ const App = () => (
       <Route path="/article/:id" exact component={Article} />
       <Route path="/mention_legale" exact component={Legal} />
       <Route path="/contact" exact component={Contact} />
+      <Route path="/user" component={User} />
     </main>
     <footer>
       <Footer />
