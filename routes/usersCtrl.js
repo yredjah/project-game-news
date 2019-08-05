@@ -1,3 +1,4 @@
+/* eslint-disable */
 const bcrypt = require('bcrypt');
 const jwtUtils = require('../utils/jwt.utils.js');
 const models = require('../models');
@@ -14,7 +15,7 @@ module.exports = {
         const password = req.body.password;
         const firstname = req.body.firstname;
         const lastname = req.body.lastname;
-        if(mail === null || username ===null || password === null || firstname === null || lastname === null) {
+        if(mail === '' || username ==='' || password === '' || firstname === '' || lastname === '') {
             return res.status(400).json({'error': 'missing parameters'});
         }
 
@@ -91,5 +92,26 @@ module.exports = {
         .catch(function(err) {
             return res.status(500).json({'error': 'unable to verify user', err});
         });
-    }
+    },
+    getUserProfile: function(req, res) {
+      // Getting auth header
+      var headerAuth  = req.headers['authorization'];
+      var userId      = jwtUtils.getUserId(headerAuth);
+  
+      if (userId < 0)
+        return res.status(400).json({ 'error': 'wrong token' });
+  
+      models.User.findOne({
+        attributes: [ 'id', 'mail', 'username' ],
+        where: { id: userId }
+      }).then(function(user) {
+        if (user) {
+          res.status(201).json(user);
+        } else {
+          res.status(404).json({ 'error': 'user not found' });
+        }
+      }).catch(function(err) {
+        res.status(500).json({ 'error': 'cannot fetch user', err });
+      });
+    },
 }

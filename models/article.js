@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     date: DataTypes.DATE,
     like: DataTypes.INTEGER,
     dislike: DataTypes.INTEGER,
-    gameId: DataTypes.INTEGER,
-    userId: DataTypes.INTEGER,
+    // gameId: DataTypes.INTEGER,
+    // userId: DataTypes.INTEGER,
   }, {});
   Article.associate = function(models) {
     // associations can be defined here
