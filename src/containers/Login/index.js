@@ -6,8 +6,8 @@ import Login from 'src/components/Login';
 import { onsubmitLogin } from 'src/store/reducer';
 
 const mapStateToProps = state => ({
-  email: state.email,
-  password: state.password,
+  loginEmail: state.loginEmail,
+  loginPassword: state.loginPassword,
 });
 
 const mapDispatchToProps = dispatch => ({

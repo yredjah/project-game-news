@@ -52,16 +52,23 @@
     background-color: white;
     box-shadow: 15px 8px 10px lightgrey;
 
-    .date{
-      position: absolute;
-      top: 0.5em;
-      right: 0.5em;
-      font-size: 0.8em;
-      color: grey;
-    }
+    // .date{
+    //   position: absolute;
+    //   top: 0.5em;
+    //   right: 0.5em;
+    //   font-size: 0.8em;
+    //   color: grey;
+    // }
 
     p{
       font-size: 0.9em;
     }
+  }
+  #commentaries-list{
+    border-radius: .3em;
+    background-color: rgb(236, 233, 233);
+    border: 1px solid rgb(197, 195, 195);
+    margin-bottom: .3em;
+    padding: .6em;
   }
 }
