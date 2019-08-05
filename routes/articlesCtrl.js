@@ -8,6 +8,50 @@ const REGEX_VIDEO_ID = /(?:youtu\.be\/|youtube.com\/(?:watch\?.*\bv=|embed\/|v\/
 const TITLE_MIN_LENGTH = 2;
 const text_MIN_LENGTH = 4;
 
+createGenre = (gameId, genres) => {
+  genres.forEach(genre => {
+      // console.log(gameId);
+    models.Genre.findOrCreate({
+      where: {name: genre}
+    }).then(function([genreFound, created]){
+      models.Game_has_Genre.findOrCreate({
+        where: {
+          GameId: gameId,
+          GenreId: genreFound.id,
+        }
+      }).catch(function(err) {
+        // return res.status(500).json({'error': 'unable to find or create game_has_genre'});
+        console.log('unable to find or create game_has_genre', err);
+      })
+    }).catch(function(err) {
+      // return res.status(500).json({'error': 'unable to find or create genre'})
+      console.log('unable to find or create genre', err);
+    })
+  });
+};
+
+createPlateform = (gameId, plateforms) => {
+  plateforms.forEach(plateform => {
+      // console.log(gameId);
+    models.Plateform.findOrCreate({
+      where: {name: plateform}
+    }).then(function([plateformFound, created]){
+      models.Game_has_Plateform.findOrCreate({
+        where: {
+          GameId: gameId,
+          PlateformId: plateformFound.id,
+        }
+      }).catch(function(err) {
+        // return res.status(500).json({'error': 'unable to find or create game_has_genre'});
+        console.log('unable to find or create game_has_plateform', err);
+      })
+    }).catch(function(err) {
+      // return res.status(500).json({'error': 'unable to find or create genre'})
+      console.log('unable to find or create plateform', err);
+    })
+  });
+};
+
 //routes
 module.exports = {
   addArticles: function(req, res) {
@@ -21,6 +65,8 @@ module.exports = {
     const youtubeUrl = req.body.youtubeUrl;
     const image = req.body.image;
     const gameName = req.body.gameName;
+    const genres =req.body.genres;
+    const plateforms = req.body.plateforms;
 
     if (title === null || text == null) {
       return res.status(400).json({'error': 'missing parameters'});
@@ -36,6 +82,12 @@ module.exports = {
         models.Game.findOrCreate({
           where: {name: gameName}
         }).then(function([game, created]) {
+          //findOrCreate genre
+          //findOrCreate game_has_genre
+          createGenre(game.id, genres);
+          //findOrCreate plateform
+          //findOrCreate game_has_plateform
+          createPlateform(game.id, plateforms, res);
           models.Article.create({
             title: title,
             text: text,
@@ -50,9 +102,9 @@ module.exports = {
             } else {
               return res.status(500).json({'error': 'cannot post article'});
             }
-          })
+          });
         }).catch(function(err) {
-          return res.status(500).json({'error': 'unable to find or create a game'});
+          return res.status(500).json({'error': 'unable to find or create a game', err});
         });
       } else {
         res.status(404).json({'error': 'user not found'});

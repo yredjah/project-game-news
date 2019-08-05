@@ -1,8 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Game_has_Plateform = sequelize.define('Game_has_Plateform', {
-    gameId: DataTypes.INTEGER,
-    plateformId: DataTypes.INTEGER,
+    // gameId: DataTypes.INTEGER,
+    // plateformId: DataTypes.INTEGER,
   }, {});
   Game_has_Plateform.associate = function(models) {
     // associations can be defined here
