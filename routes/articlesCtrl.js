@@ -20,6 +20,7 @@ module.exports = {
     const text = req.body.text;
     const youtubeUrl = req.body.youtubeUrl;
     const image = req.body.image;
+    const gameName = req.body.gameName;
 
     if (title === null || text == null) {
       return res.status(400).json({'error': 'missing parameters'});
@@ -32,21 +33,27 @@ module.exports = {
       where: {id: userId}
     }).then(function(userFound) {
       if(userFound) {
-        models.Article.create({
-          title: title,
-          text: text,
-          videoId: youtubeUrl,
-          image: image,
-          UserId: userFound.id,
-          GameId: '1',
-        })
-        .then(function(newArticle) {
-          if (newArticle) {
-            return res.status(201).json(newArticle);
-          } else {
-            return res.status(500).json({'error': 'cannot post article'});
-          }
-        })
+        models.Game.findOrCreate({
+          where: {name: gameName}
+        }).then(function([game, created]) {
+          models.Article.create({
+            title: title,
+            text: text,
+            videoId: youtubeUrl,
+            image: image,
+            UserId: userFound.id,
+            GameId: game.id,
+          })
+          .then(function(newArticle) {
+            if (newArticle) {
+              return res.status(201).json(newArticle);
+            } else {
+              return res.status(500).json({'error': 'cannot post article'});
+            }
+          })
+        }).catch(function(err) {
+          return res.status(500).json({'error': 'unable to find or create a game'});
+        });
       } else {
         res.status(404).json({'error': 'user not found'});
       }
