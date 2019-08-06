@@ -103,7 +103,11 @@ module.exports = {
   
       models.User.findOne({
         attributes: [ 'id', 'mail', 'username' ],
-        where: { id: userId }
+        where: { id: userId },
+        include: [{
+          model: models.Role,
+          attributes: ['name'],
+        }]
       }).then(function(user) {
         if (user) {
           res.status(201).json(user);

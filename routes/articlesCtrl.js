@@ -2,6 +2,7 @@
 // const bcrypt = require('bcrypt');
 const jwtUtils = require('../utils/jwt.utils.js');
 const models = require('../models');
+var Sequelize = require('sequelize');
 
 const REGEX_PNG = /[\w\-_\+\(\)]{0,}[\.png|\.PNG]{4}/;
 const REGEX_VIDEO_ID = /(?:youtu\.be\/|youtube.com\/(?:watch\?.*\bv=|embed\/|v\/)|ytimg\.com\/vi\/)(.+?)(?:[^-a-zA-Z0-9]|$)/;
@@ -111,6 +112,24 @@ module.exports = {
       }
     }).catch(function(err) {
       return res.status(500).json({'error': 'unable to verify user'});
+    })
+  },
+  listArticles: function (req, res) {
+    const Op = Sequelize.Op;
+    //we want to take out 30 articles from the database
+    const NUMBER_OF_ARTICLE = 30;
+
+    // const date = new Date();
+    // const lastWeek = date.getDate() - 7;
+
+    models.Article.findAll({
+      // where: { date: {[Op.gt]: lastWeek,} },
+      order: [['date', 'DESC']],
+      limit: NUMBER_OF_ARTICLE,
+    }).then(function(articlesFound) {
+      return res.status(201).json(articlesFound);
+    }).catch(function(err) {
+      return res.status(500).json({'error': 'unable to fin articles', err})
     })
   },
 };
