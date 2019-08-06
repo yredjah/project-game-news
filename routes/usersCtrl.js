@@ -1,6 +1,10 @@
+/* eslint-disable */
 const bcrypt = require('bcrypt');
 const jwtUtils = require('../utils/jwt.utils.js');
 const models = require('../models');
+
+const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const PASSWORD_REGEX = /^(?=.*\d).{4,8}$/;
 
 //routes
 module.exports = {
@@ -13,6 +17,17 @@ module.exports = {
         const lastname = req.body.lastname;
         if(mail === '' || username ==='' || password === '' || firstname === '' || lastname === '') {
             return res.status(400).json({'error': 'missing parameters'});
+        }
+
+        if (username.length >= 13 || username.length <= 4){
+            return res.status(400).json({'error': 'username length should be between 4 and 13 charactere'});
+        }
+
+        if (!EMAIL_REGEX.test(mail)){
+            return res.status(400).json({'error': 'email not valide'});
+        }
+        if (!PASSWORD_REGEX.test(password)){
+            return res.status(400).json({'error': 'password not valide - should be between 4 and 8 character and should have 1 numeric digit'});
         }
 
         models.User.findOne({
@@ -80,5 +95,26 @@ module.exports = {
         .catch(function(err) {
             return res.status(500).json({'error': 'unable to verify user', err});
         });
-    }
+    },
+    getUserProfile: function(req, res) {
+      // Getting auth header
+      var headerAuth  = req.headers['authorization'];
+      var userId      = jwtUtils.getUserId(headerAuth);
+  
+      if (userId < 0)
+        return res.status(400).json({ 'error': 'wrong token' });
+  
+      models.User.findOne({
+        attributes: [ 'id', 'mail', 'username' ],
+        where: { id: userId }
+      }).then(function(user) {
+        if (user) {
+          res.status(201).json(user);
+        } else {
+          res.status(404).json({ 'error': 'user not found' });
+        }
+      }).catch(function(err) {
+        res.status(500).json({ 'error': 'cannot fetch user', err });
+      });
+    },
 }
