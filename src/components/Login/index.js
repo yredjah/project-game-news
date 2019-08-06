@@ -12,7 +12,6 @@ import './login.scss';
 const Login = ({
   loginEmail,
   loginPassword,
-  // onInputChange,
   onSubmitForm,
 }) => {
   const handleSubmit = (evt) => {
@@ -31,14 +30,12 @@ const Login = ({
             placeholder="Your Email *"
             type="email"
             value={loginEmail}
-            // onInputChange={onInputChange}
           />
           <Field
             name="loginPassword"
             placeholder="Your Password *"
             type="password"
             value={loginPassword}
-            // onInputChange={onInputChange}
           />
           <button
             className="form-submit form-submit--login"

@@ -17,7 +17,6 @@ const Field = ({
   const handleChange = (evt) => {
     const { name: fieldName, value: fieldValue } = evt.target;
     InputChange(fieldName, fieldValue);
-    console.log(fieldName, fieldValue);
   };
 
   const cssClassnames = classNames('field', {
