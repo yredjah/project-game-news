@@ -17,44 +17,59 @@ class User extends Component {
     const { activeItem } = this.state;
 
     return (
-      <div id="user-home">
-        <div id="user-menu">
-          <Menu inverted vertical>
-            <Link to="/user" exact>
+      <div>
+        {JSON.parse(sessionStorage.getItem('userData'))
+        && (
+        <div id="user-home">
+          <div id="user-menu">
+            <Menu inverted vertical>
+              <Link to="/user" exact>
+                <Menu.Item
+                  name='home' 
+                  active={activeItem === 'home'}
+                  onClick={this.handleItemClick}
+                />
+              </Link>
+              <Link to="/user/Avatar" exact>
+                <Menu.Item
+                  name='avatar'
+                  active={activeItem === 'avatar'}
+                  onClick={this.handleItemClick}
+                />
+              </Link>
               <Menu.Item
-                name='home' 
-                active={activeItem === 'home'}
+                name='favorits'
+                active={activeItem === 'favorits'}
                 onClick={this.handleItemClick}
               />
-            </Link>
-            <Link to="/user/Avatar" exact>
               <Menu.Item
-                name='avatar'
-                active={activeItem === 'avatar'}
+                name='preferencies'
+                active={activeItem === 'preferencies'}
                 onClick={this.handleItemClick}
               />
-            </Link>
-            <Menu.Item
-              name='favorits'
-              active={activeItem === 'favorits'}
-              onClick={this.handleItemClick}
-            />
-            <Menu.Item
-              name='preferencies'
-              active={activeItem === 'preferencies'}
-              onClick={this.handleItemClick}
-            />
-            <Menu.Item
-              name='admin'
-              active={activeItem === 'admin'}
-              onClick={this.handleItemClick}
-            />
-          </Menu>
+              <Menu.Item
+                name='admin'
+                active={activeItem === 'admin'}
+                onClick={this.handleItemClick}
+              />
+            </Menu>
+          </div>
+          <div className="left-container">
+            <Route path="/user" exact component={UserHome} />
+            <Route path="/user/Avatar" exact component={UserAvatar} />
+          </div>
         </div>
-        <div className="left-container">
-          <Route path="/user" exact component={UserHome} />
-          <Route path="/user/Avatar" exact component={UserAvatar} />
-        </div>
+        )}
+        {!JSON.parse(sessionStorage.getItem('userData'))
+        && (
+          <div>
+            <h1>Oups something went wrong</h1>
+            <img id="logo" src="src/Assets/img/broken-controller.png" alt="" />
+            <div>
+              <Link to="/login" exact> Please Sign in to Access your account</Link>
+            </div>
+          </div>
+        )}
       </div>
     );
   }

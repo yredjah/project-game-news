@@ -189,8 +189,7 @@ const reducer = (state = initialState, action = {}) => {
     case SET_USERS_LOGIN:
       return {
         ...state,
-        id: action.id,
-        token: action.token,
+        userData: action.userData,
       };
     case CLEAN_REGISTER_FIELDS:
       return {
@@ -207,7 +206,6 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.name]: action.value,
       };
-
     default:
       return state;
   }
@@ -232,10 +230,9 @@ export const onsubmitLogin = () => ({
   type: ON_SUBMIT_LOGIN,
 });
 
-export const setUsersLogin = (token, id) => ({
+export const setUsersLogin = userData => ({
   type: SET_USERS_LOGIN,
-  id,
-  token,
+  userData,
 });
 export const onsubmitRegister = () => ({
   type: ON_SUBMIT_REGISTER,
@@ -253,7 +250,6 @@ export const onTextAreaChange = value => ({
 export const onsubmitContact = () => ({
   type: ON_SUBMIT_CONTACT,
 });
-
 
 // == Export
 export default reducer;
