@@ -61,16 +61,19 @@ module.exports = {
             where: { mail: mail}
         })
         .then(function(userFound) {
+          let {firstname, mail} = userFound;
             if (userFound) {
                 bcrypt.compare(password, userFound.password, function(errBycrypt, resBycrypt){
                     if(resBycrypt) {
                         return res.status(200).json({
+                            'firstname' : firstname,
+                            'mail' : mail,
                             'id': userFound.id,
                             'token': jwtUtils.generateTokenForUser(userFound)
                         });
                     }
                 })
-            } else {
+            } else { 
                 return res.status(403).json({'error': 'invalid password'});
             }  
         })

@@ -30,3 +30,17 @@
 }
 
 
+.settings--open{
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 800ms;
+}
+.sethide-login{
+  position: absolute;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 800ms;
+}
+#AccountButton{
+  margin-right: 2rem;
+}

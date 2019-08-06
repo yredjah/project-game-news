@@ -14,7 +14,7 @@ import { setActiveItem } from 'src/store/reducer';
  *  - ownProps : les props passées au container
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
   categories: state.categories,
   activeItem: state.activeItem,
   games: state.games,
@@ -27,7 +27,7 @@ const mapStateToProps = (state, ownProps) => ({
  *  - ownProps : les props passées au container
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
   setItem: (name) => {
     dispatch(setActiveItem(name));
   },
