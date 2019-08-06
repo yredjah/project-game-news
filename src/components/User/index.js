@@ -4,7 +4,7 @@ import { Menu } from 'semantic-ui-react';
 
 // == Import : local
 import './user.scss';
-import UserHome from 'src/components/User/UserHome';
+import UserHome from 'src/containers/UserHome';
 import UserAvatar from 'src/components/User/UserAvatar';
 
 // == Composant

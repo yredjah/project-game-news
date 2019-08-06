@@ -102,7 +102,7 @@ module.exports = {
         return res.status(400).json({ 'error': 'wrong token' });
   
       models.User.findOne({
-        attributes: [ 'id', 'mail', 'username' ],
+        attributes: [ 'id', 'mail', 'username', 'firstname', 'lastname' ],
         where: { id: userId },
         include: [{
           model: models.Role,

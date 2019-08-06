@@ -136,11 +136,20 @@ const initialState = {
 
   newMessage: '',
   contactMessage: '',
+  userInfo: {
+    firstName: '',
+    lastName: '',
+    userName: '',
+    mail: '',
+  },
 };
 
 // == Types
 export const ON_SUBMIT_LOGIN = 'ON_SUBMIT_LOGIN';
 export const ON_SUBMIT_REGISTER = 'ON_SUBMIT_REGISTER';
+export const GET_USER_INFO = 'GET_USER_INFO';
+export const GET_ARTICLES = 'GET_ARTICLES';
+const SET_ARTICLES = 'SET_ARTICLES';
 const CLEAN_REGISTER_FIELDS = ' CLEAN_REGISTER_FILEDS';
 const SET_USERS_LOGIN = 'SET_USERS_LOGIN';
 const SET_ACTIVE_ITEM = 'SET_ACTIVE_ITEM';
@@ -148,6 +157,7 @@ const ON_INPUT_CHANGE = 'ON_INPUT_CHANGE';
 const ADD_MESSAGE = 'ADD_MESSAGE';
 const ON_TEXTAREA_CHANGE = 'ON_TEXTAREA_CHANGE';
 const ON_SUBMIT_CONTACT = 'ON_SUBMIT_CONTACT';
+const SET_USER_INFO = 'SET_USER_INFO';
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -207,6 +217,22 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.name]: action.value,
       };
+    case SET_ARTICLES:
+      return {
+        ...state,
+        articles: action.articles,
+      };
+    case SET_USER_INFO:
+      return {
+        ...state,
+        userInfo: {
+          firstName: action.firstName,
+          lastName: action.lastName,
+          userName: action.userName,
+          mail: action.mail,
+          role: action.role,
+        },
+      };
 
     default:
       return state;
@@ -253,7 +279,25 @@ export const onTextAreaChange = value => ({
 export const onsubmitContact = () => ({
   type: ON_SUBMIT_CONTACT,
 });
+export const getArticle = () => ({
+  type: GET_ARTICLES,
+});
+export const setArticles = articles => ({
+  type: SET_ARTICLES,
+  articles,
+});
+export const getUserInfo = () => ({
+  type: GET_USER_INFO,
+});
 
+export const setUserInfo = (userName, firstName, lastName, mail, role) => ({
+  type: SET_USER_INFO,
+  userName,
+  firstName,
+  lastName,
+  mail,
+  role,
+});
 
 // == Export
 export default reducer;

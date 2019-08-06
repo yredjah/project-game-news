@@ -4,7 +4,7 @@
 }
 
 .userInfo {
-  width: 60%;
+  width: 200%;
   margin: auto;
   margin-top: 30px;
   margin-bottom: 30px;
@@ -13,4 +13,14 @@
   border-radius: 1em;
   background-color: white;
   box-shadow: 15px 8px 10px lightgrey;
+  text-align: start;
+  font-size: 20px;
+}
+.infoClasse {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.infos {
+  margin-bottom: 15px;
 }
