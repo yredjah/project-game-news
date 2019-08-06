@@ -10,9 +10,6 @@ import {
   setUserInfo,
 } from 'src/store/reducer';
 
-
-} from 'src/store/reducer';
-
 const logMiddleware = store => next => (action) => {
   console.log('Je suis le middleware, et je laisse passer cette action: ', action);
   next(action);
@@ -31,8 +28,8 @@ const logMiddleware = store => next => (action) => {
       })
         .then((response) => {
           console.log(response.data);
-          store.dispatch(setUsersLogin(response.data));
-          sessionStorage.setItem('userData', JSON.stringify(store.getState().userData));
+          store.dispatch(setUsersLogin(response.data.token));
+          sessionStorage.setItem('token', JSON.stringify(store.getState().token));
           window.location.href = '/user';
         })
         // en cas d'echec : catch
@@ -82,11 +79,11 @@ const logMiddleware = store => next => (action) => {
         });
       break;
     case GET_USER_INFO:
-    console.log(store.getState().token);
+    console.log(JSON.parse(sessionStorage.getItem('token')));
       axios.get('http://localhost:3000/api/users/me', {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
-          Authorization: `Bearer ${store.getState().token}`,
+          Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`,
         },
       })
         .then((response) => {

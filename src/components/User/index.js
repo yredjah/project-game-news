@@ -18,7 +18,7 @@ class User extends Component {
 
     return (
       <div>
-        {JSON.parse(sessionStorage.getItem('userData'))
+        {JSON.parse(sessionStorage.getItem('token'))
         && (
         <div id="user-home">
           <div id="user-menu">
@@ -60,7 +60,7 @@ class User extends Component {
           </div>
         </div>
         )}
-        {!JSON.parse(sessionStorage.getItem('userData'))
+        {!JSON.parse(sessionStorage.getItem('token'))
         && (
           <div>
             <h1>Oups something went wrong</h1>

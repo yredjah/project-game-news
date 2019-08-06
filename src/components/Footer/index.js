@@ -21,9 +21,6 @@ const Footer = () => (
       <Link to="/" exact>
         Accueil
       </Link>
-      <Link to="/user" exact>
-        User
-      </Link>
     </div>
     <p>&copy; 2019 Game news</p>
     <div className="icons">

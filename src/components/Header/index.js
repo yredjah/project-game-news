@@ -29,10 +29,10 @@ const Header = ({
       <div className="container-head">
         <Link to="/" exact><h1 id="title"><img className="logo" src="src/Assets/img/logo.png" alt="" />Game news</h1></Link>
         <div className="container-head-right">
-          {JSON.parse(sessionStorage.getItem('userData'))
+          {JSON.parse(sessionStorage.getItem('token'))
             && <div><AccountButton /></div>
           }
-          {!JSON.parse(sessionStorage.getItem('userData'))
+          {!JSON.parse(sessionStorage.getItem('token'))
             && (
             <div>
               <Link
