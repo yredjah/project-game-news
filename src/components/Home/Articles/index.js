@@ -6,14 +6,17 @@ import { Link } from 'react-router-dom';
 // == Import : local
 
 import './articles.scss';
-import articles from 'src/data';
 import news from 'src/data/news';
 import bignews from 'src/data/bignews';
 
 // == Composant
 
 
-export default function Articles() {
+export default function Articles({ articles }) {
+
+  const date = new Date();
+  const lastWeek = date.getDate() - 7;
+  // const news = articles.find
 
   return (
     <>
