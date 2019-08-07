@@ -18,27 +18,28 @@ class UserAvatar extends Component {
   handleUploadImage(ev) {
     ev.preventDefault();
 
+    // console.log('files', ev.target.files[0]);
+
     const data = new FormData();
     data.append('file', this.uploadInput.files[0]);
     data.append('filename', this.fileName.value);
 
-    axios.post('http://localhost:3000/api/upload', {
-      data,
-    }).then((response) => {
-      response.json().then((body) => {
-        this.setState({ imageURL: `http://localhost:8080/${body.file}` });
+    // console.log({ data });
+
+    axios.post('http://localhost:3000/api/upload', data)
+      .then((response) => {
+        this.setState({ imageURL: `http://localhost:8080/${response.data.file}` });
       });
-    });
   }
 
   render() {
     return (
-      <form className="avatar" onSubmit={this.handleUploadImage}>
+      <form className="avatar" onSubmit={this.handleUploadImage} encType="multipart/form-data">
         <div>
-          <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
+          <input ref={(ref) => { this.uploadInput = ref; }} type="file" accept=".jpg, .jpeg, .png, .gif" />
         </div>
         <div>
-          <input ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Enter the desired name of file" />
+          <input ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Enter file name" />
         </div>
         <br />
         <div>

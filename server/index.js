@@ -14,7 +14,7 @@ const server = express();
 //body parser config
 server.use(logger('dev'));
 server.use(cors());
-server.use(fileUpload());
+server.use(fileUpload({createParentPath: true }));
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 server.use(function(req, res, next) {
