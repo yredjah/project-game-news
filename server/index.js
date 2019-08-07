@@ -1,12 +1,20 @@
+/* eslint-disable */
+
 // imports
 const express = require('express');
 const bodyParser = require('body-parser');
 const apiRouter = require('./apiRouter').router;
+const fileUpload = require('express-fileupload');
+const logger = require('morgan');
+const cors = require('cors');
 
 
 const server = express();
 
 //body parser config
+server.use(logger('dev'));
+server.use(cors());
+server.use(fileUpload());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 server.use(function(req, res, next) {

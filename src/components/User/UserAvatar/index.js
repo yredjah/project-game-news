@@ -1,46 +1,53 @@
 import React, { Component } from 'react';
-import ReactDOM from "react-dom";
-import ImageUploader from 'react-images-upload';
+import axios from 'axios';
 
-// == Import : local
 import './useravatar.scss';
 
-// == Composant
 class UserAvatar extends Component {
+
   constructor(props) {
     super(props);
-    this.state = { pictures: [] };
-    this.onDrop = this.onDrop.bind(this);
+
+    this.state = {
+      imageURL: '',
+    };
+
+    this.handleUploadImage = this.handleUploadImage.bind(this);
   }
 
-  onDrop(pictureFiles, pictureDataURLs) {
-    this.setState({
-      pictures: this.state.pictures.concat(pictureFiles),
+  handleUploadImage(ev) {
+    ev.preventDefault();
+
+    const data = new FormData();
+    data.append('file', this.uploadInput.files[0]);
+    data.append('filename', this.fileName.value);
+
+    axios.post('http://localhost:3000/api/upload', {
+      data,
+    }).then((response) => {
+      response.json().then((body) => {
+        this.setState({ imageURL: `http://localhost:8080/${body.file}` });
+      });
     });
   }
 
   render() {
     return (
-      <div className="userAvatar">
-        <h1>Your avatar</h1>
-        <div className="avatar_container">
-          <ImageUploader
-            className="uploader"
-            withIcon={false}
-            withPreview={true}
-            label=""
-            buttonText="Upload Images"
-            onChange={this.onDrop}
-            imgExtension={[".jpg", ".jpeg", ".gif", ".png", ".gif", ".svg"]}
-            maxFileSize={1048576}
-            fileSizeError=" file size is too big"
-          />
+      <form className="avatar" onSubmit={this.handleUploadImage}>
+        <div>
+          <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
         </div>
-      </div>
+        <div>
+          <input ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Enter the desired name of file" />
+        </div>
+        <br />
+        <div>
+          <button>Upload</button>
+        </div>
+        <img src={this.state.imageURL} alt="img" />
+      </form>
     );
   }
 }
 
-
-// == Export
-export default UserAvatar;
+export default UserAvatar; 

@@ -3,8 +3,16 @@ const express = require('express');
 const usersCtrl = require('../routes/usersCtrl');
 const articlesCtrl = require('../routes/articlesCtrl');
 const mailerCtrl = require('../routes/mailerCtrl');
+const fieldUploadCtrl = require('../routes/filedUploadCtrl');
+const fileUpload = require('express-fileupload');
+const logger = require('morgan');
+const cors = require('cors');
 
 const server = express();
+
+server.use(logger('dev'));
+server.use(cors());
+server.use(fileUpload());
 server.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
@@ -30,6 +38,7 @@ exports.router = (function() {
   apiRouter.route('/articles/addArticle/').post(articlesCtrl.addArticles);
   apiRouter.route('/articles/listArticle/').get(articlesCtrl.listArticles);
   apiRouter.route('/mailer/').get(mailerCtrl.mailer);
+  apiRouter.route('/upload/').post(fieldUploadCtrl.upload);
 
   return apiRouter;
 ;})();
