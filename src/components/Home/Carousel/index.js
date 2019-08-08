@@ -15,6 +15,7 @@ class Carousel extends Component {
   videoLinks = [];
 
   getVideo() {
+    this.videoLinks = [];
     const { articles } = this.props;
     console.log(articles);
     const articlesList = articles.newsOfTheWeek;
