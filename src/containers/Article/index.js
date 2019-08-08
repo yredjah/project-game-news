@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 // == Import : local
 import Article from 'src/components/Article';
-import { addMessageAction, onInputChange } from 'src/store/reducer';
+import { onsubmitCommentary, onInputChange } from 'src/store/reducer';
 
 // Action Creators
 // import { findArticle } from 'src/store/reducer';
@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   addMessage: () => {
     console.log('add message');
-    dispatch(addMessageAction());
+    dispatch(onsubmitCommentary());
   },
 });
 

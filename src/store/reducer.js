@@ -110,6 +110,14 @@ const initialState = {
   loginEmail: '',
   loginPassword: '',
 
+  creatTitle: '',
+  creatText: '',
+  creatGameName: '',
+  creatVideo: '',
+  creatImage: '',
+  creatPlatform: '',
+  creatGenre: '',
+
   contactFirstName: '',
   contactLastName: '',
   contactEmail: '',
@@ -129,6 +137,10 @@ const initialState = {
 };
 
 // == Types
+export const GET_COMMENTARY = 'GET_COMMENTARY';
+export const SET_COMMENTARY = 'SET_COMMENTARY';
+export const ON_SUBMIT_COMMENTARY = 'ON_SUBMIT_COMMENTARY';
+export const ON_SUBMIT_ARTICLE = 'ON_SUBMIT_ARTICLE';
 export const ON_SUBMIT_LOGIN = 'ON_SUBMIT_LOGIN';
 export const ON_SUBMIT_REGISTER = 'ON_SUBMIT_REGISTER';
 export const GET_USER_INFO = 'GET_USER_INFO';
@@ -159,30 +171,6 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.name]: action.value,
       };
-    case ADD_MESSAGE:
-    {
-      console.log('reducer');
-      const { newMessage } = state;
-      const { messagesList: oldMessages } = state;
-      const allIds = oldMessages.map(task => task.id);
-      const id = allIds.length > 0 ? Math.max(...allIds) + 1 : 1;
-      const newMsg = {
-        id,
-        label: newMessage,
-        username: 'userName',
-        time: '12/09/2019  15h34',
-      };
-      const messagesListCopy = [
-        ...oldMessages,
-        newMsg,
-      ];
-      console.log('reducer 2');
-      return {
-        ...state,
-        messagesList: messagesListCopy,
-        newMessage: '',
-      };
-    }
     case SET_USERS_LOGIN:
       return {
         ...state,
@@ -196,6 +184,7 @@ const reducer = (state = initialState, action = {}) => {
         registerUserName: '',
         registerEmail: '',
         registerPassword: '',
+        newMessage: '',
       };
     case SET_ARTICLES:
       return {
@@ -223,6 +212,25 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         genres: action.genres,
       };
+    case SET_COMMENTARY:
+    {
+      const { messagesList: oldMessages } = state;
+      const newMsg = {
+        id: action.id,
+        label: action.commentary,
+        username: action.userName,
+        time: '12/09/2019  15h34',
+      };
+      const messagesListCopy = [
+        ...oldMessages,
+        newMsg,
+      ];
+      return {
+        ...state,
+        messagesList: messagesListCopy,
+        newMessage: '',
+      };
+    }
     default:
       return state;
   }
@@ -297,6 +305,25 @@ export const getGenres = () => ({
 export const setGenre = genres => ({
   type: SET_GENRE,
   genres,
+});
+
+export const onsubmitArticle = () => ({
+  type: ON_SUBMIT_ARTICLE,
+});
+
+export const onsubmitCommentary = () => ({
+  type: ON_SUBMIT_COMMENTARY,
+});
+
+export const getCommentary = () => ({
+  Type: GET_COMMENTARY,
+});
+
+export const setCommentary = (commentary, userName, id) => ({
+  type: SET_COMMENTARY,
+  commentary,
+  userName,
+  id,
 });
 
 // == Export

@@ -65,9 +65,12 @@ export default function Articles({ articles }) {
             return (
               <Link key={article.id} to={`/article/${article.id}`} exact>
                 <Card id="cards">
-                  <Image
-                    src={article.image}
-                  />
+                  <div className="divimg">
+                    <Image
+                      className="image"
+                      src={article.image}
+                    />
+                  </div>
                   <Card.Content>
                     <Card.Header>{article.title}</Card.Header>
                     <Card.Description className="card-resume">

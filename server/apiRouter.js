@@ -3,6 +3,7 @@ const express = require('express');
 const usersCtrl = require('../routes/usersCtrl');
 const articlesCtrl = require('../routes/articlesCtrl');
 const mailerCtrl = require('../routes/mailerCtrl');
+const commentaryCtrl = require('../routes/commentaryCtrl');
 const fieldUploadCtrl = require('../routes/filedUploadCtrl');
 const plateformCtrl = require('../routes/plateformCtrl');
 const genresCtrl = require('../routes/genresCtrl');
@@ -40,6 +41,8 @@ exports.router = (function() {
   apiRouter.route('/articles/addArticle/').post(articlesCtrl.addArticles);
   apiRouter.route('/articles/listArticle/').get(articlesCtrl.listArticles);
   apiRouter.route('/mailer/').post(mailerCtrl.mailer);
+  apiRouter.route('/commentary/').post(commentaryCtrl.createComment);
+  apiRouter.route('/commentary/articlecom').get(commentaryCtrl.getCommentary);
   apiRouter.route('/upload/').post(fieldUploadCtrl.upload);
   apiRouter.route('/plateform/getAll').get(plateformCtrl.getAll);
   apiRouter.route('/genre/getAll').get(genresCtrl.getAll);

@@ -13,6 +13,7 @@ import ForgottenPassword from 'src/containers/ForgottenPassword';
 import Legal from 'src/components/Legal';
 import User from 'src/components/User';
 import Contact from 'src/containers/Contact';
+import AdminPanel from 'src/containers/AdminPanel';
 import './app.scss';
 
 // == Composant
@@ -30,6 +31,7 @@ const App = () => (
       <Route path="/mention_legale" exact component={Legal} />
       <Route path="/contact" exact component={Contact} />
       <Route path="/user" component={User} />
+      <Route path="/user/admin" exact component={AdminPanel} />
     </main>
     <footer>
       <Footer />
