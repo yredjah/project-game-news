@@ -25,7 +25,7 @@ module.exports = {
        return res.status(500).send(err);
       }
 
-      res.json({file: `public/avatarUploads/${req.body.filename}.jpg`});
+      res.json({file: `public/avatarUploads/${req.files.file.name}`});
     });
   },
 };

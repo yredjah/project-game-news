@@ -22,7 +22,7 @@ class UserAvatar extends Component {
 
     const data = new FormData();
     data.append('file', this.uploadInput.files[0]);
-    data.append('filename', this.fileName.value);
+    //data.append('filename', this.fileName.value);
 
     // console.log({ data });
 
@@ -38,9 +38,7 @@ class UserAvatar extends Component {
         <div>
           <input ref={(ref) => { this.uploadInput = ref; }} type="file" accept=".jpg, .jpeg, .png, .gif" />
         </div>
-        <div>
-          <input ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Enter file name" />
-        </div>
+       
         <br />
         <div>
           <button>Upload</button>
