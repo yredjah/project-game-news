@@ -5,6 +5,7 @@ const articlesCtrl = require('../routes/articlesCtrl');
 const mailerCtrl = require('../routes/mailerCtrl');
 const fieldUploadCtrl = require('../routes/filedUploadCtrl');
 const plateformCtrl = require('../routes/plateformCtrl');
+const genresCtrl = require('../routes/genresCtrl');
 const fileUpload = require('express-fileupload');
 const logger = require('morgan');
 const cors = require('cors');
@@ -41,6 +42,7 @@ exports.router = (function() {
   apiRouter.route('/mailer/').post(mailerCtrl.mailer);
   apiRouter.route('/upload/').post(fieldUploadCtrl.upload);
   apiRouter.route('/plateform/getAll').get(plateformCtrl.getAll);
+  apiRouter.route('/genre/getAll').get(genresCtrl.getAll);
 
   return apiRouter;
 ;})();
