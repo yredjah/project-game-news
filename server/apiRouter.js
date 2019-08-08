@@ -37,7 +37,7 @@ exports.router = (function() {
   apiRouter.route('/users/me/').get(usersCtrl.getUserProfile);
   apiRouter.route('/articles/addArticle/').post(articlesCtrl.addArticles);
   apiRouter.route('/articles/listArticle/').get(articlesCtrl.listArticles);
-  apiRouter.route('/mailer/').get(mailerCtrl.mailer);
+  apiRouter.route('/mailer/').post(mailerCtrl.mailer);
   apiRouter.route('/upload/').post(fieldUploadCtrl.upload);
 
   return apiRouter;

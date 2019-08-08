@@ -8,6 +8,7 @@ import {
   setArticles,
   GET_USER_INFO,
   setUserInfo,
+  ON_SUBMIT_CONTACT,
 } from 'src/store/reducer';
 
 const logMiddleware = store => next => (action) => {
@@ -100,6 +101,26 @@ const logMiddleware = store => next => (action) => {
             response.data.mail,
             response.data.Role.name,
           ));
+        })
+        // en cas d'echec : catch
+        .catch((error) => {
+          console.error(error.message);
+          console.error(error.response);
+        });
+      break;
+    case ON_SUBMIT_CONTACT:
+      // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.post('http://localhost:3000/api/mailer/', {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        contactFirstName: store.getState().contactFirstName,
+        contactLastName: store.getState().contactLastName,
+        contactEmail: store.getState().contactEmail,
+        contactMessage: store.getState().contactMessage,
+      })
+        .then((response) => {
+          console.log(response.data);
         })
         // en cas d'echec : catch
         .catch((error) => {

@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 // imports locaux
 import Contact from 'src/components/Contact';
 // import { onInputChange } from '../../../store/reducer';
-import { onInputChange, onTextAreaChange, onsubmitContact } from 'src/store/reducer';
+import { onInputChange, onSubmitContact } from 'src/store/reducer';
 
 const mapStateToProps = state => ({
-  firstName: state.firstName,
-  lastName: state.lastName,
-  email: state.email,
+  contactFirstName: state.contactFirstName,
+  contactLastName: state.contactLastName,
+  contactEmail: state.contactEmail,
   contactMessage: state.contactMessage,
 });
 
@@ -19,12 +19,8 @@ const mapDispatchToProps = dispatch => ({
     // console.log('dispatch');
     dispatch(onInputChange(name, value));
   },
-  changeTextAreaValue: (name, value) => {
-    // console.log('dispatch');
-    dispatch(onTextAreaChange(name, value));
-  },
   onSubmitContact: () => {
-    dispatch(onsubmitContact());
+    dispatch(onSubmitContact());
   },
 });
 

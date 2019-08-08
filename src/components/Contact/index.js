@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, TextArea } from 'semantic-ui-react';
-
 import './contact.scss';
 
 const Contact = ({
   InputChange,
   contactMessage,
-  changeTextAreaValue,
-  firstName, 
-  lastName,
-  email,
+  contactFirstName,
+  contactLastName,
+  contactEmail,
   onSubmitContact,
 }) => {
   const submitHandler = (event) => {
@@ -21,7 +19,7 @@ const Contact = ({
 
   const changeHandler = (event) => {
     InputChange(event.target.name, event.target.value);
-    changeTextAreaValue(event.target.value);
+    // changeTextAreaValue(event.target.name, event.target.value);
   };
 
   return (
@@ -30,20 +28,20 @@ const Contact = ({
     <Form.Group widths='equal'>
       <Form.Input
         onChange={changeHandler}
-        value={firstName}
+        value={contactFirstName}
         fluid
         id='form-subcomponent-shorthand-input-first-name'
         label='First name'
-        name={firstName}
+        name='contactFirstName'
         placeholder='First name'
       />
       <Form.Input
         onChange={changeHandler}
-        value={lastName}
+        value={contactLastName}
         fluid
         id='form-subcomponent-shorthand-input-last-name'
         label='Last name'
-        name={lastName}
+        name='contactLastName'
         placeholder='Last name'
       />
     </Form.Group>
@@ -51,10 +49,10 @@ const Contact = ({
         <label>E-mail</label>
         <input 
         onChange={changeHandler}
-        value={email}
+        value={contactEmail}
         className="contactForm" 
         label='Mail' 
-        name={email} 
+        name='contactEmail'
         placeholder='Your e-mail' />
       </Form.Field>
       <label>Message</label>
@@ -64,9 +62,8 @@ const Contact = ({
       style={{ minHeight: 100 }} 
       onChange={changeHandler}
       value={contactMessage}
-      name={contactMessage}
+      name='contactMessage'
       />
-  
         <Button type='submit'>Submit</Button>
       </Form>
   </div>
@@ -74,12 +71,11 @@ const Contact = ({
   }
 
 Contact.propTypes = {
-  lastName: PropTypes.string.isRequired,  
-  firstName: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
+  contactLastName: PropTypes.string.isRequired,
+  contactFirstName: PropTypes.string.isRequired,
+  contactEmail: PropTypes.string.isRequired,
   InputChange: PropTypes.func.isRequired,
   contactMessage: PropTypes.string.isRequired,
-  changeTextAreaValue: PropTypes.func.isRequired,
   onSubmitContact: PropTypes.func.isRequired,
 };
 
