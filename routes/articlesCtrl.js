@@ -143,4 +143,14 @@ module.exports = {
       return res.status(500).json({'error': 'unable to find articles', err})
     })
   },
+  getOne: function (req, res) {
+    const articleId = req.body.articleId;
+    models.Article.findOne({
+      where: {id: articleId,},
+    }).then(function(article) {
+      return res.status(200).json(article)
+    }).catch(function(err) {
+      return res.status(200).json({'error': 'unable to find article', err})
+    })
+  },
 };

@@ -91,6 +91,8 @@ const initialState = {
       },
     ],
   },
+  article:{
+  },
   categories: [
     {
       id: '1',
@@ -136,6 +138,7 @@ export const GET_ARTICLES = 'GET_ARTICLES';
 export const ON_SUBMIT_CONTACT = 'ON_SUBMIT_CONTACT';
 export const GET_PLATEFORM = 'GET_PLATEFORM';
 export const GET_GENRE = 'GET_GENRE';
+export const GET_ONE_ARTICLE = 'GET_ONE_ARTICLE';
 const SET_ARTICLES = 'SET_ARTICLES';
 const CLEAN_REGISTER_FIELDS = ' CLEAN_REGISTER_FILEDS';
 const SET_USERS_LOGIN = 'SET_USERS_LOGIN';
@@ -145,6 +148,7 @@ const ADD_MESSAGE = 'ADD_MESSAGE';
 const SET_USER_INFO = 'SET_USER_INFO';
 const SET_PLATEFORM = 'SET_PLATEFORM';
 const SET_GENRE = 'SET_GENRE';
+const SET_ONE_ARTICLE = 'SET_ONE_ARTICLE';
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -223,6 +227,11 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         genres: action.genres,
       };
+    case SET_ONE_ARTICLE:
+      return {
+        ...state,
+        article: action.article,
+      };
     default:
       return state;
   }
@@ -297,6 +306,14 @@ export const getGenres = () => ({
 export const setGenre = genres => ({
   type: SET_GENRE,
   genres,
+});
+export const getOneArticle = articleId => ({
+  type: GET_ONE_ARTICLE,
+  articleId,
+});
+export const setOneArticle = article => ({
+  type: SET_ONE_ARTICLE,
+  article,
 });
 
 // == Export
