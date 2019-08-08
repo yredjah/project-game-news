@@ -18,6 +18,8 @@ import {
   ON_SUBMIT_COMMENTARY,
   GET_COMMENTARY,
   setCommentary,
+  GET_ONE_ARTICLE,
+  setOneArticle,
 } from 'src/store/reducer';
 
 const logMiddleware = store => next => (action) => {
@@ -227,6 +229,18 @@ const logMiddleware = store => next => (action) => {
             response.data.commentary,
             response.data.userName,
           ));
+    case GET_ONE_ARTICLE:
+    console.log('action', action);
+      // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.post('http://localhost:3000/api/articles/getOne', {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        articleId: action.articleId,
+      })
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(setOneArticle(response.data));
         })
         // en cas d'echec : catch
         .catch((error) => {

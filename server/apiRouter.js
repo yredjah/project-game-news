@@ -40,6 +40,7 @@ exports.router = (function() {
   apiRouter.route('/users/me/').get(usersCtrl.getUserProfile);
   apiRouter.route('/articles/addArticle/').post(articlesCtrl.addArticles);
   apiRouter.route('/articles/listArticle/').get(articlesCtrl.listArticles);
+  apiRouter.route('/articles/getOne/').post(articlesCtrl.getOne);
   apiRouter.route('/mailer/').post(mailerCtrl.mailer);
   apiRouter.route('/commentary/').post(commentaryCtrl.createComment);
   apiRouter.route('/commentary/articlecom').get(commentaryCtrl.getCommentary);
