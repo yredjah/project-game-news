@@ -13,6 +13,11 @@ import {
   setPlateform,
   GET_GENRE,
   setGenre,
+  onsubmitArticle,
+  ON_SUBMIT_ARTICLE,
+  ON_SUBMIT_COMMENTARY,
+  GET_COMMENTARY,
+  setCommentary,
   GET_ONE_ARTICLE,
   setOneArticle,
 } from 'src/store/reducer';
@@ -168,6 +173,62 @@ const logMiddleware = store => next => (action) => {
           console.error(error.response);
         });
       break;
+    case ON_SUBMIT_ARTICLE:
+      // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      console.log(`Bearer ${JSON.parse(sessionStorage.getItem('token'))}`);
+      axios.post('http://localhost:3000/api/articles/addArticle/', {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`,
+        },
+        title: store.getState().creatTitle,
+        text: store.getState().creatText,
+        videoId: store.getState().creatVideo,
+        Image: store.getState().creatImage,
+        gameName: store.getState().creatGameName,
+        plateforms: store.getState().creatPlatform,
+        genres: store.getState().creatGenre,
+      })
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(onsubmitArticle());
+        })
+        // en cas d'echec : catch
+        .catch((error) => {
+          console.error(error.message);
+          console.error(error.response);
+        });
+      break;
+    case ON_SUBMIT_COMMENTARY:
+      // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.post('http://localhost:3000/api/users/register', {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`,
+        },
+        commentary: store.getState().NewMessage,
+      })
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(cleanRegisterFileds());
+        })
+        // en cas d'echec : catch
+        .catch((error) => {
+          console.error(error.message);
+          console.error(error.response);
+        });
+      break;
+    case GET_COMMENTARY:
+      axios.get('http://localhost:3000/api/users/me', {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      })
+        .then((response) => {
+          store.dispatch(setCommentary(
+            response.data.commentary,
+            response.data.userName,
+          ));
     case GET_ONE_ARTICLE:
     console.log('action', action);
       // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';

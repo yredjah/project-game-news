@@ -47,11 +47,13 @@ class User extends Component {
                 active={activeItem === 'preferencies'}
                 onClick={this.handleItemClick}
               />
-              <Menu.Item
-                name='admin'
-                active={activeItem === 'admin'}
-                onClick={this.handleItemClick}
-              />
+              <Link to="/user/admin" exact>
+                <Menu.Item
+                  name='admin'
+                  active={activeItem === 'admin'}
+                  onClick={this.handleItemClick}
+                />
+              </Link>
             </Menu>
           </div>
           <div className="left-container">

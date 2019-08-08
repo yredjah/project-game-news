@@ -2,8 +2,8 @@
 module.exports = (sequelize, DataTypes) => {
   const Commentary = sequelize.define('Commentary', {
     commentary: DataTypes.STRING,
-    articleId: DataTypes.INTEGER,
-    userId: DataTypes.INTEGER,
+    // articleId: DataTypes.INTEGER,
+    // userId: DataTypes.INTEGER,
   }, {});
   Commentary.associate = function(models) {
     // associations can be defined here
