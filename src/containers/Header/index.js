@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 import Header from 'src/components/Header';
 
 // Action Creators
-import { setActiveItem } from 'src/store/reducer';
-import { getPlateform } from 'src/store/reducer';
+import { setActiveItem, getPlateform, getGenres } from 'src/store/reducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -18,7 +17,7 @@ import { getPlateform } from 'src/store/reducer';
 const mapStateToProps = state => ({
   categories: state.categories,
   activeItem: state.activeItem,
-  games: state.games,
+  genres: state.genres,
 });
 
 /* === Actions ===
@@ -34,6 +33,9 @@ const mapDispatchToProps = dispatch => ({
   },
   getAllPlateforms: (name) => {
     dispatch(getPlateform(name));
+  },
+  getAllGenres: (name) => {
+    dispatch(getGenres(name));
   },
 });
 

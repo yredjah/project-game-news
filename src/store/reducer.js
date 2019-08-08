@@ -94,36 +94,11 @@ const initialState = {
   categories: [
     {
       id: '1',
-      name: 'PC',
-    },
-    {
-      id: '2',
-      name: 'XBOX',
-    },
-    {
-      id: '3',
-      name: 'PLAYSTATION',
-    },
-    {
-      id: '4',
-      name: 'NINTENDO',
-    },
-    {
-      id: '5',
-      name: 'IOS',
-    },
-    {
-      id: '6',
-      name: 'ANDROID',
+      name: 'Loading',
     },
   ],
-  games: [
-    { key: 1, text: 'MMO', value: 1 },
-    { key: 2, text: 'RPG', value: 2 },
-    { key: 3, text: 'ACTION', value: 3 },
-    { key: 4, text: 'SPORT', value: 4 },
-    { key: 5, text: 'FPS', value: 5 },
-    { key: 6, text: 'ADVENTURE', value: 6 },
+  genres: [
+    { id: 1, name: 'Loading' },
   ],
   activeItem: 'home',
 
@@ -144,7 +119,7 @@ const initialState = {
   messagesList: [],
 
   newMessage: '',
-  
+
   userInfo: {
     firstName: '',
     lastName: '',
@@ -160,6 +135,7 @@ export const GET_USER_INFO = 'GET_USER_INFO';
 export const GET_ARTICLES = 'GET_ARTICLES';
 export const ON_SUBMIT_CONTACT = 'ON_SUBMIT_CONTACT';
 export const GET_PLATEFORM = 'GET_PLATEFORM';
+export const GET_GENRE = 'GET_GENRE';
 const SET_ARTICLES = 'SET_ARTICLES';
 const CLEAN_REGISTER_FIELDS = ' CLEAN_REGISTER_FILEDS';
 const SET_USERS_LOGIN = 'SET_USERS_LOGIN';
@@ -168,6 +144,7 @@ const ON_INPUT_CHANGE = 'ON_INPUT_CHANGE';
 const ADD_MESSAGE = 'ADD_MESSAGE';
 const SET_USER_INFO = 'SET_USER_INFO';
 const SET_PLATEFORM = 'SET_PLATEFORM';
+const SET_GENRE = 'SET_GENRE';
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -241,6 +218,11 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         categories: action.plateforms,
       };
+    case SET_GENRE:
+      return {
+        ...state,
+        genres: action.genres,
+      };
     default:
       return state;
   }
@@ -308,6 +290,13 @@ export const getPlateform = () => ({
 export const setPlateform = plateforms => ({
   type: SET_PLATEFORM,
   plateforms,
+});
+export const getGenres = () => ({
+  type: GET_GENRE,
+});
+export const setGenre = genres => ({
+  type: SET_GENRE,
+  genres,
 });
 
 // == Export
