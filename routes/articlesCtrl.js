@@ -146,7 +146,7 @@ module.exports = {
   getOne: function (req, res) {
     const articleId = req.body.articleId;
     models.Article.findOne({
-      where: {id: articleId}
+      where: {id: articleId,},
     }).then(function(article) {
       return res.status(200).json(article)
     }).catch(function(err) {

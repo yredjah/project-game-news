@@ -1,5 +1,5 @@
 // == Import : npm
-import React from 'react';
+import React, {useEffect} from 'react';
 import YouTube from 'react-youtube';
 import { Icon, Form, TextArea, Button, Label } from 'semantic-ui-react';
 import ShareLink from 'react-twitter-share-link';
@@ -25,17 +25,20 @@ const opts = {
 // == Composant
 const Article = ({
   match,
-  articles,
+  article,
   messagesList,
   newMessage,
   InputChange,
   addMessage,
-
+  getArticle,
 }) => {
-  const article = articles.find(element => (
-    // console.log(props.match.params);
-    element.id === match.params.id
-  ));
+  // const article = articles.find(element => (
+  //   // console.log(props.match.params);
+  //   element.id === match.params.id
+  // ));
+  useEffect(() => {
+    getArticle(parseInt(match.params.id, 10));
+  }, []);
 
   const checkVideoExistance = () => {
     if (typeof article.videoId === 'undefined') {
@@ -132,9 +135,10 @@ const Article = ({
 
 Article.propTypes = {
   match: PropTypes.object.isRequired,
-  articles: PropTypes.array.isRequired,
+  article: PropTypes.object.isRequired,
   addMessage: PropTypes.func.isRequired,
   InputChange: PropTypes.func.isRequired,
+  getArticle: PropTypes.func.isRequired,
   newMessage: PropTypes.string.isRequired,
   messagesList: PropTypes.arrayOf(
     PropTypes.shape({
