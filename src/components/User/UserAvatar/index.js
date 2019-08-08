@@ -1,46 +1,52 @@
 import React, { Component } from 'react';
-import ReactDOM from "react-dom";
-import ImageUploader from 'react-images-upload';
+import axios from 'axios';
 
-// == Import : local
 import './useravatar.scss';
 
-// == Composant
 class UserAvatar extends Component {
+
   constructor(props) {
     super(props);
-    this.state = { pictures: [] };
-    this.onDrop = this.onDrop.bind(this);
+
+    this.state = {
+      imageURL: '',
+    };
+
+    this.handleUploadImage = this.handleUploadImage.bind(this);
   }
 
-  onDrop(pictureFiles, pictureDataURLs) {
-    this.setState({
-      pictures: this.state.pictures.concat(pictureFiles),
-    });
+  handleUploadImage(ev) {
+    ev.preventDefault();
+
+    // console.log('files', ev.target.files[0]);
+
+    const data = new FormData();
+    data.append('file', this.uploadInput.files[0]);
+    //data.append('filename', this.fileName.value);
+
+    // console.log({ data });
+
+    axios.post('http://localhost:3000/api/upload', data)
+      .then((response) => {
+        this.setState({ imageURL: `http://localhost:8080/${response.data.file}` });
+      });
   }
 
   render() {
     return (
-      <div className="userAvatar">
-        <h1>Your avatar</h1>
-        <div className="avatar_container">
-          <ImageUploader
-            className="uploader"
-            withIcon={false}
-            withPreview={true}
-            label=""
-            buttonText="Upload Images"
-            onChange={this.onDrop}
-            imgExtension={[".jpg", ".jpeg", ".gif", ".png", ".gif", ".svg"]}
-            maxFileSize={1048576}
-            fileSizeError=" file size is too big"
-          />
+      <form className="avatar" onSubmit={this.handleUploadImage} encType="multipart/form-data">
+        <div>
+          <input ref={(ref) => { this.uploadInput = ref; }} type="file" accept=".jpg, .jpeg, .png, .gif" />
         </div>
-      </div>
+       
+        <br />
+        <div>
+          <button>Upload</button>
+        </div>
+        <img src={this.state.imageURL} alt="img" />
+      </form>
     );
   }
 }
 
-
-// == Export
-export default UserAvatar;
+export default UserAvatar; 
