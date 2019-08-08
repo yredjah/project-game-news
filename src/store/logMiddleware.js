@@ -201,7 +201,7 @@ const logMiddleware = store => next => (action) => {
       break;
     case ON_SUBMIT_COMMENTARY:
       // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-      axios.post('http://localhost:3000/api/users/register', {
+      axios.post('http://localhost:3000/api/commentary', {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
           authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`,
@@ -229,8 +229,15 @@ const logMiddleware = store => next => (action) => {
             response.data.commentary,
             response.data.userName,
           ));
+        })
+        // en cas d'echec : catch
+        .catch((error) => {
+          console.error(error.message);
+          console.error(error.response);
+        });
+      break;
     case GET_ONE_ARTICLE:
-    console.log('action', action);
+      console.log('action', action);
       // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       axios.post('http://localhost:3000/api/articles/getOne', {
         headers: {
