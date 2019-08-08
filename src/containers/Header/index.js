@@ -6,6 +6,7 @@ import Header from 'src/components/Header';
 
 // Action Creators
 import { setActiveItem } from 'src/store/reducer';
+import { getPlateform } from 'src/store/reducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -30,6 +31,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setItem: (name) => {
     dispatch(setActiveItem(name));
+  },
+  getAllPlateforms: (name) => {
+    dispatch(getPlateform(name));
   },
 });
 

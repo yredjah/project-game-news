@@ -1,5 +1,5 @@
 // == Import : npm
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Menu,
@@ -21,9 +21,13 @@ const Header = ({
   setItem,
   games,
   categories,
+  getAllPlateforms,
 }) => {
   const handleItemClick = (e, { name }) => setItem(name);
   const options = games;
+  useEffect(() => {
+    getAllPlateforms();
+  }, []);
   return (
     <div className="header">
       <div className="container-head">
@@ -81,6 +85,7 @@ Header.propTypes = {
   setItem: PropTypes.func.isRequired,
   games: PropTypes.array.isRequired,
   categories: PropTypes.array.isRequired,
+  getAllPlateforms: PropTypes.func.isRequired,
 };
 
 // == Export

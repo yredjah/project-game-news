@@ -159,6 +159,7 @@ export const ON_SUBMIT_REGISTER = 'ON_SUBMIT_REGISTER';
 export const GET_USER_INFO = 'GET_USER_INFO';
 export const GET_ARTICLES = 'GET_ARTICLES';
 export const ON_SUBMIT_CONTACT = 'ON_SUBMIT_CONTACT';
+export const GET_PLATEFORM = 'GET_PLATEFORM';
 const SET_ARTICLES = 'SET_ARTICLES';
 const CLEAN_REGISTER_FIELDS = ' CLEAN_REGISTER_FILEDS';
 const SET_USERS_LOGIN = 'SET_USERS_LOGIN';
@@ -166,6 +167,7 @@ const SET_ACTIVE_ITEM = 'SET_ACTIVE_ITEM';
 const ON_INPUT_CHANGE = 'ON_INPUT_CHANGE';
 const ADD_MESSAGE = 'ADD_MESSAGE';
 const SET_USER_INFO = 'SET_USER_INFO';
+const SET_PLATEFORM = 'SET_PLATEFORM';
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -234,6 +236,11 @@ const reducer = (state = initialState, action = {}) => {
           role: action.role,
         },
       };
+    case SET_PLATEFORM:
+      return {
+        ...state,
+        categories: action.plateforms,
+      };
     default:
       return state;
   }
@@ -294,6 +301,13 @@ export const setUserInfo = (userName, firstName, lastName, mail, role) => ({
   lastName,
   mail,
   role,
+});
+export const getPlateform = () => ({
+  type: GET_PLATEFORM,
+});
+export const setPlateform = plateforms => ({
+  type: SET_PLATEFORM,
+  plateforms,
 });
 
 // == Export
