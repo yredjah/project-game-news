@@ -60,7 +60,7 @@ class Carousel extends Component {
 }
 
 Carousel.propTypes = {
-  articles: PropTypes.array.isRequired,
+  articles: PropTypes.object.isRequired,
 };
 
 

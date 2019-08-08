@@ -9,6 +9,10 @@ import {
   GET_USER_INFO,
   setUserInfo,
   ON_SUBMIT_CONTACT,
+  GET_PLATEFORM,
+  setPlateform,
+  GET_GENRE,
+  setGenre,
 } from 'src/store/reducer';
 
 const logMiddleware = store => next => (action) => {
@@ -121,6 +125,40 @@ const logMiddleware = store => next => (action) => {
       })
         .then((response) => {
           console.log(response.data);
+        })
+        // en cas d'echec : catch
+        .catch((error) => {
+          console.error(error.message);
+          console.error(error.response);
+        });
+      break;
+    case GET_PLATEFORM:
+      // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.get('http://localhost:3000/api/plateform/getAll/', {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      })
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(setPlateform(response.data));
+        })
+        // en cas d'echec : catch
+        .catch((error) => {
+          console.error(error.message);
+          console.error(error.response);
+        });
+      break;
+    case GET_GENRE:
+      // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.get('http://localhost:3000/api/genre/getAll/', {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      })
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(setGenre(response.data));
         })
         // en cas d'echec : catch
         .catch((error) => {

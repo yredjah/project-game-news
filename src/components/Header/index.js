@@ -1,5 +1,5 @@
 // == Import : npm
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Menu,
@@ -19,11 +19,17 @@ import './header.scss';
 const Header = ({
   activeItem,
   setItem,
-  games,
+  genres,
   categories,
+  getAllPlateforms,
+  getAllGenres,
 }) => {
   const handleItemClick = (e, { name }) => setItem(name);
-  const options = games;
+  // const options = genres;
+  useEffect(() => {
+    getAllPlateforms();
+    getAllGenres();
+  }, []);
   return (
     <div className="header">
       <div className="container-head">
@@ -65,7 +71,13 @@ const Header = ({
           <Menu.Item
             active={activeItem === 'GAMES'}
           >
-            <Dropdown className="game-menu" text="GAMES" options={options} simple item />
+            <Dropdown text="TYPES" simple item>
+              <Dropdown.Menu>
+                {genres.map(genre => (
+                  <Dropdown.Item key={genre.id} text={genre.name} />
+                ))}
+              </Dropdown.Menu>
+            </Dropdown>
           </Menu.Item>
         </Menu>
         <div className="searchBar">
@@ -79,8 +91,9 @@ const Header = ({
 Header.propTypes = {
   activeItem: PropTypes.string.isRequired,
   setItem: PropTypes.func.isRequired,
-  games: PropTypes.array.isRequired,
+  genres: PropTypes.array.isRequired,
   categories: PropTypes.array.isRequired,
+  getAllPlateforms: PropTypes.func.isRequired,
 };
 
 // == Export

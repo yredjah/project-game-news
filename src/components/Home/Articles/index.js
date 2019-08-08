@@ -88,5 +88,5 @@ export default function Articles({ articles }) {
 }
 
 Articles.propTypes = {
-  articles: PropTypes.array.isRequired,
+  articles: PropTypes.object.isRequired,
 };
