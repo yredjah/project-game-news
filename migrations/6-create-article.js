@@ -26,8 +26,8 @@ module.exports = {
       },
       date: {
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-        type: Sequelize.DATE,
+        // defaultValue: Sequelize.NOW,
+        type: Sequelize.DATEONLY,
       },
       like: {
         type: Sequelize.INTEGER,
@@ -65,3 +65,6 @@ module.exports = {
     return queryInterface.dropTable('Articles');
   },
 };
+
+
+// literal('CURRENT_TIMESTAMP')

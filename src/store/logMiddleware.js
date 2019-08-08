@@ -63,14 +63,14 @@ const logMiddleware = store => next => (action) => {
       break;
     case GET_ARTICLES:
       // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-      axios.post('http://localhost:3000/api//articles/listArticle/', {
+      axios.get('http://localhost:3000/api/articles/listArticle/', {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
       })
         .then((response) => {
           console.log(response.data);
-          store.dispatch(setArticles(response.data.articlesFound));
+          store.dispatch(setArticles(response.data));
         })
         // en cas d'echec : catch
         .catch((error) => {
@@ -79,7 +79,7 @@ const logMiddleware = store => next => (action) => {
         });
       break;
     case GET_USER_INFO:
-    console.log(JSON.parse(sessionStorage.getItem('token')));
+    // console.log(JSON.parse(sessionStorage.getItem('token')));
       axios.get('http://localhost:3000/api/users/me', {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',

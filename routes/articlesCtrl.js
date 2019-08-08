@@ -2,7 +2,8 @@
 // const bcrypt = require('bcrypt');
 const jwtUtils = require('../utils/jwt.utils.js');
 const models = require('../models');
-var Sequelize = require('sequelize');
+const Sequelize = require('sequelize');
+const moment = require('moment');
 
 const REGEX_PNG = /[\w\-_\+\(\)]{0,}[\.png|\.PNG]{4}/;
 const REGEX_VIDEO_ID = /(?:youtu\.be\/|youtube.com\/(?:watch\?.*\bv=|embed\/|v\/)|ytimg\.com\/vi\/)(.+?)(?:[^-a-zA-Z0-9]|$)/;
@@ -68,6 +69,7 @@ module.exports = {
     const gameName = req.body.gameName;
     const genres =req.body.genres;
     const plateforms = req.body.plateforms;
+    const date = new Date();
 
     if (title === null || text == null) {
       return res.status(400).json({'error': 'missing parameters'});
@@ -96,6 +98,7 @@ module.exports = {
             image: image,
             UserId: userFound.id,
             GameId: game.id,
+            date: date,
           })
           .then(function(newArticle) {
             if (newArticle) {
@@ -119,17 +122,25 @@ module.exports = {
     //we want to take out 30 articles from the database
     const NUMBER_OF_ARTICLE = 30;
 
-    // const date = new Date();
-    // const lastWeek = date.getDate() - 7;
+    const lastWeek = moment().subtract('days', 7);
 
     models.Article.findAll({
-      // where: { date: {[Op.gt]: lastWeek,} },
+      where: { date: {[Op.gt]: lastWeek,} },
       order: [['date', 'DESC']],
       limit: NUMBER_OF_ARTICLE,
-    }).then(function(articlesFound) {
-      return res.status(201).json(articlesFound);
+    }).then(function(newsOfTheWeek) {
+      models.Article.findAll({
+        where: { date: {[Op.lt]: lastWeek,} },
+        order: [['date', 'DESC']],
+        limit: NUMBER_OF_ARTICLE,
+      }).then(function(news) {
+        const articles = {newsOfTheWeek: newsOfTheWeek, news: news};
+        return res.status(201).json(articles);
+      }).catch(function(err) {
+        return res.status(500).json({'error': 'unable to find articles', err})
+      })
     }).catch(function(err) {
-      return res.status(500).json({'error': 'unable to fin articles', err})
+      return res.status(500).json({'error': 'unable to find articles', err})
     })
   },
 };

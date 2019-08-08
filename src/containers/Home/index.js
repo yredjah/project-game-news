@@ -2,11 +2,11 @@
 import { connect } from 'react-redux';
 
 // == Import : local
-import Articles from 'src/components/Home/Articles';
+import Home from 'src/components/Home';
 
 // Action Creators
 // import { doSomething } from 'src/store/reducer';
-// import { getArticle } from 'src/store/reducer';
+import { getArticle } from 'src/store/reducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -16,7 +16,7 @@ import Articles from 'src/components/Home/Articles';
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
 const mapStateToProps = (state, ownProps) => ({
-  articles: state.articles,
+
 });
 
 /* === Actions ===
@@ -27,16 +27,23 @@ const mapStateToProps = (state, ownProps) => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  // getListArticles: () => {
-  //   dispatch(getArticle());
-  // },
+  getListArticles: () => {
+    dispatch(getArticle());
+  },
 });
 
 // Container
-const ArticlesContainer = connect(
+const HomeContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Articles);
+)(Home);
 
 // == Export
-export default ArticlesContainer;
+export default HomeContainer;
+
+/* = export à la volée
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Example);
+*/

@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 
 // == Import : local
 import Header from 'src/containers/Header';
-import Home from 'src/components/Home';
+import Home from 'src/containers/Home';
 import Footer from 'src/components/Footer';
 import Article from 'src/containers/Article';
 import SignUp from 'src/containers/SignUp';

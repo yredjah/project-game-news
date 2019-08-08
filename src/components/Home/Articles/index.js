@@ -1,22 +1,24 @@
 // == Import : npm
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, Icon, Image, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 // == Import : local
 
 import './articles.scss';
-import news from 'src/data/news';
+// import news from 'src/data/news';
 import bignews from 'src/data/bignews';
 
 // == Composant
 
 
 export default function Articles({ articles }) {
+  // useEffect(() => {
+  // }, []);
 
-  const date = new Date();
-  const lastWeek = date.getDate() - 7;
-  // const news = articles.find
+  const news = articles.newsOfTheWeek;
+  const articlesList = articles.news;
 
   return (
     <>
@@ -59,24 +61,24 @@ export default function Articles({ articles }) {
       <h1 className="news-BigTitle">{bignews.articlesTitle}</h1>
       <div id="articles">
         {
-          articles.map((article) => {
+          articlesList.map((article) => {
             return (
               <Link key={article.id} to={`/article/${article.id}`} exact>
                 <Card id="cards">
-                  <Image 
+                  <Image
                     src={article.image}
                   />
-                <Card.Content>
-                  <Card.Header>{article.title}</Card.Header>
+                  <Card.Content>
+                    <Card.Header>{article.title}</Card.Header>
                     <Card.Description className="card-resume">
                       {article.resume}
                     </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                  <Button>Learn more</Button>
-                </Card.Content>
-              </Card>
-            </Link>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <Button>Learn more</Button>
+                  </Card.Content>
+                </Card>
+              </Link>
             );
           })
         }
@@ -84,3 +86,7 @@ export default function Articles({ articles }) {
     </>
   );
 }
+
+Articles.propTypes = {
+  articles: PropTypes.array.isRequired,
+};

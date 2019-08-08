@@ -16,18 +16,17 @@ class Carousel extends Component {
 
   getVideo() {
     const { articles } = this.props;
-    let nbOfVideo = 0;
-    let index = articles.length - 1;
-    while (nbOfVideo < 4) {
-      if (typeof (articles[index].videoId) !== 'undefined') {
+    console.log(articles);
+    const articlesList = articles.newsOfTheWeek;
+    // if(articlesList)
+    articlesList.forEach((article) => {
+      if (typeof (article.videoId) !== 'undefined') {
         this.videoLinks.push({
-          link: articles[index].videoId,
-          title: articles[index].title,
+          link: article.videoId,
+          title: article.title,
         });
-        nbOfVideo += 1;
       }
-      index -= 1;
-    }
+    });
   }
 
   render() {
