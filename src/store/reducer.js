@@ -151,6 +151,8 @@ export const ON_SUBMIT_CONTACT = 'ON_SUBMIT_CONTACT';
 export const GET_PLATEFORM = 'GET_PLATEFORM';
 export const GET_GENRE = 'GET_GENRE';
 export const GET_ONE_ARTICLE = 'GET_ONE_ARTICLE';
+export const ADD_LIKE = 'ADD_LIKE';
+export const ADD_DISLIKE = 'ADD_DISLIKE';
 const SET_ARTICLES = 'SET_ARTICLES';
 const CLEAN_REGISTER_FIELDS = ' CLEAN_REGISTER_FILEDS';
 const SET_USERS_LOGIN = 'SET_USERS_LOGIN';
@@ -341,6 +343,12 @@ export const setCommentary = (commentary, userName, id) => ({
   commentary,
   userName,
   id,
+});
+export const addALike = () => ({
+  type: ADD_LIKE,
+});
+export const addADislike = () => ({
+  type: ADD_DISLIKE,
 });
 
 // == Export

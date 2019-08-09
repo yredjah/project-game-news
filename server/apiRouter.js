@@ -41,6 +41,8 @@ exports.router = (function() {
   apiRouter.route('/articles/addArticle/').post(articlesCtrl.addArticles);
   apiRouter.route('/articles/listArticle/').get(articlesCtrl.listArticles);
   apiRouter.route('/articles/getOne/').post(articlesCtrl.getOne);
+  apiRouter.route('/articles/addLike/').post(articlesCtrl.addLike);
+  apiRouter.route('/articles/addDislike/').post(articlesCtrl.addDislike);
   apiRouter.route('/mailer/').post(mailerCtrl.mailer);
   apiRouter.route('/commentary/').post(commentaryCtrl.createComment);
   apiRouter.route('/commentary/articlecom').get(commentaryCtrl.getCommentary);
