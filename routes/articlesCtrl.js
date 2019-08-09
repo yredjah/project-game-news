@@ -70,7 +70,6 @@ module.exports = {
     const genres =req.body.genres;
     const plateforms = req.body.plateforms;
     const date = new Date();
-
     if (title === null || text == null) {
       return res.status(400).json({'error': 'missing parameters'});
     }

@@ -13,7 +13,6 @@ import {
   setPlateform,
   GET_GENRE,
   setGenre,
-  onsubmitArticle,
   ON_SUBMIT_ARTICLE,
   ON_SUBMIT_COMMENTARY,
   GET_COMMENTARY,
@@ -32,9 +31,6 @@ const logMiddleware = store => next => (action) => {
     case ON_SUBMIT_LOGIN:
       // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       axios.post('http://localhost:3000/api/users/login', {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
         mail: store.getState().loginEmail,
         password: store.getState().loginPassword,
       })
@@ -53,9 +49,6 @@ const logMiddleware = store => next => (action) => {
     case ON_SUBMIT_REGISTER:
       // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       axios.post('http://localhost:3000/api/users/register', {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
         username: store.getState().registerUserName,
         firstname: store.getState().registerFirstName,
         lastname: store.getState().registerLastName,
@@ -75,11 +68,7 @@ const logMiddleware = store => next => (action) => {
       break;
     case GET_ARTICLES:
       // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-      axios.get('http://localhost:3000/api/articles/listArticle/', {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      })
+      axios.get('http://localhost:3000/api/articles/listArticle/')
         .then((response) => {
           console.log(response.data);
           store.dispatch(setArticles(response.data));
@@ -94,7 +83,6 @@ const logMiddleware = store => next => (action) => {
     // console.log(JSON.parse(sessionStorage.getItem('token')));
       axios.get('http://localhost:3000/api/users/me', {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
           Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`,
         },
       })
@@ -122,9 +110,6 @@ const logMiddleware = store => next => (action) => {
     case ON_SUBMIT_CONTACT:
       // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       axios.post('http://localhost:3000/api/mailer/', {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
         contactFirstName: store.getState().contactFirstName,
         contactLastName: store.getState().contactLastName,
         contactEmail: store.getState().contactEmail,
@@ -141,11 +126,7 @@ const logMiddleware = store => next => (action) => {
       break;
     case GET_PLATEFORM:
       // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-      axios.get('http://localhost:3000/api/plateform/getAll/', {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      })
+      axios.get('http://localhost:3000/api/plateform/getAll/')
         .then((response) => {
           console.log(response.data);
           store.dispatch(setPlateform(response.data));
@@ -158,11 +139,7 @@ const logMiddleware = store => next => (action) => {
       break;
     case GET_GENRE:
       // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-      axios.get('http://localhost:3000/api/genre/getAll/', {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      })
+      axios.get('http://localhost:3000/api/genre/getAll/')
         .then((response) => {
           console.log(response.data);
           store.dispatch(setGenre(response.data));
@@ -175,23 +152,30 @@ const logMiddleware = store => next => (action) => {
       break;
     case ON_SUBMIT_ARTICLE:
       // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      const plateforms = [];
+      plateforms.push(store.getState().creatPlatform);
+      const genres = [];
+      genres.push(store.getState().creatGenre);
       console.log(`Bearer ${JSON.parse(sessionStorage.getItem('token'))}`);
-      axios.post('http://localhost:3000/api/articles/addArticle/', {
+      axios.request({
+        url: 'http://localhost:3000/api/articles/addArticle/',
+        method: 'post',
+        data: {
+          title: store.getState().creatTitle,
+          text: store.getState().creatText,
+          videoId: store.getState().creatVideo,
+          image: store.getState().creatImage,
+          gameName: store.getState().creatGameName,
+          plateforms: plateforms,
+          genres: genres,
+        },
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
           authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`,
         },
-        title: store.getState().creatTitle,
-        text: store.getState().creatText,
-        videoId: store.getState().creatVideo,
-        Image: store.getState().creatImage,
-        gameName: store.getState().creatGameName,
-        plateforms: store.getState().creatPlatform,
-        genres: store.getState().creatGenre,
+        // ... and other options
       })
         .then((response) => {
           console.log(response.data);
-          store.dispatch(onsubmitArticle());
         })
         // en cas d'echec : catch
         .catch((error) => {
@@ -203,7 +187,6 @@ const logMiddleware = store => next => (action) => {
       // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       axios.post('http://localhost:3000/api/commentary', {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
           authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`,
         },
         commentary: store.getState().NewMessage,
@@ -219,11 +202,7 @@ const logMiddleware = store => next => (action) => {
         });
       break;
     case GET_COMMENTARY:
-      axios.get('http://localhost:3000/api/users/me', {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      })
+      axios.get('http://localhost:3000/api/users/me')
         .then((response) => {
           store.dispatch(setCommentary(
             response.data.commentary,
@@ -240,9 +219,6 @@ const logMiddleware = store => next => (action) => {
       console.log('action', action);
       // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       axios.post('http://localhost:3000/api/articles/getOne', {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
         articleId: action.articleId,
       })
         .then((response) => {
