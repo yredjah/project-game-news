@@ -17,6 +17,10 @@
   display: flex;
   justify-content: space-between;
   height: 5em;
+
+  @media (max-width: 1280px) {
+    width: 100%;
+}
 }
 
 .searchBar {
@@ -44,3 +48,5 @@
 #AccountButton{
   margin-right: 2rem;
 }
+
+

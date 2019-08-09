@@ -65,7 +65,7 @@ const Contact = ({
       name='contactMessage'
       />
 
-      <Button className="contactButton" type="submit">Submit</Button>
+      <Button type="submit">Submit</Button>
       </Form>
   </div>
 );
