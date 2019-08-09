@@ -13,7 +13,7 @@ import AccountButton from './Accountbutton';
 
 // == Import : local
 import './header.scss';
-
+import logo from 'src/Assets/img/logo.png';
 
 // == Composant
 const Header = ({
@@ -33,7 +33,7 @@ const Header = ({
   return (
     <div className="header">
       <div className="container-head">
-        <Link to="/" exact><h1 id="title"><img className="logo" src="src/Assets/img/logo.png" alt="" />Game news</h1></Link>
+        <Link to="/" exact><h1 id="title"><img className="logo" src={logo} alt="" />Game news</h1></Link>
         <div className="container-head-right">
           {JSON.parse(sessionStorage.getItem('token'))
             && <div><AccountButton /></div>
