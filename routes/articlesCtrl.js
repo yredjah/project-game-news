@@ -64,7 +64,7 @@ module.exports = {
     //params
     const title = req.body.title;
     const text = req.body.text;
-    const youtubeUrl = req.body.youtubeUrl;
+    const videoId = req.body.videoId;
     const image = req.body.image;
     const gameName = req.body.gameName;
     const genres =req.body.genres;
@@ -93,7 +93,7 @@ module.exports = {
           models.Article.create({
             title: title,
             text: text,
-            videoId: youtubeUrl,
+            videoId: videoId,
             image: image,
             UserId: userFound.id,
             GameId: game.id,

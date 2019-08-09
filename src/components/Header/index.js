@@ -94,6 +94,7 @@ Header.propTypes = {
   genres: PropTypes.array.isRequired,
   categories: PropTypes.array.isRequired,
   getAllPlateforms: PropTypes.func.isRequired,
+  getAllGenres: PropTypes.func.isRequired,
 };
 
 // == Export

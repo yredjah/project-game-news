@@ -21,6 +21,8 @@ import {
   setOneArticle,
   ADD_LIKE,
   ADD_DISLIKE,
+  getGenres,
+  getPlateform,
 } from 'src/store/reducer';
 
 const logMiddleware = store => next => (action) => {
@@ -178,6 +180,8 @@ const logMiddleware = store => next => (action) => {
       })
         .then((response) => {
           console.log(response.data);
+          store.dispatch(getGenres());
+          store.dispatch(getPlateform());
         })
         // en cas d'echec : catch
         .catch((error) => {
