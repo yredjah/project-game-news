@@ -152,4 +152,54 @@ module.exports = {
       return res.status(200).json({'error': 'unable to find article', err})
     })
   },
+  addLike: function (req, res) {
+    const headerAuth  = req.headers['authorization'];
+    const userId      = jwtUtils.getUserId(headerAuth);
+    const articleId = req.body.articleId;
+    models.User_vote_Article.findOrCreate({where:{ArticleId: articleId, UserId: userId}})
+    .then(([relationFound, created]) => {
+      console.log(relationFound);
+      if(!created){
+        return res.status(500).json({'error': 'user already vote'})
+      }
+      models.Article.increment({like: 1}, {where:{id: articleId}})
+      .then(article => {
+        models.Article.findOne({where:{id: articleId}})
+        .then(articleFound => (
+          res.status(200).json(articleFound)
+        ))
+        .catch(err => (
+          res.status(500).json({'error': 'unable to find the article', err})
+        ))
+      })
+      .catch(err => (
+        res.status(500).json({'error': 'unable to add like', err})
+      ));
+    })
+  },
+  addDislike: function (req, res) {
+    const headerAuth  = req.headers['authorization'];
+    const userId      = jwtUtils.getUserId(headerAuth);
+    const articleId = req.body.articleId;
+    models.User_vote_Article.findOrCreate({where:{ArticleId: articleId, UserId: userId}})
+    .then(([relationFound, created]) => {
+      console.log(relationFound);
+      if(!created){
+        return res.status(500).json({'error': 'user already vote'})
+      }
+      models.Article.increment({dislike: 1}, {where:{id: articleId}})
+      .then(article => {
+        models.Article.findOne({where:{id: articleId}})
+        .then(articleFound => (
+          res.status(200).json(articleFound)
+        ))
+        .catch(err => (
+          res.status(500).json({'error': 'unable to find the article', err})
+        ))
+      })
+      .catch(err => (
+        res.status(500).json({'error': 'unable to add dislike', err})
+      ));
+    })
+  },
 };

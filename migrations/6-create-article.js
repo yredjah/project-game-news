@@ -15,7 +15,7 @@ module.exports = {
       },
       text: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       videoId: {
         type: Sequelize.STRING,
@@ -30,9 +30,11 @@ module.exports = {
         type: Sequelize.DATEONLY,
       },
       like: {
+        defaultValue: '0',
         type: Sequelize.INTEGER,
       },
       dislike: {
+        defaultValue: '0',
         type: Sequelize.INTEGER,
       },
       gameId: {

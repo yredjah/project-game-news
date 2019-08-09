@@ -31,6 +31,8 @@ const Article = ({
   InputChange,
   addMessage,
   getArticle,
+  addLike,
+  addDislike,
 }) => {
   // const article = articles.find(element => (
   //   // console.log(props.match.params);
@@ -85,17 +87,17 @@ const Article = ({
             )}
           </FacebookShareLink>
           <Button as="div" labelPosition="right">
-            <Button icon>
+            <Button icon onClick={addLike}>
               <Icon name="thumbs up" />
               Like
             </Button>
             <Label as="a" basic pointing="left">
-              2,048
+              {article.like}
             </Label>
           </Button>
-          <Button as="div" labelPosition="left">
+          <Button as="div" labelPosition="left" onClick={addDislike}>
             <Label as="a" basic pointing="right">
-              2,048
+              {article.dislike}
             </Label>
             <Button icon>
               <Icon name="thumbs down" />
@@ -137,6 +139,8 @@ Article.propTypes = {
   match: PropTypes.object.isRequired,
   article: PropTypes.object.isRequired,
   addMessage: PropTypes.func.isRequired,
+  addLike: PropTypes.func.isRequired,
+  addDislike: PropTypes.func.isRequired,
   InputChange: PropTypes.func.isRequired,
   getArticle: PropTypes.func.isRequired,
   newMessage: PropTypes.string.isRequired,

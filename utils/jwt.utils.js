@@ -10,9 +10,10 @@ module.exports = {
       roleId: userData.roleId,
     },
     JWT_SIGN_SECRET,
-    {
-      expiresIn: '1h'
-    })
+    // {
+    //   expiresIn: '1h'
+    // }
+    )
   },
   parseAuthorization: function(authorization) {
     return (authorization != null) ? authorization.replace('Bearer ', '') : null;

@@ -19,6 +19,8 @@ import {
   setCommentary,
   GET_ONE_ARTICLE,
   setOneArticle,
+  ADD_LIKE,
+  ADD_DISLIKE,
 } from 'src/store/reducer';
 
 const logMiddleware = store => next => (action) => {
@@ -220,6 +222,50 @@ const logMiddleware = store => next => (action) => {
       // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       axios.post('http://localhost:3000/api/articles/getOne', {
         articleId: action.articleId,
+      })
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(setOneArticle(response.data));
+        })
+        // en cas d'echec : catch
+        .catch((error) => {
+          console.error(error.message);
+          console.error(error.response);
+        });
+      break;
+    case ADD_LIKE:
+      // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.request({
+        url: 'http://localhost:3000/api/articles/addLike',
+        method: 'post',
+        data: {
+          articleId: store.getState().article.id,
+        },
+        headers: {
+          authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`,
+        },
+      })
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(setOneArticle(response.data));
+        })
+        // en cas d'echec : catch
+        .catch((error) => {
+          console.error(error.message);
+          console.error(error.response);
+        });
+      break;
+    case ADD_DISLIKE:
+      // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.request({
+        url: 'http://localhost:3000/api/articles/addDislike',
+        method: 'post',
+        data: {
+          articleId: store.getState().article.id,
+        },
+        headers: {
+          authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`,
+        },
       })
         .then((response) => {
           console.log(response.data);
