@@ -9,11 +9,12 @@ import {
   Button,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import logo from '/var/www/html/actuGaming/projet-ActuGaming/assets/img/logo.png';
 import AccountButton from './Accountbutton';
 
 // == Import : local
 import './header.scss';
-import logo from 'src/Assets/img/logo.png';
+
 
 // == Composant
 const Header = ({
