@@ -18,6 +18,7 @@ const mapStateToProps = state => ({
   categories: state.categories,
   activeItem: state.activeItem,
   genres: state.genres,
+  avatar: state.userInfo.avatar,
 });
 
 /* === Actions ===

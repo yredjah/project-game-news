@@ -24,6 +24,7 @@ const Header = ({
   categories,
   getAllPlateforms,
   getAllGenres,
+  avatar,
 }) => {
   const handleItemClick = (e, { name }) => setItem(name);
   // const options = genres;
@@ -37,7 +38,7 @@ const Header = ({
         <Link to="/" exact><h1 id="title"><img className="logo" src={logo} alt="" />Game news</h1></Link>
         <div className="container-head-right">
           {JSON.parse(sessionStorage.getItem('token'))
-            && <div><AccountButton /></div>
+            && <div><AccountButton avatar={avatar} /></div>
           }
           {!JSON.parse(sessionStorage.getItem('token'))
             && (
@@ -96,6 +97,7 @@ Header.propTypes = {
   categories: PropTypes.array.isRequired,
   getAllPlateforms: PropTypes.func.isRequired,
   getAllGenres: PropTypes.func.isRequired,
+  avatar: PropTypes.string.isRequired,
 };
 
 // == Export
