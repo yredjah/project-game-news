@@ -20,8 +20,15 @@ class UserAvatar extends Component {
 
     const data = new FormData();
     data.append('file', this.uploadInput.files[0]);
-
-    axios.post('http://localhost:3000/api/upload', data)
+    
+    axios.request({
+      url: 'http://localhost:3000/api/upload',
+      method: 'post',
+      data,
+      headers: {
+        authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`,
+      },
+    })
       .then((response) => {
         this.setState({ imageURL: `http://localhost:8080/${response.data.file}` });
       });
