@@ -30,6 +30,7 @@ class UserAvatar extends Component {
       },
     })
       .then((response) => {
+        window.location.href = '/user';
         this.setState({ imageURL: `http://localhost:8080/${response.data.file}` });
       });
   }

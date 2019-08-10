@@ -23,29 +23,29 @@ module.exports = {
         del.sync([uploadPath + '/' + userFound.avatar]); //si oui on le supprime
       }
 
-    const arrayName = req.files.file.name.split('.');
-    const length = arrayName.length;
+      const arrayName = req.files.file.name.split('.');
+      const length = arrayName.length;
 
-    const changeImgName = userId + '.' + arrayName[length-1]; 
-   
-    imageFile.mv(`${uploadPath}/${changeImgName}`, function(err) {
-     
-      if (err) {
-       return res.status(500).json({'error': 'unable to upload image',err});
-      }
-      res.json({file: `public/avatarUploads/${changeImgName}`});
+      const changeImgName = userId + '.' + arrayName[length-1]; 
+    
+      imageFile.mv(`${uploadPath}/${changeImgName}`, function(err) {
       
-    });
-    userFound.update({avatar: changeImgName}) // on mes a jour l'avatar dans la base
-    .then(result => (
-      res.json({file: `public/avatarUploads/${changeImgName}`})
-    ))
+        if (err) {
+        return res.status(500).json({'error': 'unable to upload image',err});
+        }
+        res.json({file: `public/avatarUploads/${changeImgName}`});
+        
+      });
+      userFound.update({avatar: changeImgName}) // on mes a jour l'avatar dans la base
+      .then(result => (
+        res.json({file: `public/avatarUploads/${changeImgName}`})
+      ))
+      .catch(err => (
+        res.status(500).json({'error': 'unable to update avatar', err})
+      ))
+    })
     .catch(err => (
-      res.status(500).json({'error': 'unable to update avatar', err})
-    ))
-  })
-  .catch(err => (
-    res.status(500).json({'error': 'unable to find user', err})
-  ));
+      res.status(500).json({'error': 'unable to find user', err})
+    ));
   },
 };
