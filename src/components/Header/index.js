@@ -9,7 +9,7 @@ import {
   Button,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import logo from '/var/www/html/actuGaming/projet-ActuGaming/assets/img/logo.png';
+import logo from './logo.png';
 import AccountButton from './Accountbutton';
 
 // == Import : local
