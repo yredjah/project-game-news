@@ -1,6 +1,9 @@
 .left-container{
   margin-right:auto;
   margin-left:auto;
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+  }
 }
 
 .userInfo {
@@ -15,6 +18,10 @@
   box-shadow: 15px 8px 10px lightgrey;
   text-align: start;
   font-size: 20px;
+
+  @media screen and (max-width: 1000px) {
+    width: 80%;
+  }
 }
 .infoClasse {
   font-size: 28px;
