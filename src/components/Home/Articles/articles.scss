@@ -3,6 +3,7 @@
   display: flex;
   justify-content: space-around;
   flex-flow: row wrap;
+  
 }
 
 #cards {
@@ -10,6 +11,12 @@
   box-shadow: 15px 10px 5px lightgrey;
   height: 520px;
   width: 450px;
+  @media screen and (max-width: 1000px) {
+    width: 70%;
+    height: 80%;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 .divimg{
   overflow: hidden;

@@ -72,3 +72,27 @@
     padding: .6em;
   }
 }
+
+@media screen and (max-width: 1000px) {
+  .video-container {
+    margin-left: auto;
+    margin-right: auto;
+    overflow:hidden; 
+    padding-bottom:56.25%; 
+    position:relative; 
+    height: 0;
+    padding-top: 30px;
+    max-width: 50em;
+    box-shadow: 15px 8px 10px lightgrey;
+  }
+
+  .video-container iframe,
+  .video-container object,
+  .video-container iframe { 
+    left:0; 
+    top:0; 
+    height:100%; 
+    width:100%; 
+    position:absolute; 
+  }
+}
