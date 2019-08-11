@@ -22,7 +22,7 @@ class User extends Component {
         && (
         <div id="user-home">
           <div id="user-menu">
-            <Menu inverted vertical>
+            <Menu inverted compact  size='mini'>
               <Link to="/user" exact>
                 <Menu.Item
                   name='home' 

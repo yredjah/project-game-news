@@ -38,7 +38,7 @@ class UserAvatar extends Component {
   render() {
     return (
       <form className="avatar" onSubmit={this.handleUploadImage} encType="multipart/form-data">
-        <div>
+        <div className="downloadAvatar">
           <input ref={(ref) => { this.uploadInput = ref; }} type="file" accept=".jpg, .jpeg, .png, .gif" />
         </div>
         <br />
