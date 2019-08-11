@@ -13,8 +13,8 @@ import './article.scss';
 // import articles from 'src/data';
 
 const opts = {
-  height: '300',
-  width: '600',
+  height: '315',
+  width: '560',
   playerVars: {
     modestbranding: 1,
     autohide: 1,
@@ -49,11 +49,13 @@ const Article = ({
     // eslint-disable-next-line no-else-return
     else {
       return (
-        <YouTube
-          className="video"
-          videoId={article.videoId}
-          opts={opts}
-        />
+        <div className="video-container">
+          <YouTube
+            className="video"
+            videoId={article.videoId}
+            opts={opts}
+          />
+        </div>
       );
     }
   };

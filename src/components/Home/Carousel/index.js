@@ -32,8 +32,8 @@ class Carousel extends Component {
 
   render() {
     const opts = {
-      height: '500',
-      width: '300',
+      height: '560',
+      width: '315',
       playerVars: {
         modestbranding: 1,
         autohide: 1,
@@ -45,7 +45,7 @@ class Carousel extends Component {
       <div id="Carousel">
         <ReactCarousel showThumbs={false}>
           {this.videoLinks.map(video => (
-            <div key={video.link}>
+            <div className="video-container-carousel video-wrapper" key={video.link}>
               <YouTube
                 videoId={video.link}
                 opts={opts}
