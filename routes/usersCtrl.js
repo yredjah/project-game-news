@@ -106,7 +106,7 @@ module.exports = {
       return res.status(400).json({ 'error': 'wrong token' });
 
     models.User.findOne({
-      attributes: [ 'id', 'mail', 'username', 'firstname', 'lastname' ],
+      attributes: [ 'id', 'mail', 'username', 'firstname', 'lastname', 'avatar' ],
       where: { id: userId },
       include: [{
         model: models.Role,
@@ -195,8 +195,6 @@ module.exports = {
       }]
     }).then((genres) => {
       models.Plateform.findAll({
-        attributes: [ 'id', 'mail', 'username', 'firstname', 'lastname', 'avatar' ],
-        where: { id: userId },
         include: [{
           model: models.User_like_Plateform,
           where: {PlateformId: models.sequelize.literal('Plateform.id'), UserId: userId},
