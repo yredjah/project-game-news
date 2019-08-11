@@ -136,6 +136,18 @@ const initialState = {
     userName: '',
     mail: '',
   },
+  preferencies: {
+    genres: [
+      {
+        name: '',
+      },
+    ],
+    plateforms: [
+      {
+        name: '',
+      },
+    ],
+  },
 };
 
 // == Types
@@ -153,6 +165,9 @@ export const GET_GENRE = 'GET_GENRE';
 export const GET_ONE_ARTICLE = 'GET_ONE_ARTICLE';
 export const ADD_LIKE = 'ADD_LIKE';
 export const ADD_DISLIKE = 'ADD_DISLIKE';
+export const GET_PREFERENCIES = 'GET_PREFERENCIES';
+export const SEND_PREFERENCIES = 'SEND_PREFERENCIES';
+export const DEL_PREFERENCIES = 'DEL_PREFERENCIES';
 const SET_ARTICLES = 'SET_ARTICLES';
 const CLEAN_REGISTER_FIELDS = ' CLEAN_REGISTER_FILEDS';
 const SET_USERS_LOGIN = 'SET_USERS_LOGIN';
@@ -163,6 +178,7 @@ const SET_USER_INFO = 'SET_USER_INFO';
 const SET_PLATEFORM = 'SET_PLATEFORM';
 const SET_GENRE = 'SET_GENRE';
 const SET_ONE_ARTICLE = 'SET_ONE_ARTICLE';
+const SET_PREFERENCIES = 'SET_PREFERENCIES';
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -241,6 +257,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         article: action.article,
+      };
+    case SET_PREFERENCIES:
+      return {
+        ...state,
+        preferencies: action.preferencies,
       };
     default:
       return state;
@@ -349,6 +370,23 @@ export const addALike = () => ({
 });
 export const addADislike = () => ({
   type: ADD_DISLIKE,
+});
+export const getPreferencies = () => ({
+  type: GET_PREFERENCIES,
+});
+export const setPreferencies = preferencies => ({
+  type: SET_PREFERENCIES,
+  preferencies,
+});
+export const sendPreferencies = (name, category) => ({
+  type: SEND_PREFERENCIES,
+  name,
+  category,
+});
+export const delPreferencies = (name, category) => ({
+  type: DEL_PREFERENCIES,
+  name,
+  category,
 });
 
 // == Export

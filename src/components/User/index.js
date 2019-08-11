@@ -6,6 +6,7 @@ import { Menu } from 'semantic-ui-react';
 import './user.scss';
 import UserHome from 'src/containers/UserHome';
 import UserAvatar from 'src/components/User/UserAvatar';
+import UserPreferencies from 'src/containers/UserPreferencies';
 
 // == Composant
 class User extends Component {
@@ -37,16 +38,13 @@ class User extends Component {
                   onClick={this.handleItemClick}
                 />
               </Link>
-              <Menu.Item
-                name='favorits'
-                active={activeItem === 'favorits'}
-                onClick={this.handleItemClick}
-              />
-              <Menu.Item
-                name='preferencies'
-                active={activeItem === 'preferencies'}
-                onClick={this.handleItemClick}
-              />
+              <Link to="/user/Preferencies" exact>
+                <Menu.Item
+                  name='preferencies'
+                  active={activeItem === 'preferencies'}
+                  onClick={this.handleItemClick}
+                />
+              </Link>
               <Link to="/user/admin" exact>
                 <Menu.Item
                   name='admin'
@@ -59,6 +57,7 @@ class User extends Component {
           <div className="left-container">
             <Route path="/user" exact component={UserHome} />
             <Route path="/user/Avatar" exact component={UserAvatar} />
+            <Route path="/user/Preferencies" exact component={UserPreferencies} />
           </div>
         </div>
         )}

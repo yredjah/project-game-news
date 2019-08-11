@@ -23,6 +23,11 @@ import {
   ADD_DISLIKE,
   getGenres,
   getPlateform,
+  GET_PREFERENCIES,
+  setPreferencies,
+  SEND_PREFERENCIES,
+  getPreferencies,
+  DEL_PREFERENCIES,
 } from 'src/store/reducer';
 
 const logMiddleware = store => next => (action) => {
@@ -274,6 +279,71 @@ const logMiddleware = store => next => (action) => {
         .then((response) => {
           console.log(response.data);
           store.dispatch(setOneArticle(response.data));
+        })
+        // en cas d'echec : catch
+        .catch((error) => {
+          console.error(error.message);
+          console.error(error.response);
+        });
+      break;
+    case GET_PREFERENCIES:
+      // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.request({
+        url: 'http://localhost:3000/api/users/getPreferencies',
+        method: 'post',
+        headers: {
+          authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`,
+        },
+      })
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(setPreferencies(response.data));
+        })
+        // en cas d'echec : catch
+        .catch((error) => {
+          console.error(error.message);
+          console.error(error.response);
+        });
+      break;
+    case SEND_PREFERENCIES:
+      // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.request({
+        url: 'http://localhost:3000/api/users/setPreference',
+        method: 'post',
+        data: {
+          name: action.name,
+          category: action.category,
+        },
+        headers: {
+          authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`,
+        },
+      })
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(getPreferencies());
+        })
+        // en cas d'echec : catch
+        .catch((error) => {
+          console.error(error.message);
+          console.error(error.response);
+        });
+      break;
+    case DEL_PREFERENCIES:
+      // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.request({
+        url: 'http://localhost:3000/api/users/delPreference/',
+        method: 'post',
+        data: {
+          name: action.name,
+          category: action.category,
+        },
+        headers: {
+          authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`,
+        },
+      })
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(getPreferencies());
         })
         // en cas d'echec : catch
         .catch((error) => {

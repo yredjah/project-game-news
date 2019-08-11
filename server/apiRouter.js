@@ -38,11 +38,16 @@ exports.router = (function() {
   apiRouter.route('/users/register/').post(usersCtrl.register);
   apiRouter.route('/users/login/').post(usersCtrl.login);
   apiRouter.route('/users/me/').get(usersCtrl.getUserProfile);
+  apiRouter.route('/users/selectPreferencies/').post(usersCtrl.selectPreferencies);
+  apiRouter.route('/users/getPreferencies/').post(usersCtrl.getPreferencies);
+  apiRouter.route('/users/setPreference/').post(usersCtrl.setPreference);
+  apiRouter.route('/users/delPreference/').post(usersCtrl.delPreference);
   apiRouter.route('/articles/addArticle/').post(articlesCtrl.addArticles);
   apiRouter.route('/articles/listArticle/').get(articlesCtrl.listArticles);
   apiRouter.route('/articles/getOne/').post(articlesCtrl.getOne);
   apiRouter.route('/articles/addLike/').post(articlesCtrl.addLike);
   apiRouter.route('/articles/addDislike/').post(articlesCtrl.addDislike);
+  apiRouter.route('/articles/sortArticlesByPlateform/').post(articlesCtrl.sortArticlesByPlateform);
   apiRouter.route('/mailer/').post(mailerCtrl.mailer);
   apiRouter.route('/commentary/').post(commentaryCtrl.createComment);
   apiRouter.route('/commentary/articlecom').get(commentaryCtrl.getCommentary);
