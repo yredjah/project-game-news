@@ -1,13 +1,13 @@
 .left-container{
-  margin-right:auto;
-  margin-left:auto;
+  //margin: 50px;
   @media screen and (max-width: 1000px) {
     width: 100%;
+
   }
 }
 
 .userInfo {
-  width: 200%;
+  width: 20%;
   margin: auto;
   margin-top: 30px;
   margin-bottom: 30px;
