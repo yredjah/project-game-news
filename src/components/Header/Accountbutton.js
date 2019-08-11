@@ -1,7 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Button, Icon, Dropdown } from 'semantic-ui-react';
-
+import { 
+  Menu, 
+  Button, 
+  Icon, 
+  Dropdown, 
+  Image,
+} from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 import './header.scss';
 
@@ -19,13 +25,10 @@ const options = [
   },
 ];
 
-const AccountButton = () => {
-
+const AccountButton = ({ avatar }) => {
   const trigger = (
     <span>
-      <Icon.Group color="primary" size="huge">
-        <Icon size="small" name="user circle" />
-      </Icon.Group>
+      <Image src={`public/avatarUploads/${avatar}`} size='mini' circular />
     </span>
   );
   return (
@@ -37,6 +40,10 @@ const AccountButton = () => {
       </div> */}
     </div>
   );
+};
+
+AccountButton.propTypes = {
+  avatar: PropTypes.string.isRequired,
 };
 
 export default AccountButton;

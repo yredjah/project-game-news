@@ -20,9 +20,17 @@ class UserAvatar extends Component {
 
     const data = new FormData();
     data.append('file', this.uploadInput.files[0]);
-
-    axios.post('http://localhost:3000/api/upload', data)
+    
+    axios.request({
+      url: 'http://localhost:3000/api/upload',
+      method: 'post',
+      data,
+      headers: {
+        authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`,
+      },
+    })
       .then((response) => {
+        window.location.href = '/user';
         this.setState({ imageURL: `http://localhost:8080/${response.data.file}` });
       });
   }
@@ -30,7 +38,7 @@ class UserAvatar extends Component {
   render() {
     return (
       <form className="avatar" onSubmit={this.handleUploadImage} encType="multipart/form-data">
-        <div>
+        <div className="downloadAvatar">
           <input ref={(ref) => { this.uploadInput = ref; }} type="file" accept=".jpg, .jpeg, .png, .gif" />
         </div>
         <br />

@@ -8,10 +8,21 @@
   border-radius: 1em;
   background-color: white;
   box-shadow: 15px 8px 10px lightgrey;
+  
+  @media screen and (max-width: 1000px) {
+    width: 80%;
+  }
 }
 
 .avatar-img {
   width: 50%;
   margin-top: 20px;
+}
+
+
+.downloadAvatar {
+  @media screen and (max-width: 1000px) {
+    font-size: 85%;
+  }
 }
 

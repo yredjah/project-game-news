@@ -108,6 +108,7 @@ const logMiddleware = store => next => (action) => {
             response.data.lastname,
             response.data.mail,
             response.data.Role.name,
+            response.data.avatar,
           ));
         })
         // en cas d'echec : catch

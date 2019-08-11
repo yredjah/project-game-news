@@ -1,31 +1,51 @@
 /* eslint-disable */
 const path = require('path');
 const fileUpload = require('express-fileupload');
+const jwtUtils = require('../utils/jwt.utils.js');
+const del = require('del');
+const models = require('../models');
 
 
 module.exports = {
   upload: function(req, res, next){
-    // console.log('1. file', req.file);
-    // console.log('2. files', req.files);
 
-    // const imageFile = req.files.file;
-
-    let imageFile = req.files.file;
-    // console.log({ imageFile });
-    // console.log('req.body.file', req.body.file);
-
+    const headerAuth  = req.headers['authorization']; //get authorization/token from headers
+    const userId      = jwtUtils.getUserId(headerAuth); // get userId from token
+    
+    const imageFile = req.files.file;
     const uploadPath = path.join(__dirname, '..', 'public/avatarUploads');
-    // console.log({ uploadPath });
 
-    // imageFile.mv(`${__dirname}/public/${req.body.file}.jpg`, function (err) {
-    imageFile.mv(`${uploadPath}/${req.files.file.name}`, function(err) {
-      // console.log({ err });
-
-      if (err) {
-       return res.status(500).send(err);
+    models.User.findOne({
+      where: {id: userId}
+    }) //on cherche l'utilisateur
+    .then(userFound => {
+      if (userFound.avatar != null) { //on regarde si il a deja un avatar
+        del.sync([uploadPath + '/' + userFound.avatar]); //si oui on le supprime
       }
 
-      res.json({file: `public/avatarUploads/${req.files.file.name}`});
-    });
+      const arrayName = req.files.file.name.split('.');
+      const length = arrayName.length;
+
+      const changeImgName = userId + '.' + arrayName[length-1]; 
+    
+      imageFile.mv(`${uploadPath}/${changeImgName}`, function(err) {
+      
+        if (err) {
+        return res.status(500).json({'error': 'unable to upload image',err});
+        }
+        res.json({file: `public/avatarUploads/${changeImgName}`});
+        
+      });
+      userFound.update({avatar: changeImgName}) // on mes a jour l'avatar dans la base
+      .then(result => (
+        res.json({file: `public/avatarUploads/${changeImgName}`})
+      ))
+      .catch(err => (
+        res.status(500).json({'error': 'unable to update avatar', err})
+      ))
+    })
+    .catch(err => (
+      res.status(500).json({'error': 'unable to find user', err})
+    ));
   },
 };

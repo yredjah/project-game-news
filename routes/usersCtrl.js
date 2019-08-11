@@ -195,6 +195,8 @@ module.exports = {
       }]
     }).then((genres) => {
       models.Plateform.findAll({
+        attributes: [ 'id', 'mail', 'username', 'firstname', 'lastname', 'avatar' ],
+        where: { id: userId },
         include: [{
           model: models.User_like_Plateform,
           where: {PlateformId: models.sequelize.literal('Plateform.id'), UserId: userId},
