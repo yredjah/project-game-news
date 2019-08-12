@@ -18,7 +18,6 @@ const mapStateToProps = state => ({
   creatGenre: state.creatGenre,
   creatGenre2: state.creatGenre2,
   creatGenre3: state.creatGenre3,
-
 });
 
 const mapDispatchToProps = dispatch => ({
