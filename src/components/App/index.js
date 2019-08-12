@@ -14,6 +14,7 @@ import Legal from 'src/components/Legal';
 import User from 'src/components/User';
 import Contact from 'src/containers/Contact';
 import AdminPanel from 'src/containers/AdminPanel';
+import SortArticles from 'src/containers/SortArticles';
 import './app.scss';
 
 // == Composant
@@ -32,6 +33,7 @@ const App = () => (
       <Route path="/contact" exact component={Contact} />
       <Route path="/user" component={User} />
       <Route path="/user/admin" exact component={AdminPanel} />
+      <Route path="/sort/:type/:category" exact component={SortArticles} />
     </main>
     <footer>
       <Footer />

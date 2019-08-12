@@ -155,6 +155,14 @@ const initialState = {
       },
     ],
   },
+  articlesSort: [{
+    id: '',
+    videoId: '',
+    image: '',
+    title: '',
+    resume: '',
+    text: '',
+  }],
 };
 
 // == Types
@@ -175,6 +183,8 @@ export const ADD_DISLIKE = 'ADD_DISLIKE';
 export const GET_PREFERENCIES = 'GET_PREFERENCIES';
 export const SEND_PREFERENCIES = 'SEND_PREFERENCIES';
 export const DEL_PREFERENCIES = 'DEL_PREFERENCIES';
+export const SORT_ARTICLES_BY_PLATEFROM = 'SORT_ARTICLES_BY_PLATEFROM';
+export const SET_SORT_ARTICLES_BY_GENRE = 'SET_SORT_ARTICLES_BY_GENRE';
 const SET_ARTICLES = 'SET_ARTICLES';
 const CLEAN_REGISTER_FIELDS = ' CLEAN_REGISTER_FILEDS';
 const SET_USERS_LOGIN = 'SET_USERS_LOGIN';
@@ -185,6 +195,7 @@ const SET_PLATEFORM = 'SET_PLATEFORM';
 const SET_GENRE = 'SET_GENRE';
 const SET_ONE_ARTICLE = 'SET_ONE_ARTICLE';
 const SET_PREFERENCIES = 'SET_PREFERENCIES';
+const SET_SORT_ARTICLES = 'SET_SORT_ARTICLES';
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -255,6 +266,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         preferencies: action.preferencies,
+      };
+    case SET_SORT_ARTICLES:
+      return {
+        ...state,
+        articlesSort: action.articles,
       };
     default:
       return state;
@@ -376,6 +392,18 @@ export const sendPreferencies = (name, category) => ({
 export const delPreferencies = (name, category) => ({
   type: DEL_PREFERENCIES,
   name,
+  category,
+});
+export const SortArticlesByPlateform = category => ({
+  type: SORT_ARTICLES_BY_PLATEFROM,
+  category,
+});
+export const setArticlesSort = articles => ({
+  type: SET_SORT_ARTICLES,
+  articles,
+});
+export const SortArticlesByGenre = category => ({
+  type: SET_SORT_ARTICLES_BY_GENRE,
   category,
 });
 
