@@ -4,19 +4,21 @@ import { Link } from 'react-router-dom';
 import {
   Menu,
   Segment,
-  Input,
   Dropdown,
   Button,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import logo from './logo.png';
+import logo1 from './logo.png';
+
 import AccountButton from './Accountbutton';
+// import Hambergertton from './Hambergertton';
 
 // == Import : local
 import './header.scss';
+import './responsiveHeader.scss';
 
 
-// == Composant
+// == Composants
 const Header = ({
   activeItem,
   setItem,
@@ -25,17 +27,21 @@ const Header = ({
   getAllPlateforms,
   getAllGenres,
   avatar,
+  userInfo,
 }) => {
   const handleItemClick = (e, { name }) => setItem(name);
   // const options = genres;
   useEffect(() => {
     getAllPlateforms();
     getAllGenres();
+    userInfo();
   }, []);
+  userInfo();
   return (
     <div className="header">
       <div className="container-head">
-        <Link to="/" exact><h1 id="title"><img className="logo" src={logo} alt="" />Game news</h1></Link>
+        <Link to="/" exact><h1 id="title"><img className="logo" src={logo1} alt="" />Game news</h1></Link>
+        {/* <Link to="/" exact><img id="logo2" src={logo2} alt="" /></Link> */}
         <div className="container-head-right">
           {JSON.parse(sessionStorage.getItem('token'))
             && <div><AccountButton avatar={avatar} /></div>
@@ -47,13 +53,13 @@ const Header = ({
                 to="/Sign_Up"
                 exact
               >
-                <Button className="lg" primary>Sign Up</Button>
+                <Button className="lg button" primary>Sign-Up</Button>
               </Link>
               <Link
                 to="/login"
                 exact
               >
-                <Button className="lg">Login</Button>
+                <Button className="lg button">Login</Button>
               </Link>
             </div>
             )
@@ -61,9 +67,10 @@ const Header = ({
         </div>
       </div>
       <Segment inverted className="nav">
-        <Menu inverted secondary>
+        <Menu className="nav-menu" inverted secondary>
           {categories.map(category => (
             <Menu.Item
+              className="nav-menu-1"
               key={category.id}
               name={category.name}
               active={activeItem === category.name}
@@ -71,6 +78,7 @@ const Header = ({
             />
           ))}
           <Menu.Item
+            className="nav-menu-2"
             active={activeItem === 'GAMES'}
           >
             <Dropdown text="TYPES" simple item>
@@ -83,7 +91,7 @@ const Header = ({
           </Menu.Item>
         </Menu>
         <div className="searchBar">
-          <Input type="text" icon="search" placeholder="Search..." />
+          <input type="text" icon="search" placeholder="   Search..." />
         </div>
       </Segment>
     </div>
@@ -98,6 +106,7 @@ Header.propTypes = {
   getAllPlateforms: PropTypes.func.isRequired,
   getAllGenres: PropTypes.func.isRequired,
   avatar: PropTypes.string.isRequired,
+  userInfo: PropTypes.func.isRequired,
 };
 
 // == Export

@@ -26,7 +26,7 @@ export default function Articles({ articles }) {
       <div id="divPincipal">
         <div className="news">
           <div id="news-title">
-            <Link to={`/article/${bignews.id}`} exact><p>{bignews.title}</p></Link>
+            <Link to={`/article/${bignews.id}`} exact><h2>{bignews.title}</h2></Link>
           </div>
           <div>
             <Link to={`/article/${bignews.id}`} exact>
@@ -49,11 +49,14 @@ export default function Articles({ articles }) {
                 <Link to={`/article/${newss.id}`} exact>
                   <h3> {newss.title}</h3>
                 </Link>
-                <p>{newss.resume}<Link className="arrow" to={`/article/${newss.id}`} exact /></p>
+                <p>{newss.resume}</p>
+                <div className="arrow">
+                  <Link to={`/article/${newss.id}`} exact />
+                </div>
+
               </div>
             </div>
-          ))
-        }
+          ))}
         </div>
       </div>
 

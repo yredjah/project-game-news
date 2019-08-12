@@ -1,8 +1,12 @@
+#PageArticle{
+  padding: 0em 3em 0em 3em;
+}
+
 #Article{
-  margin: 1em;
-  padding: 1em;
+  padding: 3em 1em 1em 1em;
   border: 2px solid lightgrey;
-  border-radius: 1em;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
   background-color: white;
   box-shadow: 15px 8px 10px lightgrey;
 
@@ -47,31 +51,42 @@
     margin-top:1em;
     border:1px solid lightgrey;
     border-radius: 0.5em;
-    padding:0.5em;
+    padding: 1em;
     position: relative;
     background-color: white;
     box-shadow: 15px 8px 10px lightgrey;
-
-    // .date{
-    //   position: absolute;
-    //   top: 0.5em;
-    //   right: 0.5em;
-    //   font-size: 0.8em;
-    //   color: grey;
-    // }
 
     p{
       font-size: 0.9em;
     }
   }
   #commentaries-list{
-    border-radius: .3em;
-    background-color: rgb(236, 233, 233);
-    border: 1px solid rgb(197, 195, 195);
-    margin-bottom: .3em;
-    padding: .6em;
+    display: flex;
   }
 }
+
+#userInfo{
+  display: flex;
+  flex:wrap;
+  justify-content: space-between; 
+  #userInfo-date{
+    font-size: 0.8em;
+    color: rgb(34, 139, 201);
+  }
+  #userInfo-userName{
+    color: orangered;
+    font-weight: bold;
+  }
+}
+
+#userMessage{
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 1em;
+  background-color: #E9EBEE;
+  width: 100%;
+}
+
 
 @media screen and (max-width: 1000px) {
   .video-container {

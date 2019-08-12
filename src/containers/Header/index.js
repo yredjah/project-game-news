@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Header from 'src/components/Header';
 
 // Action Creators
-import { setActiveItem, getPlateform, getGenres } from 'src/store/reducer';
+import { setActiveItem, getPlateform, getGenres, getUserInfo } from 'src/store/reducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -37,6 +37,9 @@ const mapDispatchToProps = dispatch => ({
   },
   getAllGenres: (name) => {
     dispatch(getGenres(name));
+  },
+  userInfo: () => {
+    dispatch(getUserInfo());
   },
 });
 

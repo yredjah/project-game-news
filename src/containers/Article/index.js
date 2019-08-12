@@ -3,7 +3,14 @@ import { connect } from 'react-redux';
 
 // == Import : local
 import Article from 'src/components/Article';
-import { onsubmitCommentary, onInputChange, getOneArticle, addALike, addADislike } from 'src/store/reducer';
+import {
+  onsubmitCommentary,
+  getCommentary,
+  onInputChange,
+  getOneArticle,
+  addALike,
+  addADislike,
+} from 'src/store/reducer';
 
 
 // Action Creators
@@ -34,9 +41,12 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   InputChange: (name, value) => {
     dispatch(onInputChange(name, value));
   },
-  addMessage: () => {
+  onSubmitForm: () => {
     console.log('add message');
     dispatch(onsubmitCommentary());
+  },
+  getAllCommentary: (articleId) => {
+    dispatch(getCommentary(articleId));
   },
   getArticle: (articleId) => {
     console.log('add message');

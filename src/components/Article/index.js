@@ -1,7 +1,7 @@
 // == Import : npm
 import React, {useEffect} from 'react';
 import YouTube from 'react-youtube';
-import { Icon, Form, TextArea, Button, Label } from 'semantic-ui-react';
+import { Icon, Form, TextArea, Button, Label, Image } from 'semantic-ui-react';
 import ShareLink from 'react-twitter-share-link';
 import FacebookShareLink from 'react-facebook-share-link';
 import PropTypes from 'prop-types';
@@ -13,8 +13,8 @@ import './article.scss';
 // import articles from 'src/data';
 
 const opts = {
-  height: '315',
-  width: '560',
+  height: '300',
+  width: '600',
   playerVars: {
     modestbranding: 1,
     autohide: 1,
@@ -29,17 +29,19 @@ const Article = ({
   messagesList,
   newMessage,
   InputChange,
-  addMessage,
+  onSubmitForm,
+  getAllCommentary,
   getArticle,
   addLike,
   addDislike,
 }) => {
   // const article = articles.find(element => (
   //   // console.log(props.match.params);
-  //   element.id === match.params.id
+  //   element.id === match.params.id 
   // ));
   useEffect(() => {
     getArticle(parseInt(match.params.id, 10));
+    getAllCommentary(parseInt(match.params.id, 10));
   }, []);
 
   const checkVideoExistance = () => {
@@ -63,14 +65,13 @@ const Article = ({
     const { name: fieldName, value: fieldValue } = evt.target;
     InputChange(fieldName, fieldValue);
   };
-  const submitHandler = (event) => {
-    event.preventDefault();
-    console.log('submit handler');
-    addMessage();
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onSubmitForm();
   };
 
   return (
-    <div>
+    <div id="PageArticle">
       <div id="Article">
         {checkVideoExistance()}
         <h2 className="title">{article.title}</h2>
@@ -109,7 +110,7 @@ const Article = ({
         </div>
         <div className="form">
         Espace commentaire:
-          <Form onSubmit={submitHandler} className="form-text">
+          <Form onSubmit={handleSubmit} className="form-text">
             <TextArea
               onChange={handleChange}
               type="newMessage"
@@ -125,9 +126,17 @@ const Article = ({
           <ul>
             {messagesList.map(message => (
               <li id="commentaries-list" key={message.id}>
-                <h4>{message.username}</h4>
-                <p className="date">{message.time}</p>
-                <span>{message.label}</span>
+                <div>
+                  <Image src="public/avatarUploads/imagtest.jpeg" size="mini" circular />
+                </div>
+
+                <div id="userMessage">
+                  <div id="userInfo">
+                    <h4 id="userInfo-userName">{message.User.userName}</h4>
+                    <p id="userInfo-date">{message.createdAt}</p>
+                  </div>
+                  <span>{message.commentary}</span>
+                </div>
               </li>
             ))}
           </ul>
@@ -140,10 +149,11 @@ const Article = ({
 Article.propTypes = {
   match: PropTypes.object.isRequired,
   article: PropTypes.object.isRequired,
-  addMessage: PropTypes.func.isRequired,
+  onSubmitForm: PropTypes.func.isRequired,
   addLike: PropTypes.func.isRequired,
   addDislike: PropTypes.func.isRequired,
   InputChange: PropTypes.func.isRequired,
+  getAllCommentary: PropTypes.func.isRequired,
   getArticle: PropTypes.func.isRequired,
   newMessage: PropTypes.string.isRequired,
   messagesList: PropTypes.arrayOf(

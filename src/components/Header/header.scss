@@ -1,14 +1,18 @@
 .container-head {
   display: flex;
   justify-content: space-between;
-
-
+  width: 100%;
 }
 
+.container-head-right {
+  justify-content: space-between;
+  align-self: center;
+  padding: 2em 1em 0 0;
+}
 #title {
-  font-size: 64px;
-  margin: 10px;
+  font-size: 5em;
   color: black;
+  margin: 0.1em 0 0 0.1em;
 }
 
 .logo {
@@ -19,19 +23,32 @@
   display: flex;
   justify-content: space-between;
   height: 5em;
-
-
+  width: 100% !important;
+  &-menu{
+    display: flex !important;
+  }
+  margin: 0 !important;
 }
+
 
 .searchBar {
-  height: 1em;
+  height: 100%;
+  width: 25em;
+
+}
+input{
+  height: 100%;
+  float: right;
+  width: 45%;
+  border-radius: 20px !important;
+  transition: box-shadow .3s;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  &:focus {
+    width: 100% !important;
+  }
 }
 
-.container-head-right {
-  margin-top: 45px;
-  margin-right: 10px;
-  justify-content: space-between;
-}
 
 
 .settings--open{
@@ -48,5 +65,4 @@
 #AccountButton{
   margin-right: 2rem;
 }
-
 

@@ -7,7 +7,7 @@ module.exports = {
   // getting header
   const headerAuth  = req.headers['authorization'];
   const userId      = jwtUtils.getUserId(headerAuth);
-  const articleId = req.body.articleId;
+  const articleId = req.body.ArticleId;
   // Params
   const commentary = req.body.commentary;
 
@@ -25,7 +25,7 @@ module.exports = {
           UserId: userFound.id,
           ArticleId: articleId,
         }).then(function (newComment) {
-          return res.status(201).json({newComment});
+          return res.status(201).json(newComment);
         }).catch(function(err) {
           return res.status(500).json({'error': 'unable to creat new comment', err});
         });
@@ -41,13 +41,13 @@ module.exports = {
     const articleId = req.body.articleId;
 
     models.Commentary.findAll({
-      where: {articleId: articleId},
+      where: {ArticleId: articleId},
       include: [{
         model: models.User,
-        attributes: ['userName'],
+        attributes: ['userName', 'avatar'],
       }]
     }).then(function(commentary) {
-      return res.status(500).json({ commentary});
+      return res.status(200).json(commentary);
     }).catch(function(err) {
       res.status(500).json({ 'error': 'cannot find commentary', err });
     });

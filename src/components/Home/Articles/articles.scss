@@ -3,7 +3,6 @@
   display: flex;
   justify-content: space-around;
   flex-flow: row wrap;
-  
 }
 
 #cards {
@@ -11,12 +10,6 @@
   box-shadow: 15px 10px 5px lightgrey;
   height: 520px;
   width: 450px;
-  @media screen and (max-width: 1000px) {
-    width: 70%;
-    height: 80%;
-    margin-right: auto;
-    margin-left: auto;
-  }
 }
 .divimg{
   overflow: hidden;
@@ -35,8 +28,8 @@
     }
 }
 .news-BigTitle{
-
-  margin: 50px 10px 30px 10px;
+  font-size: 1.5vw;
+  margin: 2% 0% 2% 0%;
   color: #e02832;
   &::before{
     margin-right: 10px;
@@ -44,7 +37,7 @@
     content: "";
   display: inline-block;
   background-size: contain;
-  width: 20em;
+  width: 30%;
   height: .40em;
   }
   &::after{
@@ -53,21 +46,28 @@
     margin-left: 10px;
   display: inline-block;
   background-size: contain;
-  width: 20em;
+  width: 30%;
   height: .40em;
   }
   
 }
 .news-smallTitle{
   color: #e02832;
-  border-bottom: 4px solid #e02832;
+  border-bottom: 0.5vh solid #e02832;
   width: 40%;
-  margin-left: 30%;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 2vh;
+  padding-bottom: 1vh;
+  & h3{
+    font-size: 1vw;
+  }
+
 }
+
 #divPincipal{
   width: 100%;
+  height: 50%;
   display: flex;
   flex: wrap;
   background-color: white;
@@ -76,7 +76,7 @@
 .news{
   position: relative;
   width: 60%;
-  margin: 20px 30px 20px 20px;
+  margin: 1% 1.5% 1% 1%;
   overflow:hidden;
 
   &-header{
@@ -89,20 +89,21 @@
   }
 }
 #news-title{
-  padding: 20px;
+  padding: 2%;
   position: absolute;
-  z-index: 200;
+  z-index: 100;
   width: 100%;
   bottom:0;
   color: white;
-  font-size: 1.7em;
-  font-weight: 400;
+  font-weight: bold;
   text-align: justify;
   background-color: rgba(0, 0, 0, 0.75);
   transition: background-color 250ms ease;
   &:hover{
     background-color: rgb(0, 0, 0);
-    color: #FF3C1F;
+  }
+  & h2{
+    font-size: 1.2vw;
   }
 }
 .news-header-image{
@@ -112,9 +113,8 @@
 .divSecondaire2{
   border-left: 1px solid grey;
   display: block;
-  height: 650px;;
   width: 40%;
-  padding: 20px 20px 20px 30px;
+  padding: 1% 1% 1% 1%;
   overflow-y: scroll;
 }
 .container{
@@ -125,12 +125,12 @@
   margin-bottom: 20px;
 }
 .container-1{
-  width: 30vw;
+  width: 30%;
   overflow: hidden;
 }
 .container-1-img{
-  width: 100%;
   height: 100%;
+  width: 100%;
   transform: scale(1);
   transition: all 300ms ease-out;
 }
@@ -138,27 +138,42 @@
   transform: scale(1.08);
 }
 .container-2{
-  width: 65vw;
-  margin-left: 20px;
+  width: 68%;
+  margin-left: 2%;
   border-bottom: 1px solid grey;
+
 }
 .container-2 p{
+  margin-bottom: 0;
   text-align: left;
-  padding-bottom:15px;
-  margin-top: 5px;
+  margin-top: 1%;
+  max-height: 52.5%;
+  max-width: 100%;
+  font-size: 0.9vw;
+  overflow: hidden;
+  line-height: 1.2em;
 }
-.arrow:after{
-  content: "";
-  display: inline-block;
-  background: url("./arrow.svg") no-repeat center;
-  background-size: contain;
-  width: .8em;
-  height: .8em;
-  margin-left: 25em;
-  transform: rotate(1turn);
+
+.arrow{
+  width: 100%;
+  height: 23.75%;
+  text-align: right;
+  &:after{
+    content: "";
+    display: inline-block;
+    background: url("./arrow.svg") no-repeat center;
+    background-size: contain;
+    width: 0.9em;
+    height: 0.9em;
+    transform: rotate(1turn);
+    
+  }
 }
 .container-2 h3{
-  text-align: left;
+  text-align: justify;
+  font-size: 0.9vw;
+  height: 23.75%;
+  overflow: hidden;
 }
 
 .card-resume {

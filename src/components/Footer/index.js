@@ -23,10 +23,10 @@ const Footer = () => (
       </Link>
     </div>
     <p>&copy; 2019 Game news</p>
-    <div className="icons">
+    {/* <div className="icons">
       <Icon name="twitter square" size="big" color="blue" />
       <Icon name="facebook square" size="big" color="blue" />
-    </div>
+    </div> */}
   </div>
 );
 

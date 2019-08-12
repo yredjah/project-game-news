@@ -1,4 +1,6 @@
 .creator{
+  display: flex;
+  flex: wrap;
   margin: 1em;
   margin-left: 13%;
   padding: 1em;
@@ -10,30 +12,78 @@
     width: 50%;
     margin: auto;
   }
+  & h1{
+    color: #FF3C1F;
+    border: 1px solid#1B1C1D;
+    border-radius: 15px;
+    background-color: #1B1C1D;
+    font-weight: 100;
+    line-height: 1.5em;
+  }
 }
 
 .fieldgroup1{
   margin-top: 1%;
   width: 100%;
   display: flex;
+  color: #2185D0;
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid red;
+  border: 2px solid #2185D0;
+  border-radius: 20px;
+  padding: 1%;
   &-input{
-    width: 45%;
+    width: 30%;
   }
 }
 .fieldgroup2{
   margin-top: 1%;
   width: 100%;
   display: flex;
+  color: #2185D0;
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid red;
+  border: 2px solid #2185D0;
+  border-radius: 20px;
+  padding: 1%;
+  &-input{
+    width: 48%;
+  }
+}
+.fieldgroup3{
+  margin-top: 1%;
+  width: 100%;
+  display: flex;
+  color: #2185D0;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #2185D0;
+  border-radius: 20px;
+  padding: 1%;
+  justify-content: center;
+}
+.fieldgroup4{
+  margin-top: 1%;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #2185D0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding-top: 1%;
   &-input{
     width: 100%;
+    text-decoration: none;
+  }
+  & p{
+    color: #2185D0;
+    align-items: center;
+    margin: auto;
   }
 }
 .btn{
