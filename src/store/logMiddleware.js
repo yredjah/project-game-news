@@ -29,6 +29,9 @@ import {
   SEND_PREFERENCIES,
   getPreferencies,
   DEL_PREFERENCIES,
+  SORT_ARTICLES_BY_PLATEFROM,
+  setArticlesSort,
+  SET_SORT_ARTICLES_BY_GENRE,
 } from 'src/store/reducer';
 
 const logMiddleware = store => next => (action) => {
@@ -361,6 +364,44 @@ const logMiddleware = store => next => (action) => {
         .then((response) => {
           console.log(response.data);
           store.dispatch(getPreferencies());
+        })
+        // en cas d'echec : catch
+        .catch((error) => {
+          console.error(error.message);
+          console.error(error.response);
+        });
+      break;
+    case SORT_ARTICLES_BY_PLATEFROM:
+      // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.request({
+        url: 'http://localhost:3000/api/articles/sortArticlesByPlateform',
+        method: 'post',
+        data: {
+          category: action.category,
+        },
+      })
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(setArticlesSort(response.data));
+        })
+        // en cas d'echec : catch
+        .catch((error) => {
+          console.error(error.message);
+          console.error(error.response);
+        });
+      break;
+    case SET_SORT_ARTICLES_BY_GENRE:
+      // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.request({
+        url: 'http://localhost:3000/api/articles/sortArticlesByGenre',
+        method: 'post',
+        data: {
+          category: action.category,
+        },
+      })
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(setArticlesSort(response.data));
         })
         // en cas d'echec : catch
         .catch((error) => {

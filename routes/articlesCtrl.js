@@ -215,6 +215,7 @@ module.exports = {
     }).then((PlateformFound) => {
       models.Article.findAll({
         limit: NUMBER_OF_ARTICLE,
+        order: [['date', 'DESC']],
         include: [{
           model: models.Game,
           include: [{
@@ -242,6 +243,7 @@ module.exports = {
     }).then((genreFound) => {
       models.Article.findAll({
         limit: NUMBER_OF_ARTICLE,
+        order: [['date', 'DESC']],
         include: [{
           model: models.Game,
           include: [{
@@ -272,6 +274,7 @@ module.exports = {
         likedPlateforms.forEach((plateform) => {
           likedGenres.forEach((genre) => {
             models.Game.findAll({
+              order: [['createdAt', 'DESC']],
               include: [{
                 model: models.Game_has_Plateform,
                 where: {PlateformId: plateform.PlateformId,
