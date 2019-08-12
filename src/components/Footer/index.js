@@ -22,11 +22,15 @@ const Footer = () => (
         Accueil
       </Link>
     </div>
-    <p>&copy; 2019 Game news</p>
-    {/* <div className="icons">
-      <Icon name="twitter square" size="big" color="blue" />
-      <Icon name="facebook square" size="big" color="blue" />
-    </div> */}
+    <div className="text">
+      <p>&copy; 2019 Game news</p>
+    </div>
+    <div className="divicon">
+      <div className="icons">
+        <Icon name="twitter square" size="big" color="blue" />
+        <Icon name="facebook square" size="big" color="blue" />
+      </div>
+    </div>
   </div>
 );
 

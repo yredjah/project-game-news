@@ -59,8 +59,40 @@ export default function Articles({ articles }) {
           ))}
         </div>
       </div>
-
-
+      {JSON.parse(sessionStorage.getItem('token'))
+        && (
+          <>
+            <h1 className="news-BigTitle">YOUR PREFERENCIES</h1>
+            <div className="user-preferencies">
+              {
+                articlesList.map((article) => {
+                  return (
+                    <Link key={article.id} to={`/article/${article.id}`} exact>
+                      <Card id="cards">
+                        <div className="divimg">
+                          <Image
+                            className="image"
+                            src={article.image}
+                          />
+                        </div>
+                        <Card.Content>
+                          <Card.Header>{article.title}</Card.Header>
+                          <Card.Description className="card-resume">
+                            {article.resume}
+                          </Card.Description>
+                        </Card.Content>
+                        <Card.Content extra>
+                          <Button>Learn more</Button>
+                        </Card.Content>
+                      </Card>
+                    </Link>
+                  );
+                })
+              }
+            </div>
+          </>
+        )
+      }
       <h1 className="news-BigTitle">{bignews.articlesTitle}</h1>
       <div id="articles">
         {

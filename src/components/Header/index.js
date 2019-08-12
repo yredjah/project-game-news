@@ -91,7 +91,7 @@ const Header = ({
           </Menu.Item>
         </Menu>
         <div className="searchBar">
-          <input type="text" icon="search" placeholder="   Search..." />
+          <input id="seachinput" type="text" icon="search" placeholder="   Search..." />
         </div>
       </Segment>
     </div>

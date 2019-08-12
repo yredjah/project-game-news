@@ -2,7 +2,6 @@
   display: flex;
   flex: wrap;
   margin: 1em;
-  margin-left: 13%;
   padding: 1em;
   border: 2px solid lightgrey;
   border-radius: 1em;
@@ -102,17 +101,28 @@
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 700;
 
-    &.form-submit--article {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      &::before {
-        content: "";
-        background-size: contain;
-        height: 1.5em;
-        width: 1.5em;
-        margin-right: .6em;
-      }
-    }
+    
+  }
+}
+.btn-submit--article {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &::before {
+    content: "";
+    background: url("./assets/images/Pacman.svg") no-repeat bottom left;
+    background-size: contain;
+    height: 2.2em;
+    width: 2.2em;
+    margin-right: .6em;
+  }
+  &::after{
+    content: "";
+    background: url("./assets/images/controler.svg") no-repeat bottom left;
+    background-size: contain;
+    height: 1.5em;
+    width: 1.5em;
+    margin-left: .7em;
+    ;
   }
 }

@@ -9,7 +9,8 @@
 }
 
 #user-menu {
-  margin-top: 30px;
+  margin-top: 0;
+  background-color: black;
   @media screen and (max-width: 1000px) {
     width: 80% !important;
     margin-left: auto;
@@ -33,4 +34,12 @@
     margin-right: auto;
   }
 }
+.error{
+  font-weight: 900;
+  padding-top: 1em;
+  margin-bottom: 1em;
+}
 
+.link2{
+  margin-bottom: 2em;
+}
