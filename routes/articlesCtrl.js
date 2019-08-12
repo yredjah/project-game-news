@@ -204,4 +204,36 @@ module.exports = {
       ));
     })
   },
+  sortArticlesByPlateform: function (req, res) {
+    //we want to take out 30 articles from the database
+    const NUMBER_OF_ARTICLE = 30;
+
+    const category = req.body.category
+    const articles = [];
+
+    models.Plateform.findOne({
+      where: {name: category},
+    }).then(function(plateformFound) {
+      models.Game_has_Plateform.findAll({
+        where: {PlateformId: plateformFound.id},
+        include: [{
+          model: models.Game,
+        }]
+      }).then(relations => {
+        relations.forEach(element => {
+          models.Article.findOne({
+            where: {GameId: element.Game.id}
+          }).then(article => {
+            articles.push(article);
+          })
+        });
+      })
+      .catch(err => (
+          res.status(500).json({'error': 'unable to find game', err})
+      ))
+      }).catch(function(err) {
+        return res.status(500).json({'error': 'unable to find articles', err})
+      })
+    return res.status(200).json(articles);
+  },
 };

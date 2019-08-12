@@ -1,17 +1,36 @@
 #user-home {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @media screen and (max-width: 1000px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 #user-menu {
-  margin: 30px;
-  position: fixed;
+  margin-top: 30px;
+  @media screen and (max-width: 1000px) {
+    width: 80% !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+  }
 }
 
 #user-info {
-  margin: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  @media screen and (max-width: 1000px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .left-container{
-  margin-right:auto;
-  margin-left:auto;
+  @media screen and (max-width: 1000px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
+
