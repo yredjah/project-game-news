@@ -28,7 +28,7 @@ const options = [
 const AccountButton = ({ avatar }) => {
   const trigger = (
     <span>
-      <Image src={`public/avatarUploads/${avatar}`} size='mini' circular />
+      <Image src={`/public/avatarUploads/${avatar}`} size='mini' circular />
     </span>
   );
   return (

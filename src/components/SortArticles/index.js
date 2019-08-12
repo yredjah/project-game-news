@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 // == Import : local
 import 'src/components/Home/Articles/articles.scss';
+import 'src/components/SortArticles/sortarticles.scss';
 
 // == Composant
 const SortArticles = ({ match, getSortArticlesByPlateform, getSortArticlesByGenre, articlesSort }) => {
@@ -23,7 +24,7 @@ const SortArticles = ({ match, getSortArticlesByPlateform, getSortArticlesByGenr
 
   return (
     <div>
-      <h1 className="news-BigTitle">sort by {type} {category}</h1>
+      <h1 id="title-sort" className="news-BigTitle">sort by {type} {category}</h1>
       <div id="articles">
         {
           articlesSort.map((article) => {
@@ -33,7 +34,7 @@ const SortArticles = ({ match, getSortArticlesByPlateform, getSortArticlesByGenr
                   <div className="divimg">
                     <Image
                       className="image"
-                      src={article.image}
+                      src={`/${article.image}`}
                     />
                   </div>
                   <Card.Content>
