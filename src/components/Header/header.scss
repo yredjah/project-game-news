@@ -66,3 +66,14 @@
   margin-right: 2rem;
 }
 
+
+.avatarsize{
+  height: 25px !important;
+  width: 26px !important;
+}
+@media screen and (min-width: 1000px) {
+  .avatarsize{
+    height: 45px !important;
+    width: 48px !important;
+  }
+}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Field from 'src/containers/Login/LoginForm';
 import './adminpanel.scss';
 
+
 const AdminPanel = ({
   creatTitle,
   creatGameName,
@@ -26,6 +27,7 @@ const AdminPanel = ({
     evt.preventDefault();
     onSubmitForm();
   };
+
   return (
     JSON.parse(sessionStorage.getItem('token'))
       && (
@@ -61,7 +63,7 @@ const AdminPanel = ({
                 </div>
               </div>
               <div className="fieldgroup1">
-                <div className="fieldgroup1-input"><span>Game Genre 1</span>
+                <div className="fieldgroup1-input"><span className="genretitle">Game Genre 1</span>
                   <Field
                     name="creatGenre"
                     placeholder="Game Genre *"
@@ -69,7 +71,7 @@ const AdminPanel = ({
                     value={creatGenre}
                   />
                 </div>
-                <div className="fieldgroup1-input"><span>Game Genre 2</span>
+                <div className="fieldgroup1-input"><span className="genretitle">Game Genre 2</span>
                   <Field
                     name="creatGenre2"
                     placeholder="Game Genre *"
@@ -77,7 +79,7 @@ const AdminPanel = ({
                     value={creatGenre2}
                   />
                 </div>
-                <div className="fieldgroup1-input"><span>Game Genre 3</span>
+                <div className="fieldgroup1-input"><span className="genretitle">Game Genre 3</span>
                   <Field
                     name="creatGenre3"
                     placeholder="Game Genre *"
@@ -87,7 +89,7 @@ const AdminPanel = ({
                 </div>
               </div>
               <div className="fieldgroup1">
-                <div className="fieldgroup1-input"><span>Game Name</span>
+                <div className="fieldgroup1-input"><span className="genretitle">Game Name</span>
                   <Field
                     name="creatGameName"
                     placeholder="Game Name *"
@@ -95,7 +97,7 @@ const AdminPanel = ({
                     value={creatGameName}
                   />
                 </div>
-                <div className="fieldgroup1-input"><span>Title</span>
+                <div className="fieldgroup1-input"><span className="genretitle">Title</span>
                   <Field
                     name="creatTitle"
                     placeholder="Article Title *"
@@ -103,7 +105,7 @@ const AdminPanel = ({
                     value={creatTitle}
                   />
                 </div>
-                <div className="fieldgroup1-input"><span>Article Resume</span>
+                <div className="fieldgroup1-input"><span className="resume">Article Resume</span>
                   <Field
                     name="createResume"
                     placeholder="Article Title *"
@@ -113,7 +115,7 @@ const AdminPanel = ({
                 </div>
               </div>
               <div className="fieldgroup2">
-                <div className="fieldgroup2-input"><span>Video Id</span>
+                <div className="fieldgroup2-input"><span className="genretitle">Video Id</span>
                   <Field
                     name="creatVideo"
                     placeholder="Copy and Paste a video Link *"
@@ -121,7 +123,7 @@ const AdminPanel = ({
                     value={creatVideo}
                   />
                 </div>
-                <div className="fieldgroup2-input"><span>Image Link</span>
+                <div className="fieldgroup2-input"><span className="genretitle">Image Link</span>
                   <Field
                     name="creatImage"
                     placeholder="Copy and Paste a video Link *"

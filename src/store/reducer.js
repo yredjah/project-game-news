@@ -142,6 +142,7 @@ const initialState = {
     userName: '',
     mail: '',
     avatar: '',
+    role: '',
   },
   preferencies: {
     genres: [
