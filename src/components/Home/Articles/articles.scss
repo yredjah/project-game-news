@@ -10,6 +10,13 @@
   box-shadow: 15px 10px 5px lightgrey;
   height: 520px;
   width: 450px;
+
+  @media screen and (max-width: 1000px) {
+    width: 70%;
+    height: 80%;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 .divimg{
   overflow: hidden;
@@ -185,4 +192,33 @@
   height: 25vh;
   border: 1px solid grey;
   background-color: white;
+  display: flex;
+  justify-content: space-around;
+  overflow-x: scroll;
+
+  @media screen and (max-width: 1000px) {
+   display: flex;
+  }
+}
+
+.pref-head {
+  font-weight: bolde;
+  color: black;
+  margin-bottom: 10px;
+}
+
+#cards-pref {
+  margin-top: 10%;
+  box-shadow: 15px 10px 5px lightgrey;
+  @media screen and (max-width: 1000px) {
+    width: 70%;
+    height: 80%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+.pref-desc {
+  height: 30%;
+  overflow: hidden;
 }

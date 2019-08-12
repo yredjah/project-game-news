@@ -19,7 +19,6 @@ const mapStateToProps = state => ({
   creatGenre2: state.creatGenre2,
   creatGenre3: state.creatGenre3,
   role: state.userInfo.role,
-
 });
 
 const mapDispatchToProps = dispatch => ({

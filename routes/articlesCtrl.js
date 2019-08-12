@@ -4,6 +4,7 @@ const jwtUtils = require('../utils/jwt.utils.js');
 const models = require('../models');
 const Sequelize = require('sequelize');
 const moment = require('moment');
+const mailerUtils = require('../utils/mailerUtils.js');
 
 const REGEX_PNG = /[\w\-_\+\(\)]{0,}[\.png|\.PNG]{4}/;
 const REGEX_VIDEO_ID = /(?:youtu\.be\/|youtube.com\/(?:watch\?.*\bv=|embed\/|v\/)|ytimg\.com\/vi\/)(.+?)(?:[^-a-zA-Z0-9]|$)/;
@@ -13,44 +14,48 @@ const text_MIN_LENGTH = 4;
 createGenre = (gameId, genres) => {
   genres.forEach(genre => {
       // console.log(gameId);
-    models.Genre.findOrCreate({
-      where: {name: genre}
-    }).then(function([genreFound, created]){
-      models.Game_has_Genre.findOrCreate({
-        where: {
-          GameId: gameId,
-          GenreId: genreFound.id,
-        }
+    if (genre != ''){
+      models.Genre.findOrCreate({
+        where: {name: genre}
+      }).then(function([genreFound, created]){
+        models.Game_has_Genre.findOrCreate({
+          where: {
+            GameId: gameId,
+            GenreId: genreFound.id,
+          }
+        }).catch(function(err) {
+          // return res.status(500).json({'error': 'unable to find or create game_has_genre'});
+          console.log('unable to find or create game_has_genre', err);
+        })
       }).catch(function(err) {
-        // return res.status(500).json({'error': 'unable to find or create game_has_genre'});
-        console.log('unable to find or create game_has_genre', err);
+        // return res.status(500).json({'error': 'unable to find or create genre'})
+        console.log('unable to find or create genre', err);
       })
-    }).catch(function(err) {
-      // return res.status(500).json({'error': 'unable to find or create genre'})
-      console.log('unable to find or create genre', err);
-    })
+    }
   });
 };
 
 createPlateform = (gameId, plateforms) => {
   plateforms.forEach(plateform => {
       // console.log(gameId);
-    models.Plateform.findOrCreate({
-      where: {name: plateform}
-    }).then(function([plateformFound, created]){
-      models.Game_has_Plateform.findOrCreate({
-        where: {
-          GameId: gameId,
-          PlateformId: plateformFound.id,
-        }
+    if (plateform != ''){
+      models.Plateform.findOrCreate({
+        where: {name: plateform}
+      }).then(function([plateformFound, created]){
+        models.Game_has_Plateform.findOrCreate({
+          where: {
+            GameId: gameId,
+            PlateformId: plateformFound.id,
+          }
+        }).catch(function(err) {
+          // return res.status(500).json({'error': 'unable to find or create game_has_genre'});
+          console.log('unable to find or create game_has_plateform', err);
+        })
       }).catch(function(err) {
-        // return res.status(500).json({'error': 'unable to find or create game_has_genre'});
-        console.log('unable to find or create game_has_plateform', err);
+        // return res.status(500).json({'error': 'unable to find or create genre'})
+        console.log('unable to find or create plateform', err);
       })
-    }).catch(function(err) {
-      // return res.status(500).json({'error': 'unable to find or create genre'})
-      console.log('unable to find or create plateform', err);
-    })
+    }
   });
 };
 
@@ -103,6 +108,12 @@ module.exports = {
           })
           .then(function(newArticle) {
             if (newArticle) {
+              models.User.findAll()
+              .then((users) => {
+                users.forEach((user) => {
+                  mailerUtils.mailerArticleNotif(newArticle, user.mail);
+                });
+              })
               return res.status(201).json(newArticle);
             } else {
               return res.status(500).json({'error': 'cannot post article'});
@@ -208,32 +219,98 @@ module.exports = {
     //we want to take out 30 articles from the database
     const NUMBER_OF_ARTICLE = 30;
 
-    const category = req.body.category
-    const articles = [];
-
+    const category = req.body.category;
+    
     models.Plateform.findOne({
-      where: {name: category},
-    }).then(function(plateformFound) {
-      models.Game_has_Plateform.findAll({
-        where: {PlateformId: plateformFound.id},
+      where: {name: category}
+    }).then((PlateformFound) => {
+      models.Article.findAll({
+        limit: NUMBER_OF_ARTICLE,
+        order: [['date', 'DESC']],
         include: [{
           model: models.Game,
+          include: [{
+            model: models.Game_has_Plateform,
+            where: {PlateformId: PlateformFound.id}
+          }]
         }]
-      }).then(relations => {
-        relations.forEach(element => {
-          models.Article.findOne({
-            where: {GameId: element.Game.id}
-          }).then(article => {
-            articles.push(article);
-          })
-        });
-      })
-      .catch(err => (
-          res.status(500).json({'error': 'unable to find game', err})
+      }).then((results) => (
+        res.status(200).json(results)
+      )).catch((err) => (
+        res.satus(500).json({'error': 'unable to find articles', err})
       ))
-      }).catch(function(err) {
-        return res.status(500).json({'error': 'unable to find articles', err})
-      })
-    return res.status(200).json(articles);
+    }).catch((err) => (
+      res.status(500).json({'erro': 'unable to find the plateform', err})
+    ))
+  },
+  sortArticlesByGenre: function (req, res) {
+    //we want to take out 30 articles from the database
+    const NUMBER_OF_ARTICLE = 30;
+
+    const category = req.body.category;
+
+    models.Genre.findOne({
+      where: {name: category}
+    }).then((genreFound) => {
+      models.Article.findAll({
+        limit: NUMBER_OF_ARTICLE,
+        order: [['date', 'DESC']],
+        include: [{
+          model: models.Game,
+          include: [{
+            model: models.Game_has_Genre,
+            where: {GenreId: genreFound.id}
+          }]
+        }]
+      }).then((results) => (
+        res.status(200).json(results)
+      )).catch((err) => (
+        res.satus(500).json({'error': 'unable to find articles', err})
+      ))
+    }).catch((err) => (
+      res.status(500).json({'erro': 'unable to find the genre', err})
+    ))
+  },
+  getArticlesByPreferencies: function (req, res) {
+    const headerAuth  = req.headers['authorization'];
+    const userId      = jwtUtils.getUserId(headerAuth);
+    const allGames = [];
+
+    models.User_like_Plateform.findAll({
+      where: {UserId: userId}
+    }).then((likedPlateforms) => {
+      models.User_like_Genre.findAll({
+        where: {UserId: userId}
+      }).then((likedGenres) => {
+        likedPlateforms.forEach((plateform) => {
+          likedGenres.forEach((genre) => {
+            models.Game.findAll({
+              order: [['createdAt', 'DESC']],
+              include: [{
+                model: models.Game_has_Plateform,
+                where: {PlateformId: plateform.PlateformId,
+              },
+              },
+              {
+                model: models.Game_has_Genre,
+                where: {GenreId: genre.GenreId,
+                },
+              }]
+            }).then((games) => {
+              games.forEach((game) => {
+                allGames.push(game);
+              })
+              return res.status(200).json(allGames);
+            }).catch((err) => (
+              res.satus(500).json({'error': 'unable to find game', err})
+            ))
+          })
+        })
+      }).catch((err) => (
+        res.status(500).json({'error': 'unable to find liked genre', err})
+      ))
+    }).catch((err) => (
+      res.status(500).json({'error': 'unable to find liked plateform', err})
+    ))
   },
 };

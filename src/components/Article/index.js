@@ -129,7 +129,6 @@ const Article = ({
                 <div>
                   <Image src={`/public/avatarUploads/${message.User.avatar}`} className="imagesize" size="small" circular />
                 </div>
-
                 <div id="userMessage">
                   <div id="userInfo">
                     <h4 id="userInfo-userName">{message.User.userName}</h4>

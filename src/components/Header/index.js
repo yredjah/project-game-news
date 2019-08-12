@@ -69,13 +69,18 @@ const Header = ({
       <Segment inverted className="nav">
         <Menu className="nav-menu" inverted secondary>
           {categories.map(category => (
-            <Menu.Item
-              className="nav-menu-1"
-              key={category.id}
-              name={category.name}
-              active={activeItem === category.name}
-              onClick={handleItemClick}
-            />
+            <Link
+              to={`/sort/plateform/${category.name}`}
+              exact
+            >
+              <Menu.Item
+                className="nav-menu-1"
+                key={category.id}
+                name={category.name}
+                active={activeItem === category.name}
+                onClick={handleItemClick}
+              />
+            </Link>
           ))}
           <Menu.Item
             className="nav-menu-2"
@@ -84,7 +89,7 @@ const Header = ({
             <Dropdown text="TYPES" simple item>
               <Dropdown.Menu>
                 {genres.map(genre => (
-                  <Dropdown.Item key={genre.id} text={genre.name} />
+                  <Dropdown.Item key={genre.id} text={genre.name} as={Link} to={`/sort/genre/${genre.name}`} />
                 ))}
               </Dropdown.Menu>
             </Dropdown>

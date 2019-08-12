@@ -1,12 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Menu, 
-  Button, 
-  Icon, 
-  Dropdown, 
-  Image,
-} from 'semantic-ui-react';
+import { Dropdown, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import './header.scss';
@@ -19,7 +13,9 @@ const options = [
   {
     key: 'user', text: 'Account', icon: 'user', as: Link, to: '/user',
   },
-  { key: 'settings', text: 'Settings', icon: 'settings' },
+  {
+    key: 'Avatar', text: 'Avatar', icon: 'settings', as: Link, to: '/user/Avatar',
+  },
   {
     key: 'sign-out', text: 'Sign Out', icon: 'sign out', onClick: handleLogOut,
   },
@@ -28,16 +24,12 @@ const options = [
 const AccountButton = ({ avatar }) => {
   const trigger = (
     <span>
-      <Image src={`/public/avatarUploads/${avatar}`} className="avatarsize" size='mini' circular />
+      <Image src={`/public/avatarUploads/${avatar}`} className="avatarsize" size="mini" circular />
     </span>
   );
   return (
     <div id="AccountButton">
       <Dropdown trigger={trigger} options={options} pointing="top right" icon={null} />
-      {/* <div>
-        <Link to="/user" exact><Button onClick={handleClose} className="lg" >Profile</Button></Link>
-        <Link to="/" exact><Button onClick={handleLogOut} className="lg">Log out</Button></Link>
-      </div> */}
     </div>
   );
 };

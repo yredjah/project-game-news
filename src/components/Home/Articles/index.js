@@ -1,6 +1,6 @@
 // == Import : npm
 import React, { useEffect } from 'react';
-import { Card, Icon, Image, Button } from 'semantic-ui-react';
+import { Card, Icon, Image, Button, Item } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -68,22 +68,9 @@ export default function Articles({ articles }) {
                 articlesList.map((article) => {
                   return (
                     <Link key={article.id} to={`/article/${article.id}`} exact>
-                      <Card id="cards">
-                        <div className="divimg">
-                          <Image
-                            className="image"
-                            src={article.image}
-                          />
-                        </div>
-                        <Card.Content>
-                          <Card.Header>{article.title}</Card.Header>
-                          <Card.Description className="card-resume">
-                            {article.resume}
-                          </Card.Description>
-                        </Card.Content>
-                        <Card.Content extra>
-                          <Button>Learn more</Button>
-                        </Card.Content>
+                      <Card id="cards-pref">
+                        <Card.Header className="pref-head">{article.title}</Card.Header>
+                        <Card.Description className="pref-desc">{article.resume}</Card.Description>
                       </Card>
                     </Link>
                   );
