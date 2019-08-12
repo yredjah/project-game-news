@@ -4,6 +4,7 @@ const jwtUtils = require('../utils/jwt.utils.js');
 const models = require('../models');
 const Sequelize = require('sequelize');
 const moment = require('moment');
+const mailerUtils = require('../utils/mailerUtils.js');
 
 const REGEX_PNG = /[\w\-_\+\(\)]{0,}[\.png|\.PNG]{4}/;
 const REGEX_VIDEO_ID = /(?:youtu\.be\/|youtube.com\/(?:watch\?.*\bv=|embed\/|v\/)|ytimg\.com\/vi\/)(.+?)(?:[^-a-zA-Z0-9]|$)/;
@@ -13,44 +14,48 @@ const text_MIN_LENGTH = 4;
 createGenre = (gameId, genres) => {
   genres.forEach(genre => {
       // console.log(gameId);
-    models.Genre.findOrCreate({
-      where: {name: genre}
-    }).then(function([genreFound, created]){
-      models.Game_has_Genre.findOrCreate({
-        where: {
-          GameId: gameId,
-          GenreId: genreFound.id,
-        }
+    if (genre != ''){
+      models.Genre.findOrCreate({
+        where: {name: genre}
+      }).then(function([genreFound, created]){
+        models.Game_has_Genre.findOrCreate({
+          where: {
+            GameId: gameId,
+            GenreId: genreFound.id,
+          }
+        }).catch(function(err) {
+          // return res.status(500).json({'error': 'unable to find or create game_has_genre'});
+          console.log('unable to find or create game_has_genre', err);
+        })
       }).catch(function(err) {
-        // return res.status(500).json({'error': 'unable to find or create game_has_genre'});
-        console.log('unable to find or create game_has_genre', err);
+        // return res.status(500).json({'error': 'unable to find or create genre'})
+        console.log('unable to find or create genre', err);
       })
-    }).catch(function(err) {
-      // return res.status(500).json({'error': 'unable to find or create genre'})
-      console.log('unable to find or create genre', err);
-    })
+    }
   });
 };
 
 createPlateform = (gameId, plateforms) => {
   plateforms.forEach(plateform => {
       // console.log(gameId);
-    models.Plateform.findOrCreate({
-      where: {name: plateform}
-    }).then(function([plateformFound, created]){
-      models.Game_has_Plateform.findOrCreate({
-        where: {
-          GameId: gameId,
-          PlateformId: plateformFound.id,
-        }
+    if (plateform != ''){
+      models.Plateform.findOrCreate({
+        where: {name: plateform}
+      }).then(function([plateformFound, created]){
+        models.Game_has_Plateform.findOrCreate({
+          where: {
+            GameId: gameId,
+            PlateformId: plateformFound.id,
+          }
+        }).catch(function(err) {
+          // return res.status(500).json({'error': 'unable to find or create game_has_genre'});
+          console.log('unable to find or create game_has_plateform', err);
+        })
       }).catch(function(err) {
-        // return res.status(500).json({'error': 'unable to find or create game_has_genre'});
-        console.log('unable to find or create game_has_plateform', err);
+        // return res.status(500).json({'error': 'unable to find or create genre'})
+        console.log('unable to find or create plateform', err);
       })
-    }).catch(function(err) {
-      // return res.status(500).json({'error': 'unable to find or create genre'})
-      console.log('unable to find or create plateform', err);
-    })
+    }
   });
 };
 
@@ -103,6 +108,12 @@ module.exports = {
           })
           .then(function(newArticle) {
             if (newArticle) {
+              models.User.findAll()
+              .then((users) => {
+                users.forEach((user) => {
+                  mailerUtils.mailerArticleNotif(newArticle, user.mail);
+                });
+              })
               return res.status(201).json(newArticle);
             } else {
               return res.status(500).json({'error': 'cannot post article'});
