@@ -50,7 +50,7 @@ exports.router = (function() {
   apiRouter.route('/articles/sortArticlesByPlateform/').post(articlesCtrl.sortArticlesByPlateform);
   apiRouter.route('/mailer/').post(mailerCtrl.mailer);
   apiRouter.route('/commentary/').post(commentaryCtrl.createComment);
-  apiRouter.route('/commentary/articlecom').get(commentaryCtrl.getCommentary);
+  apiRouter.route('/commentary/getCom').post(commentaryCtrl.getCommentary);
   apiRouter.route('/upload/').post(fieldUploadCtrl.upload);
   apiRouter.route('/plateform/getAll').get(plateformCtrl.getAll);
   apiRouter.route('/genre/getAll').get(genresCtrl.getAll);

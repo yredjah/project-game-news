@@ -11,7 +11,7 @@ const Home = ({ getListArticles }) => {
 
   return (
     <div>
-      <Carousel />
+      <Carousel id="page-wrap" />
       <Articles />
     </div>
   );

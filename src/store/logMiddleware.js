@@ -19,6 +19,7 @@ import {
   setCommentary,
   GET_ONE_ARTICLE,
   setOneArticle,
+  getCommentary,
   ADD_LIKE,
   ADD_DISLIKE,
   getGenres,
@@ -161,11 +162,20 @@ const logMiddleware = store => next => (action) => {
         });
       break;
     case ON_SUBMIT_ARTICLE:
-      // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      // eslint-disable-next-line no-case-declarations
       const plateforms = [];
-      plateforms.push(store.getState().creatPlatform);
+      plateforms.push(
+        store.getState().creatPlatform,
+        store.getState().creatPlatform2,
+        store.getState().creatPlatform3,
+      );
+      // eslint-disable-next-line no-case-declarations
       const genres = [];
-      genres.push(store.getState().creatGenre);
+      genres.push(
+        store.getState().creatGenre,
+        store.getState().creatGenre2,
+        store.getState().creatGenre3,
+      );
       console.log(`Bearer ${JSON.parse(sessionStorage.getItem('token'))}`);
       axios.request({
         url: 'http://localhost:3000/api/articles/addArticle/',
@@ -173,11 +183,12 @@ const logMiddleware = store => next => (action) => {
         data: {
           title: store.getState().creatTitle,
           text: store.getState().creatText,
+          resume: store.getState().createResume,
           videoId: store.getState().creatVideo,
           image: store.getState().creatImage,
           gameName: store.getState().creatGameName,
-          plateforms: plateforms,
-          genres: genres,
+          plateforms,
+          genres,
         },
         headers: {
           authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`,
@@ -197,15 +208,20 @@ const logMiddleware = store => next => (action) => {
       break;
     case ON_SUBMIT_COMMENTARY:
       // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-      axios.post('http://localhost:3000/api/commentary', {
+      axios.request({
+        url: 'http://localhost:3000/api/commentary',
+        method: 'post',
+        data: {
+          ArticleId: store.getState().article.id,
+          commentary: store.getState().newMessage,
+        },
         headers: {
           authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`,
         },
-        commentary: store.getState().NewMessage,
       })
         .then((response) => {
           console.log(response.data);
-          store.dispatch(cleanRegisterFileds());
+          store.dispatch(getCommentary(store.getState().article.id));
         })
         // en cas d'echec : catch
         .catch((error) => {
@@ -214,12 +230,12 @@ const logMiddleware = store => next => (action) => {
         });
       break;
     case GET_COMMENTARY:
-      axios.get('http://localhost:3000/api/users/me')
+      axios.post('http://localhost:3000/api/commentary/getCom', {
+        articleId: action.articleId,
+      })
         .then((response) => {
-          store.dispatch(setCommentary(
-            response.data.commentary,
-            response.data.userName,
-          ));
+          console.log(response.data);
+          store.dispatch(setCommentary(response.data));
         })
         // en cas d'echec : catch
         .catch((error) => {

@@ -91,7 +91,7 @@ const initialState = {
       },
     ],
   },
-  article:{
+  article: {
   },
   categories: [
     {
@@ -114,11 +114,17 @@ const initialState = {
 
   creatTitle: '',
   creatText: '',
+  createResume: '',
   creatGameName: '',
   creatVideo: '',
   creatImage: '',
   creatPlatform: '',
+  creatPlatform2: '',
+  creatPlatform3: '',
   creatGenre: '',
+  creatGenre2: '',
+  creatGenre3: '',
+
 
   contactFirstName: '',
   contactLastName: '',
@@ -152,8 +158,8 @@ const initialState = {
 };
 
 // == Types
+const SET_COMMENTARY = 'SET_COMMENTARY';
 export const GET_COMMENTARY = 'GET_COMMENTARY';
-export const SET_COMMENTARY = 'SET_COMMENTARY';
 export const ON_SUBMIT_COMMENTARY = 'ON_SUBMIT_COMMENTARY';
 export const ON_SUBMIT_ARTICLE = 'ON_SUBMIT_ARTICLE';
 export const ON_SUBMIT_LOGIN = 'ON_SUBMIT_LOGIN';
@@ -174,7 +180,6 @@ const CLEAN_REGISTER_FIELDS = ' CLEAN_REGISTER_FILEDS';
 const SET_USERS_LOGIN = 'SET_USERS_LOGIN';
 const SET_ACTIVE_ITEM = 'SET_ACTIVE_ITEM';
 const ON_INPUT_CHANGE = 'ON_INPUT_CHANGE';
-const ADD_MESSAGE = 'ADD_MESSAGE';
 const SET_USER_INFO = 'SET_USER_INFO';
 const SET_PLATEFORM = 'SET_PLATEFORM';
 const SET_GENRE = 'SET_GENRE';
@@ -236,29 +241,15 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         genres: action.genres,
       };
-    case SET_COMMENTARY:
-    {
-      const { messagesList: oldMessages } = state;
-      const newMsg = {
-        id: action.id,
-        label: action.commentary,
-        username: action.userName,
-        time: '12/09/2019  15h34',
-      };
-      const messagesListCopy = [
-        ...oldMessages,
-        newMsg,
-      ];
-      return {
-        ...state,
-        messagesList: messagesListCopy,
-        newMessage: '',
-      };
-    }
     case SET_ONE_ARTICLE:
       return {
         ...state,
         article: action.article,
+      };
+    case SET_COMMENTARY:
+      return {
+        ...state,
+        messagesList: action.commentary,
       };
     case SET_PREFERENCIES:
       return {
@@ -280,9 +271,6 @@ export const onInputChange = (name, value) => ({
   type: ON_INPUT_CHANGE,
   name,
   value,
-});
-export const addMessageAction = () => ({
-  type: ADD_MESSAGE,
 });
 
 export const onsubmitLogin = () => ({
@@ -358,15 +346,14 @@ export const onsubmitCommentary = () => ({
   type: ON_SUBMIT_COMMENTARY,
 });
 
-export const getCommentary = () => ({
-  Type: GET_COMMENTARY,
+export const getCommentary = articleId => ({
+  type: GET_COMMENTARY,
+  articleId,
 });
 
-export const setCommentary = (commentary, userName, id) => ({
+export const setCommentary = commentary => ({
   type: SET_COMMENTARY,
   commentary,
-  userName,
-  id,
 });
 export const addALike = () => ({
   type: ADD_LIKE,

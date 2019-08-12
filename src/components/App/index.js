@@ -20,7 +20,7 @@ import './app.scss';
 const App = () => (
   <div id="app">
     <nav>
-      <Header />
+      <Header id="page-wrap" />
     </nav>
     <main>
       <Route path="/Sign_Up" exact component={SignUp} />

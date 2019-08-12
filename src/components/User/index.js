@@ -7,6 +7,7 @@ import './user.scss';
 import UserHome from 'src/containers/UserHome';
 import UserAvatar from 'src/components/User/UserAvatar';
 import UserPreferencies from 'src/containers/UserPreferencies';
+import logo from './broken.png';
 
 // == Composant
 class User extends Component {
@@ -23,7 +24,7 @@ class User extends Component {
         && (
         <div id="user-home">
           <div id="user-menu">
-            <Menu inverted compact  size='mini'>
+            <Menu inverted compact  size='big'>
               <Link to="/user" exact>
                 <Menu.Item
                   name='home' 
@@ -64,10 +65,12 @@ class User extends Component {
         {!JSON.parse(sessionStorage.getItem('token'))
         && (
           <div>
-            <h1>Oups something went wrong</h1>
-            <img id="logo" src="src/Assets/img/broken-controller.png" alt="" />
+            <h1 className="error">YOU ARE NOT L0GIN </h1>
+            <img id="logo" src={logo} alt="" />
             <div>
-              <Link to="/login" exact> Please Sign in to Access your account</Link>
+              <Link to="/login" exact> <h1>Please Sign in to Access your account</h1> </Link>
+              <h3>Or</h3>
+              <Link className="link2" to="/" exact> <h1>Return to Home</h1> </Link>
             </div>
           </div>
         )}

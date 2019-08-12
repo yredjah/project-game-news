@@ -74,6 +74,7 @@
     "pg-hstore": "^2.3.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-burger-menu": "^2.6.11",
     "react-dom": "^16.8.6",
     "react-facebook-share-link": "^1.0.4",
     "react-motion": "^0.5.2",
