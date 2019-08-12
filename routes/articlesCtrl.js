@@ -236,4 +236,45 @@ module.exports = {
       })
     return res.status(200).json(articles);
   },
+  getArticlesByPreferencies: function (req, res) {
+    const headerAuth  = req.headers['authorization'];
+    const userId      = jwtUtils.getUserId(headerAuth);
+    const allGames = [];
+
+    models.User_like_Plateform.findAll({
+      where: {UserId: userId}
+    }).then((likedPlateforms) => {
+      models.User_like_Genre.findAll({
+        where: {UserId: userId}
+      }).then((likedGenres) => {
+        likedPlateforms.forEach((plateform) => {
+          likedGenres.forEach((genre) => {
+            models.Game.findAll({
+              include: [{
+                model: models.Game_has_Plateform,
+                where: {PlateformId: plateform.PlateformId,
+              },
+              },
+              {
+                model: models.Game_has_Genre,
+                where: {GenreId: genre.GenreId,
+                },
+              }]
+            }).then((games) => {
+              games.forEach((game) => {
+                allGames.push(game);
+              })
+              return res.status(200).json(allGames);
+            }).catch((err) => (
+              res.satus(500).json({'error': 'unable to find game', err})
+            ))
+          })
+        })
+      }).catch((err) => (
+        res.status(500).json({'error': 'unable to find liked genre', err})
+      ))
+    }).catch((err) => (
+      res.status(500).json({'error': 'unable to find liked plateform', err})
+    ))
+  },
 };
