@@ -2,11 +2,10 @@
 import { connect } from 'react-redux';
 
 // == Import : local
-import Articles from 'src/components/Home/Articles';
+import SortArticlesByGame from 'src/components/SortArticlesByGame';
 
 // Action Creators
-// import { doSomething } from 'src/store/reducer';
-import { getGamesList } from 'src/store/reducer';
+import { getArticlesByGames } from 'src/store/reducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -16,8 +15,7 @@ import { getGamesList } from 'src/store/reducer';
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
 const mapStateToProps = (state, ownProps) => ({
-  articles: state.articles,
-  gamesList: state.gamesList,
+  articlesSort: state.articlesSort,
 });
 
 /* === Actions ===
@@ -28,16 +26,23 @@ const mapStateToProps = (state, ownProps) => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  getGames: () => {
-    dispatch(getGamesList());
+  getArticlesByGames: (gameId) => {
+    dispatch(getArticlesByGames(gameId));
   },
 });
 
 // Container
-const ArticlesContainer = connect(
+const SortArticleContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Articles);
+)(SortArticlesByGame);
 
 // == Export
-export default ArticlesContainer;
+export default SortArticleContainer;
+
+/* = export à la volée
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Example);
+*/

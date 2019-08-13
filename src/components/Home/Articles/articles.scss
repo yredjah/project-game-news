@@ -194,29 +194,50 @@
   border: 1px solid grey;
   background-color: white;
   display: flex;
+  overflow: auto;
   justify-content: space-around;
-  overflow-x: scroll;
+  flex-flow: row wrap;
 
   @media screen and (max-width: 1000px) {
    display: flex;
+   justify-content: space-around;
+   flex-flow: row wrap;
   }
 }
 
 .pref-head {
+  margin: 5%;
   font-weight: bolde;
   color: black;
   margin-bottom: 10px;
+  @media screen and (max-width: 1000px) {
+    text-align: center;
+  }
 }
 
 #cards-pref {
   margin-top: 10%;
+  margin-bottom: 10%;
+  border: 1px solid lightgray;
   box-shadow: 15px 10px 5px lightgrey;
+  background-color: lightgray;
+  color: white !important;
+  width: calc(100vw / 5 - 2 * 20px);
+  overflow: none;
+
   @media screen and (max-width: 1000px) {
-    width: 70%;
-    height: 80%;
+    width: 95%;
+    height: 70%;
     margin-right: auto;
     margin-left: auto;
+    font-size: 70%;
+    text-align: justify;
+    box-shadow: none;
   }
+}
+
+#cards-pref:hover{
+  background-color: gray;
 }
 
 .pref-desc {

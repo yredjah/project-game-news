@@ -138,12 +138,12 @@ module.exports = {
 
     models.Article.findAll({
       where: { date: {[Op.gt]: lastWeek,} },
-      order: [['date', 'DESC']],
+      order: [['createdAt', 'DESC']],
       limit: NUMBER_OF_ARTICLE,
     }).then(function(newsOfTheWeek) {
       models.Article.findAll({
         where: { date: {[Op.lt]: lastWeek,} },
-        order: [['date', 'DESC']],
+        order: [['createdAt', 'DESC']],
         limit: NUMBER_OF_ARTICLE,
       }).then(function(news) {
         const articles = {newsOfTheWeek: newsOfTheWeek, news: news};
@@ -226,7 +226,7 @@ module.exports = {
     }).then((PlateformFound) => {
       models.Article.findAll({
         limit: NUMBER_OF_ARTICLE,
-        order: [['date', 'DESC']],
+        order: [['createdAt', 'DESC']],
         include: [{
           model: models.Game,
           include: [{
@@ -254,7 +254,7 @@ module.exports = {
     }).then((genreFound) => {
       models.Article.findAll({
         limit: NUMBER_OF_ARTICLE,
-        order: [['date', 'DESC']],
+        order: [['createdAt', 'DESC']],
         include: [{
           model: models.Game,
           include: [{
@@ -274,7 +274,10 @@ module.exports = {
   getArticlesByPreferencies: function (req, res) {
     const headerAuth  = req.headers['authorization'];
     const userId      = jwtUtils.getUserId(headerAuth);
+    
     const allGames = [];
+    const uniqueGames = [];
+    const promises = [];
 
     models.User_like_Plateform.findAll({
       where: {UserId: userId}
@@ -284,33 +287,68 @@ module.exports = {
       }).then((likedGenres) => {
         likedPlateforms.forEach((plateform) => {
           likedGenres.forEach((genre) => {
+
+          let promise = new Promise(function(resolve, reject) {
             models.Game.findAll({
               order: [['createdAt', 'DESC']],
               include: [{
                 model: models.Game_has_Plateform,
                 where: {PlateformId: plateform.PlateformId,
-              },
+                },
               },
               {
                 model: models.Game_has_Genre,
                 where: {GenreId: genre.GenreId,
                 },
               }]
-            }).then((games) => {
-              games.forEach((game) => {
-                allGames.push(game);
+              }).then((games) => {
+                resolve(games);
+                })
+                .catch((err) => {
+                  reject(err);
+                })
               })
-              return res.status(200).json(allGames);
-            }).catch((err) => (
-              res.satus(500).json({'error': 'unable to find game', err})
-            ))
+            promises.push(promise);
           })
         })
+
+          Promise.all(promises).then(function(List) {
+            List.forEach((games) => {
+              games.forEach((game) => {
+                let exist = false;
+                allGames.forEach((uniqueGame) => {
+                  if (uniqueGame.id === game.id) {
+                    exist = true;
+                  }
+                })
+                if (exist === false){
+                  allGames.push(game)
+                }
+              })
+            })
+            console.log(allGames);
+            return res.status(200).json(allGames);
+          }).catch((err) => (
+            res.status(500).json(err)
+            ));
       }).catch((err) => (
-        res.status(500).json({'error': 'unable to find liked genre', err})
-      ))
+        {'error': 'unable to find liked genre', err}
+        ))
     }).catch((err) => (
-      res.status(500).json({'error': 'unable to find liked plateform', err})
+    {'error': 'unable to find liked plateform', err}
+    ))
+  },
+  sortArticleByGame: function (req, res) {
+    const gameId = req.body.gameId;
+
+    models.Article.findAll({
+      where: {GameId: gameId},
+      limit: 30,
+      order: [['date', 'DESC']],
+    }).then((articles) => (
+      res.status(200).json(articles)
+    )).catch((err) => (
+      res.status(200).json(err)
     ))
   },
 };

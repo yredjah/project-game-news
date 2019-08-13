@@ -32,6 +32,9 @@ import {
   SORT_ARTICLES_BY_PLATEFROM,
   setArticlesSort,
   SET_SORT_ARTICLES_BY_GENRE,
+  GET_GAMES,
+  setGamesList,
+  GET_ARTICLES_BY_GAMES,
 } from 'src/store/reducer';
 
 const logMiddleware = store => next => (action) => {
@@ -397,6 +400,44 @@ const logMiddleware = store => next => (action) => {
         method: 'post',
         data: {
           category: action.category,
+        },
+      })
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(setArticlesSort(response.data));
+        })
+        // en cas d'echec : catch
+        .catch((error) => {
+          console.error(error.message);
+          console.error(error.response);
+        });
+      break;
+    case GET_GAMES:
+      // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.request({
+        url: 'http://localhost:3000/api/articles/getArticlesByPreferencies/',
+        method: 'get',
+        headers: {
+          authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`,
+        },
+      })
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(setGamesList(response.data));
+        })
+        // en cas d'echec : catch
+        .catch((error) => {
+          console.error(error.message);
+          console.error(error.response);
+        });
+      break;
+    case GET_ARTICLES_BY_GAMES:
+      // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.request({
+        url: 'http://localhost:3000/api/articles/sortArticleByGame/',
+        method: 'post',
+        data: {
+          gameId: action.gameId,
         },
       })
         .then((response) => {

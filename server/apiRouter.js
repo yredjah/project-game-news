@@ -50,6 +50,7 @@ exports.router = (function() {
   apiRouter.route('/articles/sortArticlesByPlateform/').post(articlesCtrl.sortArticlesByPlateform);
   apiRouter.route('/articles/sortArticlesByGenre/').post(articlesCtrl.sortArticlesByGenre);
   apiRouter.route('/articles/getArticlesByPreferencies/').get(articlesCtrl.getArticlesByPreferencies);
+  apiRouter.route('/articles/sortArticleByGame/').post(articlesCtrl.sortArticleByGame);
   apiRouter.route('/mailer/').post(mailerCtrl.mailer);
   apiRouter.route('/commentary/').post(commentaryCtrl.createComment);
   apiRouter.route('/commentary/getCom').post(commentaryCtrl.getCommentary);

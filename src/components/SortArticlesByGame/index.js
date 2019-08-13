@@ -1,5 +1,5 @@
 // == Import : npm
-import React, {useEffect, useState} from 'react';
+import React, { useEffect } from 'react';
 import { Card, Image, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -9,38 +9,15 @@ import 'src/components/Home/Articles/articles.scss';
 import 'src/components/SortArticles/sortarticles.scss';
 
 // == Composant
-const SortArticles = ({ match, getSortArticlesByPlateform, getSortArticlesByGenre, articlesSort }) => {
-  const type = match.params.type;
-  const category = match.params.category;
-
-  const [cat, setcat] = useState('');
+const SortArticlesByGame = ({ match, articlesSort, getArticlesByGames }) => {
 
   useEffect(() => {
-    if (category !== cat) {
-      if (type === 'plateform') {
-        setcat(category);
-        getSortArticlesByPlateform(category);
-      }
-      if (type === 'genre') {
-        setcat(category);
-        getSortArticlesByGenre(category);
-      }
-    }
-  });
-
-  useEffect(() => {
-    setcat(category);
-    if (type === 'plateform') {
-      getSortArticlesByPlateform(category);
-    }
-    if (type === 'genre') {
-      getSortArticlesByGenre(category);
-    }
+    getArticlesByGames(match.params.id);
   }, []);
 
   return (
     <div>
-      <h1 id="title-sort" className="news-BigTitle">sort by {type} {category}</h1>
+      <h1 id="title-sort" className="news-BigTitle">sort by {match.params.name}</h1>
       <div id="articles">
         {
           articlesSort.map((article) => {
@@ -72,11 +49,10 @@ const SortArticles = ({ match, getSortArticlesByPlateform, getSortArticlesByGenr
   );
 };
 
-SortArticles.propTypes = {
-  getSortArticles: PropTypes.func.isRequired,
+SortArticlesByGame.propTypes = {
   match: PropTypes.object.isRequired,
   articlesSort: PropTypes.array.isRequired,
 };
 
 // == Export
-export default SortArticles;
+export default SortArticlesByGame;

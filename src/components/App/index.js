@@ -15,6 +15,7 @@ import User from 'src/components/User';
 import Contact from 'src/containers/Contact';
 import SortArticles from 'src/containers/SortArticles';
 import ResponsivNav from 'src/components/ResponsivNav';
+import SortArticlesByGame from 'src/containers/SortArticlesByGame';
 import './app.scss';
 
 // == Composant
@@ -37,6 +38,7 @@ const App = () => (
       <Route path="/contact" exact component={Contact} />
       <Route path="/user" component={User} />
       <Route path="/sort/:type/:category" exact component={SortArticles} />
+      <Route path="/games/:name/:id" exact component={SortArticlesByGame} />
     </main>
     <footer>
       <Footer />
