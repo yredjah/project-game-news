@@ -201,7 +201,7 @@
   @media screen and (max-width: 1000px) {
    display: flex;
    justify-content: space-around;
-   flex-flow: wrap;
+   flex-flow: row wrap;
   }
 }
 
@@ -222,6 +222,8 @@
   box-shadow: 15px 10px 5px lightgrey;
   background-color: lightgray;
   color: white !important;
+  width: calc(100vw / 5 - 2 * 20px);
+  overflow: none;
 
   @media screen and (max-width: 1000px) {
     width: 95%;
@@ -230,6 +232,7 @@
     margin-left: auto;
     font-size: 70%;
     text-align: justify;
+    box-shadow: none;
   }
 }
 
