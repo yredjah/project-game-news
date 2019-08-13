@@ -1,10 +1,11 @@
 import React from 'react';
-import './sidedrawer.scss';
+
+import './SideDrawer.scss';
 
 const SideDrawer = () => (
   <nav className="side-drawer">
     <ul>
-      <li>holla</li>
+      <li><a href="/">PLATFORMS</a></li>
     </ul>
   </nav>
 );

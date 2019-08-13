@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Route, Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 
@@ -8,22 +7,13 @@ import './user.scss';
 import UserHome from 'src/containers/UserHome';
 import UserAvatar from 'src/components/User/UserAvatar';
 import UserPreferencies from 'src/containers/UserPreferencies';
-import AdminPanel from 'src/containers/AdminPanel';
+import Adminroute from 'src/containers/Adminroute';
 import logo from './broken.png';
 // == Composant
 class User extends Component {
   state = { activeItem: 'home' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
-  checkRole() {
-    const { role } = this.props;
-    if (role === 'admin') {
-      return (
-        <Route path="/user/admin" exact component={AdminPanel} />
-      );
-    }
-  }
 
   render() {
     const { activeItem } = this.state;
@@ -69,9 +59,7 @@ class User extends Component {
             <Route path="/user" exact component={UserHome} />
             <Route path="/user/Avatar" exact component={UserAvatar} />
             <Route path="/user/Preferencies" exact component={UserPreferencies} />
-            {
-              this.checkRole()
-            }
+            <Adminroute />
           </div>
         </div>
         )}
@@ -91,11 +79,5 @@ class User extends Component {
     );
   }
 }
-
-
 // == Export
 export default User;
-
-User.propTypes = {
-  role: PropTypes.string.isRequired,
-};

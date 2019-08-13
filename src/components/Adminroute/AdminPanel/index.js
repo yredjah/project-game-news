@@ -66,7 +66,7 @@ const AdminPanel = ({
                 <div className="fieldgroup1-input"><span className="genretitle">Game Genre 1</span>
                   <Field
                     name="creatGenre"
-                    placeholder="Game Genre *"
+                    placeholder="Genre 1 *"
                     type="text"
                     value={creatGenre}
                   />
@@ -74,7 +74,7 @@ const AdminPanel = ({
                 <div className="fieldgroup1-input"><span className="genretitle">Game Genre 2</span>
                   <Field
                     name="creatGenre2"
-                    placeholder="Game Genre *"
+                    placeholder="Genre 2*"
                     type="text"
                     value={creatGenre2}
                   />
@@ -82,7 +82,7 @@ const AdminPanel = ({
                 <div className="fieldgroup1-input"><span className="genretitle">Game Genre 3</span>
                   <Field
                     name="creatGenre3"
-                    placeholder="Game Genre *"
+                    placeholder="Genre 3*"
                     type="text"
                     value={creatGenre3}
                   />
@@ -92,7 +92,7 @@ const AdminPanel = ({
                 <div className="fieldgroup1-input"><span className="genretitle">Game Name</span>
                   <Field
                     name="creatGameName"
-                    placeholder="Game Name *"
+                    placeholder="Name *"
                     type="text"
                     value={creatGameName}
                   />
@@ -100,7 +100,7 @@ const AdminPanel = ({
                 <div className="fieldgroup1-input"><span className="genretitle">Title</span>
                   <Field
                     name="creatTitle"
-                    placeholder="Article Title *"
+                    placeholder="Title *"
                     type="text"
                     value={creatTitle}
                   />
@@ -108,7 +108,7 @@ const AdminPanel = ({
                 <div className="fieldgroup1-input"><span className="resume">Article Resume</span>
                   <Field
                     name="createResume"
-                    placeholder="Article Title *"
+                    placeholder="Resume *"
                     type="text"
                     value={createResume}
                   />
@@ -118,7 +118,7 @@ const AdminPanel = ({
                 <div className="fieldgroup2-input"><span className="genretitle">Video Id</span>
                   <Field
                     name="creatVideo"
-                    placeholder="Copy and Paste a video Link *"
+                    placeholder="video Id *"
                     type="text"
                     value={creatVideo}
                   />
@@ -126,7 +126,7 @@ const AdminPanel = ({
                 <div className="fieldgroup2-input"><span className="genretitle">Image Link</span>
                   <Field
                     name="creatImage"
-                    placeholder="Copy and Paste a video Link *"
+                    placeholder="Image Link *"
                     type="text"
                     value={creatImage}
                   />
@@ -139,7 +139,7 @@ const AdminPanel = ({
                   cols="100"
                   rows="10"
                   name="creatText"
-                  placeholder="creat Content *"
+                  placeholder="Content *"
                   type="text"
                   value={creatText}
                 />

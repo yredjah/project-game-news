@@ -13,16 +13,22 @@ import ForgottenPassword from 'src/containers/ForgottenPassword';
 import Legal from 'src/components/Legal';
 import User from 'src/components/User';
 import Contact from 'src/containers/Contact';
-// import AdminPanel from 'src/containers/AdminPanel';
 import SortArticles from 'src/containers/SortArticles';
 import './app.scss';
+import BackDrop from 'src/components/BackDrop/BackDrop';
+import Toolbar from '../Toolbar/Toolbar';
+import SideDrawer from '../SideDrawer/SideDrawer';
 
 // == Composant
 const App = () => (
   <div id="app">
-    <nav>
-      <Header id="page-wrap" />
-    </nav>
+
+    <div id="box15">
+      <Header />
+    </div>
+    <Toolbar />
+    <SideDrawer />
+    <BackDrop />
     <main>
       <Route path="/Sign_Up" exact component={SignUp} />
       <Route path="/login" exact component={Login} />
@@ -32,7 +38,6 @@ const App = () => (
       <Route path="/mention_legale" exact component={Legal} />
       <Route path="/contact" exact component={Contact} />
       <Route path="/user" component={User} />
-      {/* <Route path="/user/admin" exact component={AdminPanel} /> */}
       <Route path="/sort/:type/:category" exact component={SortArticles} />
     </main>
     <footer>

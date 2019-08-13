@@ -1,0 +1,26 @@
+.side-drawer{
+  height: 100%;
+  background: white;
+  box-shadow: 2px 0px 5px rgba($color: #000000, $alpha: 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  max-width: 400px;
+  z-index: 400;
+}
+
+.side-drawer li{
+  margin: 0.5rem 0;
+}
+.side-drawer a{
+  color: red;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.side-drawer a:hover,
+.side-drawer a:active {
+  color: rgb(44, 88, 209);
+
+}

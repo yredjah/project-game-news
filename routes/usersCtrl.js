@@ -45,7 +45,7 @@ module.exports = {
                       password: bcryptedPassword,
                       firstname: firstname,
                       lastname: lastname,
-                      avatar: 'base.png',
+                      avatar: 'base1.gif',
                   })
                   .then(function(newUser){
                       return res.status(201).json({

@@ -1,6 +1,11 @@
 @import 'reset';
 @import 'vars';
 
+html{
+  height: 100%;
+}
 body {
   font-family: sans-serif;
+  height: 100%;
 }
+

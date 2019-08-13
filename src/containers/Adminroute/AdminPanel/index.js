@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 
 // imports locaux
-import AdminPanel from 'src/components/AdminPanel';
+import AdminPanel from 'src/components/Adminroute/AdminPanel';
 import { onsubmitArticle, onInputChange } from 'src/store/reducer';
 
 const mapStateToProps = state => ({
@@ -18,7 +18,6 @@ const mapStateToProps = state => ({
   creatGenre: state.creatGenre,
   creatGenre2: state.creatGenre2,
   creatGenre3: state.creatGenre3,
-  role: state.userInfo.role,
 });
 
 const mapDispatchToProps = dispatch => ({
