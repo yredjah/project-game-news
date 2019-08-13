@@ -187,6 +187,7 @@ export const DEL_PREFERENCIES = 'DEL_PREFERENCIES';
 export const SORT_ARTICLES_BY_PLATEFROM = 'SORT_ARTICLES_BY_PLATEFROM';
 export const SET_SORT_ARTICLES_BY_GENRE = 'SET_SORT_ARTICLES_BY_GENRE';
 export const GET_GAMES = 'GET_GAMES';
+export const GET_ARTICLES_BY_GAMES = 'GET_ARTICLES_BY_GAMES';
 const SET_ARTICLES = 'SET_ARTICLES';
 const CLEAN_REGISTER_FIELDS = ' CLEAN_REGISTER_FILEDS';
 const SET_USERS_LOGIN = 'SET_USERS_LOGIN';
@@ -420,6 +421,10 @@ export const getGamesList = () => ({
 export const setGamesList = gamesList => ({
   type: SET_GAMES,
   gamesList,
+});
+export const getArticlesByGames = gameId => ({
+  type: GET_ARTICLES_BY_GAMES,
+  gameId,
 });
 
 // == Export

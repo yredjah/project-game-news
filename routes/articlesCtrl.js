@@ -338,4 +338,17 @@ module.exports = {
     {'error': 'unable to find liked plateform', err}
     ))
   },
+  sortArticleByGame: function (req, res) {
+    const gameId = req.body.gameId;
+
+    models.Article.findAll({
+      where: {GameId: gameId},
+      limit: 30,
+      order: [['date', 'DESC']],
+    }).then((articles) => (
+      res.status(200).json(articles)
+    )).catch((err) => (
+      res.status(200).json(err)
+    ))
+  },
 };
