@@ -93,10 +93,10 @@ const SideDrawer = ({
       <div className="spacer" />
 
       <div className="platformlogo">
-        <div className="facebook" />
+        <div className="facebook1" />
         <div className="youtube" />
         <div className="linkedin" />
-        <div className="twitter" />
+        <div className="twitter2" />
       </div>
       <div className="spinner" />
     </div>
