@@ -198,6 +198,7 @@ const SET_ONE_ARTICLE = 'SET_ONE_ARTICLE';
 const SET_PREFERENCIES = 'SET_PREFERENCIES';
 const SET_SORT_ARTICLES = 'SET_SORT_ARTICLES';
 
+
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {

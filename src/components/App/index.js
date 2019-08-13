@@ -14,21 +14,19 @@ import Legal from 'src/components/Legal';
 import User from 'src/components/User';
 import Contact from 'src/containers/Contact';
 import SortArticles from 'src/containers/SortArticles';
+import ResponsivNav from 'src/components/ResponsivNav';
 import './app.scss';
-import BackDrop from 'src/components/BackDrop/BackDrop';
-import Toolbar from '../Toolbar/Toolbar';
-import SideDrawer from '../SideDrawer/SideDrawer';
 
 // == Composant
 const App = () => (
   <div id="app">
 
-    <div id="box15">
+    <div id="navbar">
       <Header />
     </div>
-    <Toolbar />
-    <SideDrawer />
-    <BackDrop />
+    <div className="responsiv-navbar">
+      <ResponsivNav />
+    </div>
     <main>
       <Route path="/Sign_Up" exact component={SignUp} />
       <Route path="/login" exact component={Login} />

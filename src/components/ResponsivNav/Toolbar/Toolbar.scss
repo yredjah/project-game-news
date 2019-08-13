@@ -6,8 +6,12 @@
   background: #1C1C1C;
   height: 62px;
   z-index: 200;
+  display: flex;
+  align-items: center;
 }
-
+.secondarydiv{
+  width: 70%;
+}
 .toolbar_logo{
   margin-left: 1rem;
 }
@@ -44,4 +48,24 @@
 }
 .spacer{
   flex: 1;
+}
+.researchbar {
+  height: 45%;
+  width: 30%;
+  padding-right: 4%;
+}
+#researchinput{
+  height: 100%;
+  float: right;
+  width: 45%;
+  border-radius: 20px !important;
+  transition: box-shadow .3s;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  &placeholder{
+    font-size: 0.5em;
+  }
+  &:focus {
+    width: 100% !important;
+  }
 }

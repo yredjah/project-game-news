@@ -14,7 +14,21 @@
 #box15{
   display: none !important;
 }
-main{
-  top: 0;
-  margin-top: 62px;
+
+@media (min-width: 1000px){
+  .responsiv-navbar{
+    display: none;
+  }
+
+}
+
+
+@media screen and (max-width: 1000px) {
+  #navbar{
+    display: none !important;
+  }
+  main{
+    padding: 0;
+    margin-top: 40px;
+  }
 }
