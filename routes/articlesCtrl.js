@@ -138,12 +138,12 @@ module.exports = {
 
     models.Article.findAll({
       where: { date: {[Op.gt]: lastWeek,} },
-      order: [['date', 'DESC']],
+      order: [['createdAt', 'DESC']],
       limit: NUMBER_OF_ARTICLE,
     }).then(function(newsOfTheWeek) {
       models.Article.findAll({
         where: { date: {[Op.lt]: lastWeek,} },
-        order: [['date', 'DESC']],
+        order: [['createdAt', 'DESC']],
         limit: NUMBER_OF_ARTICLE,
       }).then(function(news) {
         const articles = {newsOfTheWeek: newsOfTheWeek, news: news};
@@ -226,7 +226,7 @@ module.exports = {
     }).then((PlateformFound) => {
       models.Article.findAll({
         limit: NUMBER_OF_ARTICLE,
-        order: [['date', 'DESC']],
+        order: [['createdAt', 'DESC']],
         include: [{
           model: models.Game,
           include: [{
@@ -254,7 +254,7 @@ module.exports = {
     }).then((genreFound) => {
       models.Article.findAll({
         limit: NUMBER_OF_ARTICLE,
-        order: [['date', 'DESC']],
+        order: [['createdAt', 'DESC']],
         include: [{
           model: models.Game,
           include: [{
