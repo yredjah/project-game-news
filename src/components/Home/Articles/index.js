@@ -13,9 +13,10 @@ import bignews from 'src/data/bignews';
 // == Composant
 
 
-export default function Articles({ articles }) {
-  // useEffect(() => {
-  // }, []);
+export default function Articles({ articles, gamesList, getGames }) {
+  useEffect(() => {
+    getGames();
+  }, []);
 
   const news = articles.newsOfTheWeek;
   const articlesList = articles.news;
@@ -65,12 +66,12 @@ export default function Articles({ articles }) {
             <h1 className="news-BigTitle">YOUR PREFERENCIES</h1>
             <div className="user-preferencies">
               {
-                articlesList.map((article) => {
+                gamesList.map((game) => {
                   return (
-                    <Link key={article.id} to={`/article/${article.id}`} exact>
+                    <Link key={game.id} to={`/game/${game.id}`} exact>
                       <Card id="cards-pref">
-                        <Card.Header className="pref-head">{article.title}</Card.Header>
-                        <Card.Description className="pref-desc">{article.resume}</Card.Description>
+                        <Card.Header className="pref-head">{game.name}</Card.Header>
+                        {/* <Card.Description className="pref-desc">{game.resume}</Card.Description> */}
                       </Card>
                     </Link>
                   );
