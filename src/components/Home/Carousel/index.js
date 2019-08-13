@@ -21,7 +21,7 @@ class Carousel extends Component {
     const articlesList = articles.newsOfTheWeek;
     // if(articlesList)
     articlesList.forEach((article) => {
-      if (typeof (article.videoId) !== 'undefined') {
+      if (article.videoId !== '') {
         this.videoLinks.push({
           link: article.videoId,
           title: article.title,
