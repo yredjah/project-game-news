@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import logo1 from './logo.png';
 
 import AccountButton from './Accountbutton';
-// import Hambergertton from './Hambergertton';
 
 // == Import : local
 import './header.scss';

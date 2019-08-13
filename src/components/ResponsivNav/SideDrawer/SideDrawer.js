@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
   Menu,
-  Segment,
   Dropdown,
+  Button,
 } from 'semantic-ui-react';
-
+import AccountButton from 'src/components/ResponsivNav/SideDrawer/Accountbutton';
 import './SideDrawer.scss';
 
 const SideDrawer = ({
@@ -16,7 +16,7 @@ const SideDrawer = ({
   categories,
   getAllPlateforms,
   getAllGenres,
-  // avatar,
+  avatar,
   userInfo,
   show,
 }) => {
@@ -34,39 +34,63 @@ const SideDrawer = ({
   userInfo();
 
   return (
-    <nav className={cssClassNames}>
-      <h1>PLATFORMS</h1>
-      <Segment inverted className="nav">
-        <Menu className="nav-menu" inverted secondary>
-          {categories.map(category => (
+    <div className={cssClassNames}>
+
+      <div className="avatar-login">
+        {JSON.parse(sessionStorage.getItem('token'))
+          && <div className="accountbuton"><AccountButton avatar={avatar} /></div>
+        }
+        {!JSON.parse(sessionStorage.getItem('token'))
+          && (
+          <div>
             <Link
-              to={`/sort/plateform/${category.name}`}
+              to="/Sign_Up"
               exact
             >
-              <Menu.Item
-                className="nav-menu-1"
-                key={category.id}
-                name={category.name}
-                active={activeItem === category.name}
-                onClick={handleItemClick}
-              />
+              <Button className="lg button" primary>Sign-Up</Button>
             </Link>
-          ))}
-          <Menu.Item
-            className="nav-menu-2"
-            active={activeItem === 'GAMES'}
+            <Link
+              to="/login"
+              exact
+            >
+              <Button className="lg button">Login</Button>
+            </Link>
+          </div>
+          )
+        }
+      </div>
+
+      <div className="platformbutton">
+        {categories.map(category => (
+          <Link
+            to={`/sort/plateform/${category.name}`}
+            exact
           >
-            <Dropdown text="TYPES" simple item>
-              <Dropdown.Menu>
-                {genres.map(genre => (
-                  <Dropdown.Item key={genre.id} text={genre.name} as={Link} to={`/sort/genre/${genre.name}`} />
-                ))}
-              </Dropdown.Menu>
-            </Dropdown>
-          </Menu.Item>
-        </Menu>
-      </Segment>
-    </nav>
+            <li
+              className="platformbutton-items"
+              key={category.id}
+              name={category.name}
+              active={activeItem === category.name}
+              onClick={handleItemClick}
+            >
+              <span>{category.name}</span>
+            </li>
+          </Link>
+        ))}
+      </div>
+      <Menu.Item
+        className="nav-menu"
+        active={activeItem === 'GAMES'}
+      >
+        <Dropdown text="TYPES" simple item>
+          <Dropdown.Menu>
+            {genres.map(genre => (
+              <Dropdown.Item key={genre.id} text={genre.name} as={Link} to={`/sort/genre/${genre.name}`} />
+            ))}
+          </Dropdown.Menu>
+        </Dropdown>
+      </Menu.Item>
+    </div>
   );
 };
 
@@ -78,7 +102,7 @@ SideDrawer.propTypes = {
   categories: PropTypes.array.isRequired,
   getAllPlateforms: PropTypes.func.isRequired,
   getAllGenres: PropTypes.func.isRequired,
-  // avatar: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
   userInfo: PropTypes.func.isRequired,
 };
 export default SideDrawer;

@@ -10,20 +10,14 @@
   z-index: 400;
   transform: translateX(-100%);
   transition: transform 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .side-drawer.open{
   transform: translateX(0);
 }
 
-.side-drawer ul{
-  height: 100%;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-}
-.side-drawer li{
-  margin: 0.5rem 0;
-}
 .side-drawer a{
   color: white; 
   text-decoration: none;
@@ -39,5 +33,36 @@
 @media (min-width: 769px){
   .side-drawer{
     display: none;
+  }
+}
+
+.avatar-login{
+  padding-top: 8%;
+  height: 10%;
+}
+.sizeofavatar{
+  height: 45px !important;
+  width: 46px !important;
+}
+#accountbutton{
+  width: 80%;
+}
+.platformbutton{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba($color: #3d3d3d, $alpha: 0.7);
+  border-bottom: 1px solid rgba($color: #3d3d3d, $alpha: 0.7);
+  margin: 10% 0;
+  padding: 10% 0;
+}
+.platformbutton-items{
+  width: 100%;
+  
+  height: 50%;
+  list-style: none;
+  padding: 0.5rem 0;
+  &:hover{
+    background-color: #424446;
   }
 }
