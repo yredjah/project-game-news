@@ -79,7 +79,7 @@ const SideDrawer = ({
         ))}
       </div>
       <Menu.Item
-        className="nav-menu"
+        className="typemenu"
         active={activeItem === 'GAMES'}
       >
         <Dropdown text="TYPES" simple item>
@@ -90,6 +90,15 @@ const SideDrawer = ({
           </Dropdown.Menu>
         </Dropdown>
       </Menu.Item>
+      <div className="spacer" />
+
+      <div className="platformlogo">
+        <div className="facebook" />
+        <div className="youtube" />
+        <div className="linkedin" />
+        <div className="twitter" />
+      </div>
+      <div className="spinner" />
     </div>
   );
 };

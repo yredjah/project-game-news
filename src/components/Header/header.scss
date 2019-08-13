@@ -14,7 +14,17 @@
   color: black;
   margin: 0.1em 0 0 0.1em;
 }
+.logosvg{
 
+  height:60px;
+  width: 100px;
+  background: url("./game-5.6s-236px.svg") no-repeat center;
+  margin-top: 2em ;
+
+}
+.spacer1{
+  flex: 1;
+}
 .logo {
   width: 1em;
 }

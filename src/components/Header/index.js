@@ -9,6 +9,7 @@ import {
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import logo1 from './logo.png';
+import logo2 from './game-5.6s-236px.svg';
 
 import AccountButton from './Accountbutton';
 
@@ -40,7 +41,8 @@ const Header = ({
     <div className="header">
       <div className="container-head">
         <Link to="/" exact><h1 id="title"><img className="logo" src={logo1} alt="" />Game news</h1></Link>
-        {/* <Link to="/" exact><img id="logo2" src={logo2} alt="" /></Link> */}
+        <div className="logosvg"><Link to="/" exact /></div>
+        <div className="spacer1" />
         <div className="container-head-right">
           {JSON.parse(sessionStorage.getItem('token'))
             && <div><AccountButton avatar={avatar} /></div>
