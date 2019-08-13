@@ -6,7 +6,7 @@ import Articles from 'src/components/Home/Articles';
 
 // Action Creators
 // import { doSomething } from 'src/store/reducer';
-// import { getArticle } from 'src/store/reducer';
+import { getGamesList } from 'src/store/reducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -17,6 +17,7 @@ import Articles from 'src/components/Home/Articles';
  */
 const mapStateToProps = (state, ownProps) => ({
   articles: state.articles,
+  gamesList: state.gamesList,
 });
 
 /* === Actions ===
@@ -27,9 +28,9 @@ const mapStateToProps = (state, ownProps) => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  // getListArticles: () => {
-  //   dispatch(getArticle());
-  // },
+  getGames: () => {
+    dispatch(getGamesList());
+  },
 });
 
 // Container

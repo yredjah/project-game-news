@@ -163,6 +163,7 @@ const initialState = {
     resume: '',
     text: '',
   }],
+  gamesList: [],
 };
 
 // == Types
@@ -185,6 +186,7 @@ export const SEND_PREFERENCIES = 'SEND_PREFERENCIES';
 export const DEL_PREFERENCIES = 'DEL_PREFERENCIES';
 export const SORT_ARTICLES_BY_PLATEFROM = 'SORT_ARTICLES_BY_PLATEFROM';
 export const SET_SORT_ARTICLES_BY_GENRE = 'SET_SORT_ARTICLES_BY_GENRE';
+export const GET_GAMES = 'GET_GAMES';
 const SET_ARTICLES = 'SET_ARTICLES';
 const CLEAN_REGISTER_FIELDS = ' CLEAN_REGISTER_FILEDS';
 const SET_USERS_LOGIN = 'SET_USERS_LOGIN';
@@ -196,6 +198,7 @@ const SET_GENRE = 'SET_GENRE';
 const SET_ONE_ARTICLE = 'SET_ONE_ARTICLE';
 const SET_PREFERENCIES = 'SET_PREFERENCIES';
 const SET_SORT_ARTICLES = 'SET_SORT_ARTICLES';
+const SET_GAMES = 'SET_GAMES';
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -271,6 +274,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         articlesSort: action.articles,
+      };
+    case SET_GAMES:
+      return {
+        ...state,
+        gamesList: action.gamesList,
       };
     default:
       return state;
@@ -405,6 +413,13 @@ export const setArticlesSort = articles => ({
 export const SortArticlesByGenre = category => ({
   type: SET_SORT_ARTICLES_BY_GENRE,
   category,
+});
+export const getGamesList = () => ({
+  type: GET_GAMES,
+});
+export const setGamesList = gamesList => ({
+  type: SET_GAMES,
+  gamesList,
 });
 
 // == Export
