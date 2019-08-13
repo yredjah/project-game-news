@@ -1,5 +1,5 @@
 // == Import : npm
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Card, Image, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -13,7 +13,23 @@ const SortArticles = ({ match, getSortArticlesByPlateform, getSortArticlesByGenr
   const type = match.params.type;
   const category = match.params.category;
 
+  const [cat, setcat] = useState('');
+
   useEffect(() => {
+    if (category !== cat) {
+      if (type === 'plateform') {
+        setcat(category);
+        getSortArticlesByPlateform(category);
+      }
+      if (type === 'genre') {
+        setcat(category);
+        getSortArticlesByGenre(category);
+      }
+    }
+  });
+
+  useEffect(() => {
+    setcat(category);
     if (type === 'plateform') {
       getSortArticlesByPlateform(category);
     }
