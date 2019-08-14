@@ -76,7 +76,7 @@ module.exports = {
     const genres =req.body.genres;
     const plateforms = req.body.plateforms;
     const date = new Date();
-    if (title === null || text == null) {
+    if (title === null || title === 'null' || text == null || text == 'null' || gameName == null || gameName == 'null' || resume == null || resume == 'null' || genres == null || genres == [] || plateforms == null || plateforms == [] ) {
       return res.status(400).json({'error': 'missing parameters'});
     }
     if (title.length <= TITLE_MIN_LENGTH || text.length <= text_MIN_LENGTH) {
@@ -86,7 +86,7 @@ module.exports = {
     models.User.findOne({
       where: {id: userId}
     }).then(function(userFound) {
-      if(userFound) {
+      if(userFound.RoleId === 2) {
         models.Game.findOrCreate({
           where: {name: gameName}
         }).then(function([game, created]) {
