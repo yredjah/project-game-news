@@ -34,7 +34,7 @@ const AdminPanel = ({
       <div>
         <div className="creator">
           <div className="creator-article">
-            <h1>ARTICLE CREATOR PANEL</h1>
+            <h1>ARTICLE CREATION PANEL</h1>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
               <div className="fieldgroup1">
                 <div className="fieldgroup1-input"><span>Platform 1</span>

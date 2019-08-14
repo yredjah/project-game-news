@@ -25,13 +25,15 @@ const UserPreferencies = ({ genres, plateforms, getUserPreferencies, preferencie
     if (liked === true) {
       return (
         <div>
-          <input className="prefered" type="button" id={element.id} value={element.name} onClick={handleDel(element.name, category)} />
+          {/* <input className="prefered" type="button" id={element.id} value={element.name} onClick={handleDel(element.name, category)} /> */}
+          <button type="button" className="prefered" id={element.id} value={element.name} onClick={handleDel(element.name, category)} >{element.name}</button>
         </div>
       );
     }
     return (
       <div>
-        <input className="preferencies-button " type="button" id={element.id} value={element.name} onClick={handleAdd(element.name, category)} />
+        <button type="button" className="preferencies-button" id={element.id} value={element.name} onClick={handleAdd(element.name, category)} >{element.name}</button>
+        {/* <input className="preferencies-button" type="button" id={element.id} value={element.name} onClick={handleAdd(element.name, category)} /> */}
       </div>
     );
   };

@@ -57,7 +57,7 @@ export default function Articles({ articles, gamesList, getGames }) {
 
                   </div>
                 </div>
-              )
+              );
             }
           })}
         </div>
@@ -71,10 +71,7 @@ export default function Articles({ articles, gamesList, getGames }) {
                 gamesList.map((game) => {
                   return (
                     <Link key={game.id} to={`/games/${game.name}/${game.id}`} exact>
-                      <Card id="cards-pref">
-                        <Card.Header className="pref-head">{game.name}</Card.Header>
-                        {/* <Card.Description className="pref-desc">{game.resume}</Card.Description> */}
-                      </Card>
+                        <button class="button">{game.name}</button>
                     </Link>
                   );
                 })
