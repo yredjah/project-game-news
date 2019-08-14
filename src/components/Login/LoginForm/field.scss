@@ -1,0 +1,56 @@
+@import 'src/components/Login/styles/vars';
+
+.field {
+  margin: .5em 0;
+  position: relative;
+
+  &-input {
+    font-family: 'Crimson Text', serif;
+    width: 100%;
+    padding: .7rem;
+    font-size: 1.1em;
+    height: 3em;
+    border: 1px solid $color-input-border;
+    &:focus {
+      border-color: $color-input-border--focus;
+    }
+  }
+  
+  &--has-content &-input {
+    padding-top: 1.4em; 
+  }
+
+  &-label {
+    position: absolute;
+    top: .5rem;
+    left: .7rem;
+    font-size: .7em;
+    color: $color-input-label;
+    text-transform: uppercase;
+    font-family: 'Source Sans Pro', sans-serif;
+    display: none;
+  }
+
+  &--has-content &-label {
+    display: block;
+    animation: translateAndFadeIn .2s;
+  }
+
+  &-input:focus + &-label {
+    color: $color-input-label--focus;
+  }
+}
+
+@keyframes translateAndFadeIn {
+  0% {
+    // opacity: 0;
+    transform: translateY(1em);
+  }
+  50% {
+    transform: translateY(-.6em);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

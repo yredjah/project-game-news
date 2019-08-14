@@ -1,0 +1,34 @@
+.left-container{
+  //margin: 50px;
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+
+  }
+}
+
+.userInfo {
+  width: 20%;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 2px solid lightgrey;
+  border-radius: 1em;
+  background-color: white;
+  box-shadow: 15px 8px 10px lightgrey;
+  text-align: start;
+  font-size: 20px;
+
+  @media screen and (max-width: 1000px) {
+    width: 80%;
+    font-size: 85%;
+  }
+}
+.infoClasse {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.infos {
+  margin-bottom: 15px;
+}

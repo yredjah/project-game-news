@@ -1,0 +1,87 @@
+@import 'src/components/Login/styles/vars';
+
+.app {
+  color: $color-text;
+  max-width: 360px;
+  margin: 3em auto;
+  font-family: 'Crimson Text', serif;
+
+  &-title {
+    color: $color-title;
+    font-family: Cinzel, sans-serif;
+    font-size: 1.6em;
+    text-transform: lowercase;
+  }
+
+  &-desc {
+    font-size: 1.1em;
+    line-height: 1.4;
+    margin: .25em 0;
+  }
+  
+  &-link {
+    color: $color-link;
+    cursor: pointer;
+    display: block;
+    font-size: 1.1em;
+    margin: 1em 0;
+    text-align: center;
+    text-decoration: underline;
+  
+    &--back {
+      text-align: left;
+      &::before {
+        content: "";
+        display: inline-block;
+        background: url("./assets/images/arrow.svg") no-repeat center;
+        background-size: contain;
+        width: .8em;
+        height: .8em;
+        margin-right: .25em;
+        transform: rotate(.5turn);
+      }
+    }
+  }
+}
+
+.form {
+  margin: 1em 0;
+
+  &-submit {
+    background: $color-button-background;
+    border: 0;
+    border-radius: 0;
+    color: $color-button;
+    font-size: 1em;
+    display: block;
+    text-transform: uppercase;
+    height: 3.3em;
+    width: 100%;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 700;
+
+    &.form-submit--login {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &::before {
+        content: "";
+        background: url("./assets/images/Pacman.svg") no-repeat bottom left;
+        background-size: contain;
+        height: 2.2em;
+        width: 2.2em;
+        margin-right: .6em;
+      }
+      &::after{
+        content: "";
+        background: url("./assets/images/controler.svg") no-repeat bottom left;
+        background-size: contain;
+        height: 1.5em;
+        width: 1.5em;
+        margin-left: .7em;
+        color: red !important;
+      }
+    }
+  }
+}

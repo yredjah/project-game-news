@@ -1,0 +1,148 @@
+.creator{
+  display: flex;
+  flex: wrap;
+  margin: 1em;
+  padding: 1em;
+  border: 2px solid lightgrey;
+  border-radius: 1em;
+  background-color: white;
+  box-shadow: 15px 8px 10px lightgrey;
+  &-article{
+    width: 50%;
+    margin: auto;
+  }
+  & h1{
+    color: #FF3C1F;
+    border: 1px solid#1B1C1D;
+    border-radius: 15px;
+    background-color: #1B1C1D;
+    font-weight: 100;
+    line-height: 1.5em;
+  }
+}
+
+.fieldgroup1{
+  margin-top: 1%;
+  width: 100%;
+  display: flex;
+  color: #2185D0;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #2185D0;
+  border-radius: 20px;
+  padding: 1%;
+  &-input{
+    width: 30%;
+  }
+}
+.fieldgroup2{
+  margin-top: 1%;
+  width: 100%;
+  display: flex;
+  color: #2185D0;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #2185D0;
+  border-radius: 20px;
+  padding: 1%;
+  &-input{
+    width: 48%;
+  }
+}
+.fieldgroup3{
+  margin-top: 1%;
+  width: 100%;
+  display: flex;
+  color: #2185D0;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #2185D0;
+  border-radius: 20px;
+  padding: 1%;
+  justify-content: center;
+}
+.fieldgroup4{
+  margin-top: 1%;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #2185D0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding-top: 1%;
+  &-input{
+    width: 100%;
+    text-decoration: none;
+    white-space: pre-line;
+  }
+  & p{
+    color: #2185D0;
+    align-items: center;
+    margin: auto;
+  }
+}
+.btn{
+  margin: 1em 0;
+
+  &-submit {
+    background: #2185D0;
+    border: 0;
+    border-radius: 0;
+    color: white;
+    font-size: 1em;
+    display: block;
+    text-transform: uppercase;
+    height: 3.3em;
+    width: 100%;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 700;
+
+    
+  }
+}
+.btn-submit--article {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &::before {
+    content: "";
+    background: url("./assets/images/Pacman.svg") no-repeat bottom left;
+    background-size: contain;
+    height: 2.2em;
+    width: 2.2em;
+    margin-right: .6em;
+  }
+  &::after{
+    content: "";
+    background: url("./assets/images/controler.svg") no-repeat bottom left;
+    background-size: contain;
+    height: 1.5em;
+    width: 1.5em;
+    margin-left: .7em;
+    ;
+  }
+}
+@media screen and (min-width: 200px) and (max-width: 650px){
+  .creator{
+    border: 1px solid red!important;
+    &-article{
+      width: 100%;
+      margin: auto;
+    }
+    & h1{
+      line-height: 1.5em !important;
+      font-size: 0.8em;
+    }
+  }
+  .genretitle{
+    font-size: 0.8em !important;
+  }
+  .resume{
+    font-size: 0.7em;
+  }
+}

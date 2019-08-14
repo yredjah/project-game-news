@@ -1,0 +1,89 @@
+.container-head {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.container-head-right {
+  justify-content: space-between;
+  align-self: center;
+  padding: 2em 1em 0 0;
+}
+#title {
+  font-size: 5em;
+  color: black;
+  margin: 0.1em 0 0 0.1em;
+}
+.logosvg{
+
+  height:60px;
+  width: 100px;
+  background: url("./game-5.6s-236px.svg") no-repeat center;
+  margin-top: 2em ;
+
+}
+.spacer1{
+  flex: 1;
+}
+.logo {
+  width: 1em;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  height: 5em;
+  width: 100% !important;
+  &-menu{
+    display: flex !important;
+  }
+  margin: 0 !important;
+}
+
+
+.searchBar {
+  height: 100%;
+  width: 25em;
+
+}
+#seachinput{
+  height: 100%;
+  float: right;
+  width: 45%;
+  border-radius: 20px !important;
+  transition: box-shadow .3s;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  &:focus {
+    width: 100% !important;
+  }
+}
+
+
+
+.settings--open{
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 800ms;
+}
+.sethide-login{
+  position: absolute;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 800ms;
+}
+#AccountButton{
+  margin-right: 2rem;
+}
+
+
+.avatarsize{
+  height: 25px !important;
+  width: 26px !important;
+}
+@media screen and (min-width: 1000px) {
+  .avatarsize{
+    height: 45px !important;
+    width: 48px !important;
+  }
+}

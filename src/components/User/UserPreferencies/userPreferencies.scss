@@ -1,0 +1,52 @@
+.preferencies-form{
+  display: flex;
+  justify-content: space-around;
+
+  @media screen and (max-width: 1000px) {
+    width: 80%;
+  }
+}
+
+.prefered{
+  padding: 0.4em;
+  border-radius: 5em;
+  color: #eee;
+  background-color: #73CE63;
+  border: none;
+  margin-top: 0.3em;
+}
+
+.preferencies-button{
+  margin: 2%;
+  padding: 0.4em;
+  width: 300px;
+  height: 45px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #000;
+  background-color: #0082b0;
+  border: 2px solid rgba(219, 104, 109, 0.4);
+  border-radius: 35px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+.preferencies-button:hover {
+  box-shadow: 0px 10px 20px rgba(18, 18, 187, 0.5);
+  border-radius: 10px;
+  color: #fff;
+  transform: translateY(-7px);
+}
+.UserPreferencies{
+  background-color: white;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 3%; 
+  margin-top: 3%;
+  padding: 2%;
+  & h2{
+    text-align: center;
+  }
+}

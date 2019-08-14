@@ -1,0 +1,44 @@
+#user-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @media screen and (max-width: 1000px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+#user-menu {
+  margin-top: 3%;
+  @media screen and (max-width: 1000px) {
+    width: 80% !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+  }
+}
+
+#user-info {
+  margin-left: auto;
+  margin-right: auto;
+  @media screen and (max-width: 1000px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.left-container{
+  @media screen and (max-width: 1000px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.error{
+  font-weight: 900;
+  padding-top: 1em;
+  margin-bottom: 1em;
+}
+
+.link2{
+  margin-bottom: 2em;
+}
