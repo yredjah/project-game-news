@@ -78,6 +78,7 @@
   &-input{
     width: 100%;
     text-decoration: none;
+    white-space: pre-line;
   }
   & p{
     color: #2185D0;
@@ -124,5 +125,24 @@
     width: 1.5em;
     margin-left: .7em;
     ;
+  }
+}
+@media screen and (min-width: 200px) and (max-width: 650px){
+  .creator{
+    border: 1px solid red!important;
+    &-article{
+      width: 100%;
+      margin: auto;
+    }
+    & h1{
+      line-height: 1.5em !important;
+      font-size: 0.8em;
+    }
+  }
+  .genretitle{
+    font-size: 0.8em !important;
+  }
+  .resume{
+    font-size: 0.7em;
   }
 }

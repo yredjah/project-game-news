@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import { Dropdown, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-import './header.scss';
-
 function handleLogOut() {
   sessionStorage.clear();
   window.location.reload();
@@ -24,11 +22,11 @@ const options = [
 const AccountButton = ({ avatar }) => {
   const trigger = (
     <span>
-      <Image src={`/public/avatarUploads/${avatar}`} className="avatarsize" size="mini" circular />
+      <Image src={`/public/avatarUploads/${avatar}`} className="sizeofavatar" size="mini" circular />
     </span>
   );
   return (
-    <div id="AccountButton">
+    <div className="accountbutton">
       <Dropdown trigger={trigger} options={options} pointing="top right" icon={null} />
     </div>
   );

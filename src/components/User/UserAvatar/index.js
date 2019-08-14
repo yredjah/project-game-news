@@ -37,16 +37,22 @@ class UserAvatar extends Component {
 
   render() {
     return (
-      <form className="avatar" onSubmit={this.handleUploadImage} encType="multipart/form-data">
-        <div className="downloadAvatar">
-          <input ref={(ref) => { this.uploadInput = ref; }} type="file" accept=".jpg, .jpeg, .png, .gif" />
+      <>
+        <form className="avatar" onSubmit={this.handleUploadImage} encType="multipart/form-data">
+          <div className="downloadAvatar">
+            <input ref={(ref) => { this.uploadInput = ref; }} type="file" accept=".jpg, .jpeg, .png, .gif" />
+          </div>
+          <br />
+          <div>
+            <button>Upload</button>
+          </div>
+          <img className="avatar-img" src={this.state.imageURL} alt="img" />
+        </form>
+        <div className="btn btn-default ld-ext-right running">
+          My Button
+          <div className="ld ld-ring ld-spin"></div>
         </div>
-        <br />
-        <div>
-          <button>Upload</button>
-        </div>
-        <img className="avatar-img" src={this.state.imageURL} alt="img" />
-      </form>
+      </>
     );
   }
 }

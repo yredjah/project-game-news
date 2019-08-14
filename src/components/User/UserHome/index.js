@@ -9,6 +9,7 @@ const UserHome = ({
   firstName,
   lastName,
   mail,
+  role,
 }) => {
   useEffect(() => {
     userInfo();
@@ -19,10 +20,12 @@ const UserHome = ({
   return (
     <div className="userInfo">
       <ul className="infoUser">
-        <li className="infos"><span className="infoClasse">Username:</span> {userName}</li>
-        <li className="infos"><span className="infoClasse">Firstname:</span> {firstName}</li>
-        <li className="infos"><span className="infoClasse">Lastname:</span> {lastName}</li>
-        <li className="infos"><span className="infoClasse">Mail:</span> {mail}</li>
+        <li className="infos"><span className="infoClasse">Username :</span> {userName}</li>
+        <li className="infos"><span className="infoClasse">Firstname :</span> {firstName}</li>
+        <li className="infos"><span className="infoClasse">Lastname :</span> {lastName}</li>
+        <li className="infos"><span className="infoClasse">Mail :</span> {mail}</li>
+        <li className="infos"><span className="infoClasse"><span role="img" aria-label="sheep">🃏 </span>Grade :</span> {role}</li>
+
       </ul>
     </div>
   );
@@ -35,5 +38,7 @@ UserHome.propTypes = {
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   mail: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+
 };
 export default UserHome;

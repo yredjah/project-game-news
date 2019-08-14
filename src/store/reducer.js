@@ -142,6 +142,7 @@ const initialState = {
     userName: '',
     mail: '',
     avatar: '',
+    role: '',
   },
   preferencies: {
     genres: [
@@ -200,6 +201,7 @@ const SET_ONE_ARTICLE = 'SET_ONE_ARTICLE';
 const SET_PREFERENCIES = 'SET_PREFERENCIES';
 const SET_SORT_ARTICLES = 'SET_SORT_ARTICLES';
 const SET_GAMES = 'SET_GAMES';
+
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {

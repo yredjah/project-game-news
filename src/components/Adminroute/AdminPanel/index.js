@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Field from 'src/containers/Login/LoginForm';
 import './adminpanel.scss';
 
+
 const AdminPanel = ({
   creatTitle,
   creatGameName,
@@ -26,13 +27,14 @@ const AdminPanel = ({
     evt.preventDefault();
     onSubmitForm();
   };
+
   return (
     JSON.parse(sessionStorage.getItem('token'))
       && (
       <div>
         <div className="creator">
           <div className="creator-article">
-            <h1>ARTICLE CREATOR PANEL</h1>
+            <h1>ARTICLE CREATION PANEL</h1>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
               <div className="fieldgroup1">
                 <div className="fieldgroup1-input"><span>Platform 1</span>
@@ -61,70 +63,70 @@ const AdminPanel = ({
                 </div>
               </div>
               <div className="fieldgroup1">
-                <div className="fieldgroup1-input"><span>Game Genre 1</span>
+                <div className="fieldgroup1-input"><span className="genretitle">Game Genre 1</span>
                   <Field
                     name="creatGenre"
-                    placeholder="Game Genre *"
+                    placeholder="Genre 1 *"
                     type="text"
                     value={creatGenre}
                   />
                 </div>
-                <div className="fieldgroup1-input"><span>Game Genre 2</span>
+                <div className="fieldgroup1-input"><span className="genretitle">Game Genre 2</span>
                   <Field
                     name="creatGenre2"
-                    placeholder="Game Genre *"
+                    placeholder="Genre 2*"
                     type="text"
                     value={creatGenre2}
                   />
                 </div>
-                <div className="fieldgroup1-input"><span>Game Genre 3</span>
+                <div className="fieldgroup1-input"><span className="genretitle">Game Genre 3</span>
                   <Field
                     name="creatGenre3"
-                    placeholder="Game Genre *"
+                    placeholder="Genre 3*"
                     type="text"
                     value={creatGenre3}
                   />
                 </div>
               </div>
               <div className="fieldgroup1">
-                <div className="fieldgroup1-input"><span>Game Name</span>
+                <div className="fieldgroup1-input"><span className="genretitle">Game Name</span>
                   <Field
                     name="creatGameName"
-                    placeholder="Game Name *"
+                    placeholder="Name *"
                     type="text"
                     value={creatGameName}
                   />
                 </div>
-                <div className="fieldgroup1-input"><span>Title</span>
+                <div className="fieldgroup1-input"><span className="genretitle">Title</span>
                   <Field
                     name="creatTitle"
-                    placeholder="Article Title *"
+                    placeholder="Title *"
                     type="text"
                     value={creatTitle}
                   />
                 </div>
-                <div className="fieldgroup1-input"><span>Article Resume</span>
+                <div className="fieldgroup1-input"><span className="resume">Article Resume</span>
                   <Field
                     name="createResume"
-                    placeholder="Article Title *"
+                    placeholder="Resume *"
                     type="text"
                     value={createResume}
                   />
                 </div>
               </div>
               <div className="fieldgroup2">
-                <div className="fieldgroup2-input"><span>Video Id</span>
+                <div className="fieldgroup2-input"><span className="genretitle">Video Id</span>
                   <Field
                     name="creatVideo"
-                    placeholder="Copy and Paste a video Link *"
+                    placeholder="video Id *"
                     type="text"
                     value={creatVideo}
                   />
                 </div>
-                <div className="fieldgroup2-input"><span>Image Link</span>
+                <div className="fieldgroup2-input"><span className="genretitle">Image Link</span>
                   <Field
                     name="creatImage"
-                    placeholder="Copy and Paste a video Link *"
+                    placeholder="Image Link *"
                     type="text"
                     value={creatImage}
                   />
@@ -137,7 +139,7 @@ const AdminPanel = ({
                   cols="100"
                   rows="10"
                   name="creatText"
-                  placeholder="creat Content *"
+                  placeholder="Content *"
                   type="text"
                   value={creatText}
                 />

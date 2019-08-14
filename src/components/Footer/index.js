@@ -11,18 +11,20 @@ import './footer.scss';
 // == Composant
 const Footer = () => (
   <div id="footer">
-    <div className="link">
-      <Link to="/contact" exact>
-        Contact
-      </Link>
-      <Link to="/mention_legale" exact>
-        Mention légale
-      </Link>
-      <Link to="/" exact>
-        Accueil
-      </Link>
+    <div className="linkdiv">
+      <div className="link">
+        <Link to="/contact" exact>
+          Contact
+        </Link>
+        <Link to="/mention_legale" exact>
+          Mention légale
+        </Link>
+        <Link to="/" exact>
+          Accueil
+        </Link>
+      </div>
     </div>
-    <div className="text">
+    <div className="textfooter">
       <p>&copy; 2019 Game news</p>
     </div>
     <div className="divicon">

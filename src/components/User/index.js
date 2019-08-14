@@ -7,8 +7,8 @@ import './user.scss';
 import UserHome from 'src/containers/UserHome';
 import UserAvatar from 'src/components/User/UserAvatar';
 import UserPreferencies from 'src/containers/UserPreferencies';
+import Adminroute from 'src/containers/Adminroute';
 import logo from './broken.png';
-
 // == Composant
 class User extends Component {
   state = { activeItem: 'home' }
@@ -59,6 +59,7 @@ class User extends Component {
             <Route path="/user" exact component={UserHome} />
             <Route path="/user/Avatar" exact component={UserAvatar} />
             <Route path="/user/Preferencies" exact component={UserPreferencies} />
+            <Adminroute />
           </div>
         </div>
         )}
@@ -78,7 +79,5 @@ class User extends Component {
     );
   }
 }
-
-
 // == Export
 export default User;

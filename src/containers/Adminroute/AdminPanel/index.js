@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 
 // imports locaux
-import AdminPanel from 'src/components/AdminPanel';
+import AdminPanel from 'src/components/Adminroute/AdminPanel';
 import { onsubmitArticle, onInputChange } from 'src/store/reducer';
 
 const mapStateToProps = state => ({

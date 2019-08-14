@@ -13,17 +13,21 @@ import ForgottenPassword from 'src/containers/ForgottenPassword';
 import Legal from 'src/components/Legal';
 import User from 'src/components/User';
 import Contact from 'src/containers/Contact';
-import AdminPanel from 'src/containers/AdminPanel';
 import SortArticles from 'src/containers/SortArticles';
+import ResponsivNav from 'src/components/ResponsivNav';
 import SortArticlesByGame from 'src/containers/SortArticlesByGame';
 import './app.scss';
 
 // == Composant
 const App = () => (
   <div id="app">
-    <nav>
-      <Header id="page-wrap" />
-    </nav>
+
+    <div id="navbar">
+      <Header />
+    </div>
+    <div className="responsiv-navbar">
+      <ResponsivNav />
+    </div>
     <main>
       <Route path="/Sign_Up" exact component={SignUp} />
       <Route path="/login" exact component={Login} />
@@ -33,7 +37,6 @@ const App = () => (
       <Route path="/mention_legale" exact component={Legal} />
       <Route path="/contact" exact component={Contact} />
       <Route path="/user" component={User} />
-      <Route path="/user/admin" exact component={AdminPanel} />
       <Route path="/sort/:type/:category" exact component={SortArticles} />
       <Route path="/games/:name/:id" exact component={SortArticlesByGame} />
     </main>

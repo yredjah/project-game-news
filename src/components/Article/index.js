@@ -127,9 +127,8 @@ const Article = ({
             {messagesList.map(message => (
               <li id="commentaries-list" key={message.id}>
                 <div>
-                  <Image src={`/public/avatarUploads/${message.User.avatar}`} size="mini" circular />
+                  <Image src={`/public/avatarUploads/${message.User.avatar}`} className="imagesize" size="small" circular />
                 </div>
-
                 <div id="userMessage">
                   <div id="userInfo">
                     <h4 id="userInfo-userName">{message.User.userName}</h4>
