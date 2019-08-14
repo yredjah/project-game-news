@@ -38,7 +38,7 @@ import {
 } from 'src/store/reducer';
 
 const logMiddleware = store => next => (action) => {
-  console.log('Je suis le middleware, et je laisse passer cette action: ', action);
+  // console.log('Je suis le middleware, et je laisse passer cette action: ', action);
   next(action);
 
   // POUR EXEMPLE: Requetes avec Axios
@@ -51,7 +51,7 @@ const logMiddleware = store => next => (action) => {
         password: store.getState().loginPassword,
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(setUsersLogin(response.data.token));
           sessionStorage.setItem('token', JSON.stringify(store.getState().token));
           window.location.href = '/user';
@@ -72,7 +72,7 @@ const logMiddleware = store => next => (action) => {
         password: store.getState().registerPassword,
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(cleanRegisterFileds());
           window.location.href = '/login';
         })
@@ -86,7 +86,7 @@ const logMiddleware = store => next => (action) => {
       // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       axios.get('http://localhost:3000/api/articles/listArticle/')
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(setArticles(response.data));
         })
         // en cas d'echec : catch
@@ -103,12 +103,12 @@ const logMiddleware = store => next => (action) => {
         },
       })
         .then((response) => {
-          console.log(
-            response.data.firstname,
-            response.data.lastname,
-            response.data.username,
-            response.data.mail,
-          );
+          // console.log(
+          //   response.data.firstname,
+          //   response.data.lastname,
+          //   response.data.username,
+          //   response.data.mail,
+          // );
           store.dispatch(setUserInfo(
             response.data.username,
             response.data.firstname,
@@ -133,7 +133,7 @@ const logMiddleware = store => next => (action) => {
         contactMessage: store.getState().contactMessage,
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
         })
         // en cas d'echec : catch
         .catch((error) => {
@@ -145,7 +145,7 @@ const logMiddleware = store => next => (action) => {
       // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       axios.get('http://localhost:3000/api/plateform/getAll/')
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(setPlateform(response.data));
         })
         // en cas d'echec : catch
@@ -158,7 +158,7 @@ const logMiddleware = store => next => (action) => {
       // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       axios.get('http://localhost:3000/api/genre/getAll/')
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(setGenre(response.data));
         })
         // en cas d'echec : catch
@@ -202,7 +202,7 @@ const logMiddleware = store => next => (action) => {
         // ... and other options
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(getGenres());
           store.dispatch(getPlateform());
         })
@@ -226,7 +226,7 @@ const logMiddleware = store => next => (action) => {
         },
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(getCommentary(store.getState().article.id));
         })
         // en cas d'echec : catch
@@ -240,7 +240,7 @@ const logMiddleware = store => next => (action) => {
         articleId: action.articleId,
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(setCommentary(response.data));
         })
         // en cas d'echec : catch
@@ -256,7 +256,7 @@ const logMiddleware = store => next => (action) => {
         articleId: action.articleId,
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(setOneArticle(response.data));
         })
         // en cas d'echec : catch
@@ -278,7 +278,7 @@ const logMiddleware = store => next => (action) => {
         },
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(setOneArticle(response.data));
         })
         // en cas d'echec : catch
@@ -300,7 +300,7 @@ const logMiddleware = store => next => (action) => {
         },
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(setOneArticle(response.data));
         })
         // en cas d'echec : catch
@@ -319,7 +319,7 @@ const logMiddleware = store => next => (action) => {
         },
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(setPreferencies(response.data));
         })
         // en cas d'echec : catch
@@ -342,7 +342,7 @@ const logMiddleware = store => next => (action) => {
         },
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(getPreferencies());
         })
         // en cas d'echec : catch
@@ -365,7 +365,7 @@ const logMiddleware = store => next => (action) => {
         },
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(getPreferencies());
         })
         // en cas d'echec : catch
@@ -384,7 +384,7 @@ const logMiddleware = store => next => (action) => {
         },
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(setArticlesSort(response.data));
         })
         // en cas d'echec : catch
@@ -403,7 +403,7 @@ const logMiddleware = store => next => (action) => {
         },
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(setArticlesSort(response.data));
         })
         // en cas d'echec : catch
@@ -422,7 +422,7 @@ const logMiddleware = store => next => (action) => {
         },
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(setGamesList(response.data));
         })
         // en cas d'echec : catch
@@ -441,7 +441,7 @@ const logMiddleware = store => next => (action) => {
         },
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(setArticlesSort(response.data));
         })
         // en cas d'echec : catch
