@@ -48,10 +48,6 @@ class UserAvatar extends Component {
           </div>
           <img className="avatar-img" src={this.state.imageURL} alt="img" />
         </form>
-        <div className="btn btn-default ld-ext-right running">
-          My Button
-          <div className="ld ld-ring ld-spin"></div>
-        </div>
       </>
     );
   }
