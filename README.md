@@ -10,6 +10,4 @@ GAME NEWS
 2/ install sequelize-cli
 3/ Do this commands on your terminal for create bdd : 
 
-sequelize db:create
-sequelize db:migrate
-sequelize db:seed:al
+sequelize db:create // sequelize db:migrate // sequelize db:seed:al
