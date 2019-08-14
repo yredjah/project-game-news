@@ -71,7 +71,7 @@ export default function Articles({ articles, gamesList, getGames }) {
                 gamesList.map((game) => {
                   return (
                     <Link key={game.id} to={`/games/${game.name}/${game.id}`} exact>
-                        <button class="button">{game.name}</button>
+                        <button class="buttonv5">{game.name}</button>
                     </Link>
                   );
                 })

@@ -11,6 +11,7 @@ const Adminroute = ({ role }) => {
     if (role === 'admin') {
       return (
         <Route path="/user/admin" exact component={AdminPanel} />
+          
       );
     }
   };
